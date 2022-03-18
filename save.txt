@@ -1,24 +1,41 @@
 #mainwindow
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
-from AddStudent import Ui_Dialog
+from AddStudent import Ui_Dialog as add
+from DeleteStudent import Ui_Dialog as remove
 
 
 class Ui_MainWindow(object):
     def ajouterEtudiant(self):
+        
+        self.stackedWidget.setCurrentIndex(2)
+
+    def supprimerEtudiant(self):
+        
+        self.stackedWidget.setCurrentIndex(3)
+
+    def setupStacked(self):
+        #index 2
         self.windowAjouter=QDialog()
-        self.ui=Ui_Dialog(self.ISIMM)
-        self.ui.setupUi(self.windowAjouter)
+        self.ui1=add(self.ISIMM)
+        self.ui1.setupUi(self.windowAjouter)
         self.stackedWidget.addWidget(self.windowAjouter)
-        self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex()+1)
+        #index 3
+        self.windowSupprimer=QDialog()
+        self.ui2=remove(self.ISIMM)
+        self.ui2.setupUi(self.windowSupprimer)
+        self.stackedWidget.addWidget(self.windowSupprimer)
 
 
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
     def setupUi(self, MainWindow):
- 
 
-self.actionAjouter_etudiant.triggered.connect(self.ajouterEtudiant)
+        self.setupStacked()
+        self.actionAjouter_etudiant.triggered.connect(self.ajouterEtudiant)
+        self.actionSuppression_etudiant_donn.triggered.connect(self.supprimerEtudiant)
+
 
 #addstudent
 def ajouter(self):
