@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1120</width>
+    <height>787</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>12</pointsize>
+    <weight>9</weight>
+    <italic>false</italic>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1120</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#777477;</string>
+   </property>
+   <widget class="QMenu" name="menuGestion_des_etudiants">
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">margin:5px; </string>
+    </property>
+    <property name="title">
+     <string>Gestion des etudiants</string>
+    </property>
+    <widget class="QMenu" name="menuMise_jour_des_etudiants">
+     <property name="title">
+      <string>Mise à jour des étudiants</string>
+     </property>
+     <widget class="QMenu" name="menuModifier_etudiant">
+      <property name="title">
+       <string>Modifier étudiant</string>
+      </property>
+      <addaction name="actionT_l_phone"/>
+      <addaction name="separator"/>
+      <addaction name="actionMail"/>
+      <addaction name="separator"/>
+      <addaction name="actionAdresse"/>
+      <addaction name="separator"/>
+     </widget>
+     <widget class="QMenu" name="menuSupprimer_etudiant">
+      <property name="title">
+       <string>Supprimer étudiant</string>
+      </property>
+      <addaction name="actionSuppression_etudiant_donn"/>
+      <addaction name="separator"/>
+      <addaction name="actionSuppression_des_etudiants_d_une_section_donn_e"/>
+      <addaction name="separator"/>
+      <addaction name="actionSuppression_des_etudiants_d_un_niveau_donn"/>
+      <addaction name="separator"/>
+      <addaction name="actionSuppression_des_etudiants_d_une_section_et_un_niveau"/>
+      <addaction name="separator"/>
+     </widget>
+     <addaction name="actionAjouter_etudiant"/>
+     <addaction name="separator"/>
+     <addaction name="menuSupprimer_etudiant"/>
+     <addaction name="separator"/>
+     <addaction name="menuModifier_etudiant"/>
+     <addaction name="separator"/>
+    </widget>
+    <widget class="QMenu" name="menuRecherche_Affichage">
+     <property name="title">
+      <string>Recherche , Affichage</string>
+     </property>
+     <addaction name="actionAfficher_les_etudiants"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_numero_d_inscription"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_section_etudiant"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_niveau"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_section_et_niveau"/>
+     <addaction name="separator"/>
+    </widget>
+    <addaction name="menuMise_jour_des_etudiants"/>
+    <addaction name="separator"/>
+    <addaction name="menuRecherche_Affichage"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuGestion_des_matieres">
+    <property name="styleSheet">
+     <string notr="true">margin:5px; </string>
+    </property>
+    <property name="title">
+     <string>Gestion des matiéres</string>
+    </property>
+    <widget class="QMenu" name="menuMise_jour">
+     <property name="title">
+      <string>Mise à jour</string>
+     </property>
+     <widget class="QMenu" name="menuModifier_les_donnees_dune_matiere">
+      <property name="title">
+       <string>Modifier une matière</string>
+      </property>
+      <addaction name="actionNom"/>
+      <addaction name="separator"/>
+      <addaction name="actionCoefficient"/>
+      <addaction name="separator"/>
+     </widget>
+     <addaction name="actionAjouter_une_matiere"/>
+     <addaction name="separator"/>
+     <addaction name="actionSupprimer_une_matiere"/>
+     <addaction name="separator"/>
+     <addaction name="menuModifier_les_donnees_dune_matiere"/>
+     <addaction name="separator"/>
+    </widget>
+    <widget class="QMenu" name="menuRecherche_Affiche">
+     <property name="title">
+      <string>Recherche , Affichage</string>
+     </property>
+     <addaction name="actionAfficher_les_matieres"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_code"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_section_matiere"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_section_et_semestre"/>
+     <addaction name="separator"/>
+    </widget>
+    <addaction name="menuMise_jour"/>
+    <addaction name="separator"/>
+    <addaction name="menuRecherche_Affiche"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuGestion_des_notes">
+    <property name="styleSheet">
+     <string notr="true">margin:5px; </string>
+    </property>
+    <property name="title">
+     <string>Gestion des notes</string>
+    </property>
+    <widget class="QMenu" name="menuMise_jour_2">
+     <property name="title">
+      <string>Mise à jour</string>
+     </property>
+     <addaction name="actionAjouter_une_note"/>
+     <addaction name="separator"/>
+     <addaction name="actionSupprimer_une_note"/>
+     <addaction name="separator"/>
+     <addaction name="actionModifier_une_note"/>
+     <addaction name="separator"/>
+    </widget>
+    <widget class="QMenu" name="menuRecherche_Affichage_2">
+     <property name="title">
+      <string>Recherche , Affichage</string>
+     </property>
+     <addaction name="actionAffiche_les_notes"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_num_ro_d_inscription_2"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_section_et_niveau_2"/>
+     <addaction name="separator"/>
+     <addaction name="actionRecherche_par_num_ro_d_inscription_et_semestre"/>
+     <addaction name="separator"/>
+    </widget>
+    <addaction name="menuMise_jour_2"/>
+    <addaction name="separator"/>
+    <addaction name="menuRecherche_Affichage_2"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuCalcul_et_Affichage">
+    <property name="styleSheet">
+     <string notr="true">margin:5px; </string>
+    </property>
+    <property name="title">
+     <string>Calcul et Affichage</string>
+    </property>
+    <addaction name="actionBulletin_de_note_d_un_etudiant"/>
+    <addaction name="separator"/>
+    <addaction name="actionBulletin_de_note_d_un_tudiant_par_semestre"/>
+    <addaction name="separator"/>
+    <addaction name="actionEtudiants_admis_d_une_section_donnee"/>
+    <addaction name="separator"/>
+    <addaction name="actionEtudiants_redoublants_d_une_section_donnee"/>
+    <addaction name="separator"/>
+    <addaction name="actionEtudiants_admis_de_l_ISIMM"/>
+    <addaction name="separator"/>
+    <addaction name="actionEtudiants_redoublants_de_l_ISIMM"/>
+    <addaction name="separator"/>
+    <addaction name="actionMoyennes_des_etudiants_d_une_section_donnee"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuEnregistrement_et_recuperation">
+    <property name="styleSheet">
+     <string notr="true">margin:5px; </string>
+    </property>
+    <property name="title">
+     <string>Enregistrement et récupération</string>
+    </property>
+    <addaction name="actionEnregistrement_fichier_Etudiants"/>
+    <addaction name="separator"/>
+    <addaction name="actionRecuperation_fichier_Etudiants"/>
+    <addaction name="separator"/>
+    <addaction name="actionEnregistrement_fichier_Matieres"/>
+    <addaction name="separator"/>
+    <addaction name="actionRecuperation_fichier_Matieres"/>
+    <addaction name="separator"/>
+    <addaction name="actionEnregistrement_fichier_Notes"/>
+    <addaction name="separator"/>
+    <addaction name="actionRecuperation_fichier_Notes"/>
+   </widget>
+   <addaction name="menuGestion_des_etudiants"/>
+   <addaction name="menuGestion_des_matieres"/>
+   <addaction name="menuGestion_des_notes"/>
+   <addaction name="menuCalcul_et_Affichage"/>
+   <addaction name="menuEnregistrement_et_recuperation"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAjouter_etudiant">
+   <property name="text">
+    <string>Ajouter étudiant</string>
+   </property>
+  </action>
+  <action name="actionSuppression_etudiant_donn">
+   <property name="text">
+    <string>Suppression étudiant donné</string>
+   </property>
+  </action>
+  <action name="actionSuppression_des_etudiants_d_une_section_donn_e">
+   <property name="text">
+    <string>Suppression des étudiants d'une section donnée</string>
+   </property>
+  </action>
+  <action name="actionSuppression_des_etudiants_d_un_niveau_donn">
+   <property name="text">
+    <string>Suppression des étudiants d'un niveau donné</string>
+   </property>
+  </action>
+  <action name="actionSuppression_des_etudiants_d_une_section_et_un_niveau">
+   <property name="text">
+    <string>Suppression des étudiants d'une section et un niveau </string>
+   </property>
+  </action>
+  <action name="actionT_l_phone">
+   <property name="text">
+    <string>Téléphone</string>
+   </property>
+  </action>
+  <action name="actionMail">
+   <property name="text">
+    <string>Mail</string>
+   </property>
+  </action>
+  <action name="actionAdresse">
+   <property name="text">
+    <string>Adresse</string>
+   </property>
+  </action>
+  <action name="actionAfficher_les_etudiants">
+   <property name="text">
+    <string>Afficher les étudiants</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_numero_d_inscription">
+   <property name="text">
+    <string>Recherche par numéro d'inscription</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_section_etudiant">
+   <property name="text">
+    <string>Recherche par section</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_section_et_niveau">
+   <property name="text">
+    <string>Recherche par section et niveau</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_niveau">
+   <property name="text">
+    <string>Recherche par niveau</string>
+   </property>
+  </action>
+  <action name="actionAjouter_une_matiere">
+   <property name="text">
+    <string>Ajouter une matiére</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_une_matiere">
+   <property name="text">
+    <string>Supprimer une matière</string>
+   </property>
+  </action>
+  <action name="actionNom">
+   <property name="text">
+    <string>Nom</string>
+   </property>
+  </action>
+  <action name="actionCoefficient">
+   <property name="text">
+    <string>Coefficient</string>
+   </property>
+  </action>
+  <action name="actionAfficher_les_matieres">
+   <property name="text">
+    <string>Afficher les matières</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_code">
+   <property name="text">
+    <string>Recherche par code</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_section_matiere">
+   <property name="text">
+    <string>Recherche par section</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_section_et_semestre">
+   <property name="text">
+    <string>Recherche par section et semestre</string>
+   </property>
+  </action>
+  <action name="actionAjouter_une_note">
+   <property name="text">
+    <string>Ajouter une note</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_une_note">
+   <property name="text">
+    <string>Supprimer une note</string>
+   </property>
+  </action>
+  <action name="actionModifier_une_note">
+   <property name="text">
+    <string>Modifier une note</string>
+   </property>
+  </action>
+  <action name="actionAffiche_les_notes">
+   <property name="text">
+    <string>Affiche les notes</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_num_ro_d_inscription_2">
+   <property name="text">
+    <string>Recherche par numéro d'inscription</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_section_et_niveau_2">
+   <property name="text">
+    <string>Recherche par section et niveau</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_num_ro_d_inscription_et_semestre">
+   <property name="text">
+    <string>Recherche par numéro d'inscription et semestre</string>
+   </property>
+  </action>
+  <action name="actionBulletin_de_note_d_un_etudiant">
+   <property name="text">
+    <string>Bulletin de note d'un étudiant</string>
+   </property>
+  </action>
+  <action name="actionBulletin_de_note_d_un_tudiant_par_semestre">
+   <property name="text">
+    <string>Bulletin de note d'un étudiant par semestre</string>
+   </property>
+  </action>
+  <action name="actionEtudiants_admis_d_une_section_donnee">
+   <property name="text">
+    <string>Etudiants admis d'une section donnée</string>
+   </property>
+  </action>
+  <action name="actionEtudiants_redoublants_d_une_section_donnee">
+   <property name="text">
+    <string>Etudiants redoublants d'une section donnée</string>
+   </property>
+  </action>
+  <action name="actionEtudiants_admis_de_l_ISIMM">
+   <property name="text">
+    <string>Etudiants admis de l'ISIMM</string>
+   </property>
+  </action>
+  <action name="actionEtudiants_redoublants_de_l_ISIMM">
+   <property name="text">
+    <string>Etudiants redoublants de l'ISIMM</string>
+   </property>
+  </action>
+  <action name="actionMoyennes_des_etudiants_d_une_section_donnee">
+   <property name="text">
+    <string>Moyennes des étudiants d'une section donnée</string>
+   </property>
+  </action>
+  <action name="actionEnregistrement_fichier_Etudiants">
+   <property name="text">
+    <string>Enregistrement fichier Etudiants</string>
+   </property>
+  </action>
+  <action name="actionRecuperation_fichier_Etudiants">
+   <property name="text">
+    <string>Récupération fichier Etudiants</string>
+   </property>
+  </action>
+  <action name="actionEnregistrement_fichier_Matieres">
+   <property name="text">
+    <string>Enregistrement fichier Matières</string>
+   </property>
+  </action>
+  <action name="actionRecuperation_fichier_Matieres">
+   <property name="text">
+    <string>Récupération fichier Matières</string>
+   </property>
+  </action>
+  <action name="actionEnregistrement_fichier_Notes">
+   <property name="text">
+    <string>Enregistrement fichier Notes</string>
+   </property>
+  </action>
+  <action name="actionRecuperation_fichier_Notes">
+   <property name="text">
+    <string>Récupération fichier Notes</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
