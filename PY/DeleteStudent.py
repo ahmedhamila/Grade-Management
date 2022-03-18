@@ -2,7 +2,56 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 
 class Ui_Dialog(object):
+    def deleteEtudiant(self):
+        if(self.SupprimerEtudiant.isChecked()):
+            nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
+            if(self.ISIMM.getEtudiant(nInscr)!=False):
+                self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+            self.comboBoxEtudiant.clear()
+            for i in self.ISIMM.Etudiants:
+                self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+        if(self.SupprimerEtudiantSection.isChecked()):
+            nInscr=self.comboBoxEtudiantSection.currentText().split(" ")[0]
+            if(self.ISIMM.getEtudiant(nInscr)!=False):
+                self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+            self.comboBoxEtudiantSection.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.section==self.comboBoxSection1.currentText()):
+                    self.comboBoxEtudiantSection.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+        if(self.SupprimerEtudiantNiveau.isChecked()):
+            nInscr=self.comboBoxEtudiantNiveau.currentText().split(" ")[0]
+            if(self.ISIMM.getEtudiant(nInscr)!=False):
+                self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+            self.comboBoxEtudiantNiveau.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.niveauEtude==self.comboBoxNiveau1.currentText()):
+                    self.comboBoxEtudiantNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+        if(self.SupprimerEtudiantSectionNiveau.isChecked()):
+            nInscr=self.comboBoxEtudiantSectionNiveau.currentText().split(" ")[0]
+            if(self.ISIMM.getEtudiant(nInscr)!=False):
+                self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+            self.comboBoxEtudiantSectionNiveau.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.niveauEtude==self.comboBoxNiveau2.currentText() and i.section==self.comboBoxSection2.currentText()):
+                    self.comboBoxEtudiantSectionNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
 
+            
+    def comboSectionChanged(self):
+        self.comboBoxEtudiantSection.clear()
+        for i in self.ISIMM.Etudiants:
+            if(i.section==self.comboBoxSection1.currentText()):
+                self.comboBoxEtudiantSection.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+
+    def comboNiveauChanged(self):
+        self.comboBoxEtudiantNiveau.clear()
+        for i in self.ISIMM.Etudiants:
+            if(i.niveauEtude==self.comboBoxNiveau1.currentText()):
+                self.comboBoxEtudiantNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+    def comboSectionNiveauChanged(self):
+        self.comboBoxEtudiantSectionNiveau.clear()
+        for i in self.ISIMM.Etudiants:
+            if(i.niveauEtude==self.comboBoxNiveau2.currentText() and i.section==self.comboBoxSection2.currentText()):
+                self.comboBoxEtudiantSectionNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)            
     def radioToggle(self,radio):
         if(radio==self.SupprimerEtudiant):
             self.comboBoxEtudiant.setVisible(True)
@@ -10,40 +59,49 @@ class Ui_Dialog(object):
             self.comboBoxEtudiantNiveau.setVisible(False)
             self.comboBoxEtudiantSectionNiveau.setVisible(False)
 
-            self.lineEditSection.setVisible(False)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
+            self.comboBoxSection1.setVisible(False)
+            self.comboBoxNiveau1.setVisible(False)
+            self.comboBoxNiveau2.setVisible(False)
+            self.comboBoxSection2.setVisible(False)
+
+            self.comboBoxEtudiant.clear()
+            for i in self.ISIMM.Etudiants:
+                self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
         elif(radio==self.SupprimerEtudiantSection):
             self.comboBoxEtudiant.setVisible(False)
             self.comboBoxEtudiantSection.setVisible(True)
             self.comboBoxEtudiantNiveau.setVisible(False)
             self.comboBoxEtudiantSectionNiveau.setVisible(False)
 
-            self.lineEditSection.setVisible(True)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
+            self.comboBoxSection1.setVisible(True)
+            self.comboBoxNiveau1.setVisible(False)
+            self.comboBoxNiveau2.setVisible(False)
+            self.comboBoxSection2.setVisible(False)
+            self.comboBoxEtudiantSection.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.section=="Cycle preparatoire integre (CPI)"):
+                    self.comboBoxEtudiantSection.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
         elif(radio==self.SupprimerEtudiantNiveau):
             self.comboBoxEtudiant.setVisible(False)
             self.comboBoxEtudiantSection.setVisible(False)
             self.comboBoxEtudiantNiveau.setVisible(True)
             self.comboBoxEtudiantSectionNiveau.setVisible(False)
 
-            self.lineEditSection.setVisible(False)
-            self.lineEditNiveau.setVisible(True)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
+            self.comboBoxSection1.setVisible(False)
+            self.comboBoxNiveau1.setVisible(True)
+            self.comboBoxNiveau2.setVisible(False)
+            self.comboBoxSection2.setVisible(False)
+
         elif(radio==self.SupprimerEtudiantSectionNiveau):
             self.comboBoxEtudiant.setVisible(False)
             self.comboBoxEtudiantSection.setVisible(False)
             self.comboBoxEtudiantNiveau.setVisible(False)
             self.comboBoxEtudiantSectionNiveau.setVisible(True)
 
-            self.lineEditSection.setVisible(False)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(True)
-            self.lineEditSectionNiveau2.setVisible(True)
+            self.comboBoxSection1.setVisible(False)
+            self.comboBoxNiveau1.setVisible(False)
+            self.comboBoxNiveau2.setVisible(True)
+            self.comboBoxSection2.setVisible(True)
 
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
@@ -63,9 +121,9 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1103, 782)
         Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
-        self.Ajouter = QtWidgets.QPushButton(Dialog)
-        self.Ajouter.setGeometry(QtCore.QRect(380, 700, 351, 41))
-        self.Ajouter.setObjectName("Ajouter")
+        self.Supprimer = QtWidgets.QPushButton(Dialog)
+        self.Supprimer.setGeometry(QtCore.QRect(380, 700, 351, 41))
+        self.Supprimer.setObjectName("Supprimer")
         self.label_1 = QtWidgets.QLabel(Dialog)
         self.label_1.setGeometry(QtCore.QRect(380, 30, 291, 41))
         self.label_1.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -74,45 +132,59 @@ class Ui_Dialog(object):
         self.comboBoxEtudiant = QtWidgets.QComboBox(Dialog)
         self.comboBoxEtudiant.setGeometry(QtCore.QRect(470, 200, 271, 31))
         self.comboBoxEtudiant.setObjectName("comboBoxEtudiant")
-        self.lineEditSection = QtWidgets.QLineEdit(Dialog)
-        self.lineEditSection.setGeometry(QtCore.QRect(470, 289, 271, 31))
-        self.lineEditSection.setObjectName("lineEditSection")
         self.comboBoxEtudiantSection = QtWidgets.QComboBox(Dialog)
         self.comboBoxEtudiantSection.setGeometry(QtCore.QRect(770, 291, 271, 31))
         self.comboBoxEtudiantSection.setObjectName("comboBoxEtudiantSection")
         self.comboBoxEtudiantNiveau = QtWidgets.QComboBox(Dialog)
         self.comboBoxEtudiantNiveau.setGeometry(QtCore.QRect(770, 392, 271, 31))
         self.comboBoxEtudiantNiveau.setObjectName("comboBoxEtudiantNiveau")
-        self.lineEditNiveau = QtWidgets.QLineEdit(Dialog)
-        self.lineEditNiveau.setGeometry(QtCore.QRect(470, 390, 271, 31))
-        self.lineEditNiveau.setObjectName("lineEditNiveau")
         self.comboBoxEtudiantSectionNiveau = QtWidgets.QComboBox(Dialog)
         self.comboBoxEtudiantSectionNiveau.setGeometry(QtCore.QRect(770, 482, 271, 31))
         self.comboBoxEtudiantSectionNiveau.setObjectName("comboBoxEtudiantSectionNiveau")
-        self.lineEditSectionNiveau1 = QtWidgets.QLineEdit(Dialog)
-        self.lineEditSectionNiveau1.setGeometry(QtCore.QRect(470, 480, 131, 31))
-        self.lineEditSectionNiveau1.setObjectName("lineEditSectionNiveau1")
-        self.lineEditSectionNiveau2 = QtWidgets.QLineEdit(Dialog)
-        self.lineEditSectionNiveau2.setGeometry(QtCore.QRect(610, 480, 131, 31))
-        self.lineEditSectionNiveau2.setObjectName("lineEditSectionNiveau2")
-        self.widget = QtWidgets.QWidget(Dialog)
-        self.widget.setGeometry(QtCore.QRect(70, 140, 374, 431))
-        self.widget.setObjectName("widget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.layoutWidget = QtWidgets.QWidget(Dialog)
+        self.layoutWidget.setGeometry(QtCore.QRect(70, 140, 374, 431))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.SupprimerEtudiant = QtWidgets.QRadioButton(self.widget)
+        self.SupprimerEtudiant = QtWidgets.QRadioButton(self.layoutWidget)
         self.SupprimerEtudiant.setObjectName("SupprimerEtudiant")
         self.verticalLayout.addWidget(self.SupprimerEtudiant)
-        self.SupprimerEtudiantSection = QtWidgets.QRadioButton(self.widget)
+        self.SupprimerEtudiantSection = QtWidgets.QRadioButton(self.layoutWidget)
         self.SupprimerEtudiantSection.setObjectName("SupprimerEtudiantSection")
         self.verticalLayout.addWidget(self.SupprimerEtudiantSection)
-        self.SupprimerEtudiantNiveau = QtWidgets.QRadioButton(self.widget)
+        self.SupprimerEtudiantNiveau = QtWidgets.QRadioButton(self.layoutWidget)
         self.SupprimerEtudiantNiveau.setObjectName("SupprimerEtudiantNiveau")
         self.verticalLayout.addWidget(self.SupprimerEtudiantNiveau)
-        self.SupprimerEtudiantSectionNiveau = QtWidgets.QRadioButton(self.widget)
+        self.SupprimerEtudiantSectionNiveau = QtWidgets.QRadioButton(self.layoutWidget)
         self.SupprimerEtudiantSectionNiveau.setObjectName("SupprimerEtudiantSectionNiveau")
         self.verticalLayout.addWidget(self.SupprimerEtudiantSectionNiveau)
+        self.comboBoxSection1 = QtWidgets.QComboBox(Dialog)
+        self.comboBoxSection1.setGeometry(QtCore.QRect(470, 290, 271, 31))
+        self.comboBoxSection1.setObjectName("comboBoxSection1")
+        self.comboBoxSection1.addItem("")
+        self.comboBoxSection1.addItem("")
+        self.comboBoxSection1.addItem("")
+        self.comboBoxSection1.addItem("")
+        self.comboBoxNiveau1 = QtWidgets.QComboBox(Dialog)
+        self.comboBoxNiveau1.setGeometry(QtCore.QRect(470, 390, 271, 31))
+        self.comboBoxNiveau1.setObjectName("comboBoxNiveau1")
+        self.comboBoxNiveau1.addItem("")
+        self.comboBoxNiveau1.addItem("")
+        self.comboBoxNiveau1.addItem("")
+        self.comboBoxNiveau2 = QtWidgets.QComboBox(Dialog)
+        self.comboBoxNiveau2.setGeometry(QtCore.QRect(470, 480, 51, 31))
+        self.comboBoxNiveau2.setObjectName("comboBoxNiveau2")
+        self.comboBoxNiveau2.addItem("")
+        self.comboBoxNiveau2.addItem("")
+        self.comboBoxNiveau2.addItem("")
+        self.comboBoxSection2 = QtWidgets.QComboBox(Dialog)
+        self.comboBoxSection2.setGeometry(QtCore.QRect(530, 480, 211, 31))
+        self.comboBoxSection2.setObjectName("comboBoxSection2")
+        self.comboBoxSection2.addItem("")
+        self.comboBoxSection2.addItem("")
+        self.comboBoxSection2.addItem("")
+        self.comboBoxSection2.addItem("")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -122,23 +194,44 @@ class Ui_Dialog(object):
         self.comboBoxEtudiantNiveau.setVisible(False)
         self.comboBoxEtudiantSectionNiveau.setVisible(False)
 
-        self.lineEditSection.setVisible(False)
-        self.lineEditNiveau.setVisible(False)
-        self.lineEditSectionNiveau1.setVisible(False)
-        self.lineEditSectionNiveau2.setVisible(False)
+        self.comboBoxSection1.setVisible(False)
+        self.comboBoxNiveau1.setVisible(False)
+        self.comboBoxNiveau2.setVisible(False)
+        self.comboBoxSection2.setVisible(False)
 
         self.SupprimerEtudiant.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiant))
         self.SupprimerEtudiantSection.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSection))
         self.SupprimerEtudiantNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantNiveau))
         self.SupprimerEtudiantSectionNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSectionNiveau))
 
+        self.comboBoxSection1.currentIndexChanged.connect(self.comboSectionChanged)
+        self.comboBoxNiveau1.currentIndexChanged.connect(self.comboNiveauChanged)
+
+        self.comboBoxNiveau2.currentIndexChanged.connect(self.comboSectionNiveauChanged)
+        self.comboBoxSection2.currentIndexChanged.connect(self.comboSectionNiveauChanged)
+
+        self.Supprimer.clicked.connect(self.deleteEtudiant)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.Ajouter.setText(_translate("Dialog", "Supprimer"))
+        self.Supprimer.setText(_translate("Dialog", "Supprimer"))
         self.label_1.setText(_translate("Dialog", "Supprimer un étudiant"))
         self.SupprimerEtudiant.setText(_translate("Dialog", "Supprimer un étudiant"))
         self.SupprimerEtudiantSection.setText(_translate("Dialog", "Supprimer un étudiant d\'une section"))
         self.SupprimerEtudiantNiveau.setText(_translate("Dialog", "Supprimer un étudiant d\'un niveau"))
         self.SupprimerEtudiantSectionNiveau.setText(_translate("Dialog", "Supprimer un étudiant d\'une section et d\'un niveau "))
+        self.comboBoxSection1.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
+        self.comboBoxSection1.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
+        self.comboBoxSection1.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBoxSection1.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
+        self.comboBoxNiveau1.setItemText(0, _translate("Dialog", "1"))
+        self.comboBoxNiveau1.setItemText(1, _translate("Dialog", "2"))
+        self.comboBoxNiveau1.setItemText(2, _translate("Dialog", "3"))
+        self.comboBoxNiveau2.setItemText(0, _translate("Dialog", "1"))
+        self.comboBoxNiveau2.setItemText(1, _translate("Dialog", "2"))
+        self.comboBoxNiveau2.setItemText(2, _translate("Dialog", "3"))
+        self.comboBoxSection2.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
+        self.comboBoxSection2.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
+        self.comboBoxSection2.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBoxSection2.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))

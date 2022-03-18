@@ -243,26 +243,6 @@
     <string>Niveau d'étude</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSection">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>630</y>
-     <width>421</width>
-     <height>30</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditNiveauEtude">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>680</y>
-     <width>421</width>
-     <height>30</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEditTelephone">
    <property name="geometry">
     <rect>
@@ -317,6 +297,61 @@
    <property name="text">
     <string>Ajouter un étudiant</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>631</y>
+     <width>421</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>680</y>
+     <width>421</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

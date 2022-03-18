@@ -1,9 +1,10 @@
+from tkinter import END
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from AddStudent import Ui_Dialog as add
 from DeleteStudent import Ui_Dialog as remove
-
+from Student import Etudiant
 
 class Ui_MainWindow(object):
     def ajouterEtudiant(self):
@@ -29,6 +30,38 @@ class Ui_MainWindow(object):
 
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
+
+    def parseStudent(self,line):
+        lis=line.split(",")
+        lis[8]=lis[8].replace("\n","")
+        return Etudiant(lis[0],lis[1],lis[2],lis[3],lis[4],lis[5],lis[6],lis[7],lis[8])   
+
+    def enregistrerEtudiant(self):
+        F=open("./Save/SaveEtudiant.csv","w+")
+        F.seek(0)
+        F.write("Numero d'inscription,Nom,Prenom,Date de naissance,Adresse,Mail,Telephone,Section,Niveau d'etude\n")
+        for i in self.ISIMM.Etudiants:
+            found=False
+            for j in F:
+                numI=j.split(",")[0]
+                if(numI==i.nInscription):
+                    found=True
+                    break
+            if(not found):
+                F.write(i.nInscription+","+i.nom+","+i.prenom+","+str(i.dateN.year())+"/"+str(i.dateN.month())+"/"+str(i.dateN.day())+","+i.adresse+","+i.mail+","+i.telephone+","+i.section+","+i.niveauEtude+"\n")
+                
+        F.close()
+    def recupererEtudiant(self):
+        self.ISIMM.Etudiants.clear()
+        F=open("./Save/SaveEtudiant.csv","r")
+        count=-1
+        for line in F:
+            count+=1
+            if(count==0):
+                continue
+            self.ISIMM.Etudiants.append(self.parseStudent(line))
+            
+        F.close()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1120, 850)
@@ -222,6 +255,8 @@ class Ui_MainWindow(object):
         self.setupStacked()
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
+        self.actionEnregistrement_des_etudiants.triggered.connect(self.enregistrerEtudiant)
+        self.actionRecuperation_des_etudiants.triggered.connect(self.recupererEtudiant)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

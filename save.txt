@@ -38,7 +38,13 @@ class Ui_MainWindow(object):
 
 
 #addstudent
-def ajouter(self):
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+from Student import Etudiant
+from PyQt5.QtCore import QDate
+class Ui_Dialog(object):
+    
+    def ajouter(self):
         numInsc=self.lineEditNumeroInscription.text()
         nom=self.lineEditNom.text()
         prenom=self.lineEditPrenom.text()
@@ -46,7 +52,7 @@ def ajouter(self):
         adresse=self.lineEditAdresse.text()
         mail=self.lineEditMail.text()
         telephone=self.lineEditTelephone.text()
-        section=self.lineEditSection.text()
+        section=self.comboBox.currentText()
         niveau=self.lineEditNiveauEtude.text()
         
         if(not (numInsc.isnumeric() and len(numInsc)>=4)):
@@ -73,17 +79,20 @@ def ajouter(self):
         if(not (telephone.isnumeric() and len(telephone)==8 and (int(telephone[0]) in {9,5,2}))):
             self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
             return
-        if(not (section.isalpha())): 
-            '''check if section exists in intitute'''
-            self.showDialog("Invalid Input","Section doit etre alphabetique",True)
-            return
         if(not (niveau.isdigit() and int(niveau)<=3)):
             self.showDialog("Invalid Input","niveau doit etre numerique (entre 1 et 3)",True)
             return
-        
+        found=False
+        for i in self.ISIMM.Etudiants:
+            if(i.nInscription==numInsc):
+                found=True
+                break
+        if(found):
+            self.showDialog("Invalid Input","Numero d'inscription existe deja",True)
+            self.lineEditNumeroInscription.setText("")
+            return
         self.showDialog("Success","Ajout Effectué avec succée",False)
         self.ISIMM.ajouterEtudiant(Etudiant(numInsc,nom,prenom,date,adresse,mail,telephone,section,niveau))
-        self.ISIMM.afficherEtudiants()
         self.resetLineEdit()
     
     def resetLineEdit(self):
@@ -93,7 +102,6 @@ def ajouter(self):
         self.lineEditAdresse.setText("")
         self.lineEditMail.setText("")
         self.lineEditTelephone.setText("")
-        self.lineEditSection.setText("")
         self.lineEditNiveauEtude.setText("")
 
     def __init__(self,ISIMM):
@@ -113,6 +121,113 @@ def ajouter(self):
     def setupUi(self, Dialog):
 
 
-
     self.DateNaissance.setSelectedDate(QDate(2001,12,26))
     self.Ajouter.clicked.connect(self.ajouter)
+
+
+#DeleteStudent
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+
+class Ui_Dialog(object):
+    def deleteEtudiant(self):
+        if(self.SupprimerEtudiant.isChecked):
+            nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
+            self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+        elif(self.SupprimerEtudiantSection.isChecked):
+            nInscr=self.comboBoxEtudiantSection2.currentText().split(" ")[0]
+            self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
+
+            
+    def comboChanged(self):
+        self.comboBoxEtudiantSection2.clear()
+        for i in self.ISIMM.Etudiants:
+            if(i.section==self.comboBox.currentText()):
+                self.comboBoxEtudiantSection2.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+    def radioToggle(self,radio):
+        if(radio==self.SupprimerEtudiant):
+            self.comboBoxEtudiant.setVisible(True)
+            self.comboBoxEtudiantSection2.setVisible(False)
+            self.comboBoxEtudiantNiveau.setVisible(False)
+            self.comboBoxEtudiantSectionNiveau.setVisible(False)
+
+            self.comboBox.setVisible(False)
+            self.lineEditNiveau.setVisible(False)
+            self.lineEditSectionNiveau1.setVisible(False)
+            self.lineEditSectionNiveau2.setVisible(False)
+
+            self.comboBoxEtudiant.clear()
+            for i in self.ISIMM.Etudiants:
+                self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+        elif(radio==self.SupprimerEtudiantSection):
+            self.comboBoxEtudiant.setVisible(False)
+            self.comboBoxEtudiantSection2.setVisible(True)
+            self.comboBoxEtudiantNiveau.setVisible(False)
+            self.comboBoxEtudiantSectionNiveau.setVisible(False)
+
+            self.comboBox.setVisible(True)
+            self.lineEditNiveau.setVisible(False)
+            self.lineEditSectionNiveau1.setVisible(False)
+            self.lineEditSectionNiveau2.setVisible(False)
+
+            for i in self.ISIMM.Etudiants:
+                if(i.section=="Cycle preparatoire integre (CPI)"):
+                    self.comboBoxEtudiantSection2.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
+        elif(radio==self.SupprimerEtudiantNiveau):
+            self.comboBoxEtudiant.setVisible(False)
+            self.comboBoxEtudiantSection2.setVisible(False)
+            self.comboBoxEtudiantNiveau.setVisible(True)
+            self.comboBoxEtudiantSectionNiveau.setVisible(False)
+
+            self.comboBox.setVisible(False)
+            self.lineEditNiveau.setVisible(True)
+            self.lineEditSectionNiveau1.setVisible(False)
+            self.lineEditSectionNiveau2.setVisible(False)
+
+        elif(radio==self.SupprimerEtudiantSectionNiveau):
+            self.comboBoxEtudiant.setVisible(False)
+            self.comboBoxEtudiantSection2.setVisible(False)
+            self.comboBoxEtudiantNiveau.setVisible(False)
+            self.comboBoxEtudiantSectionNiveau.setVisible(True)
+
+            self.comboBox.setVisible(False)
+            self.lineEditNiveau.setVisible(False)
+            self.lineEditSectionNiveau1.setVisible(True)
+            self.lineEditSectionNiveau2.setVisible(True)
+
+    def __init__(self,ISIMM):
+        self.ISIMM=ISIMM
+    def showDialog(self,str,detailed,type):
+        msgBox = QMessageBox()
+        if(type):
+            msgBox.setIcon(QMessageBox.Warning)
+        else:
+            msgBox.setIcon(QMessageBox.Information)
+        msgBox.setStyleSheet("width: 100px; font-size:15px;")
+        msgBox.setText(str)
+        msgBox.setDetailedText(detailed)
+        msgBox.setWindowTitle("Error Message")
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        msgBox.exec()
+    def setupUi(self, Dialog):
+
+
+        self.comboBoxEtudiant.setVisible(False)
+        self.comboBoxEtudiantSection2.setVisible(False)
+        self.comboBoxEtudiantNiveau.setVisible(False)
+        self.comboBoxEtudiantSectionNiveau.setVisible(False)
+
+        self.comboBox.setVisible(False)
+        self.lineEditNiveau.setVisible(False)
+        self.lineEditSectionNiveau1.setVisible(False)
+        self.lineEditSectionNiveau2.setVisible(False)
+
+        self.SupprimerEtudiant.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiant))
+        self.SupprimerEtudiantSection.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSection))
+        self.SupprimerEtudiantNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantNiveau))
+        self.SupprimerEtudiantSectionNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSectionNiveau))
+
+        self.comboBox.currentIndexChanged.connect(self.comboChanged)
+
+        self.Supprimer.clicked.connect(self.deleteEtudiant)

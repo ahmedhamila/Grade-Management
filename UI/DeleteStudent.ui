@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
   </property>
-  <widget class="QPushButton" name="Ajouter">
+  <widget class="QPushButton" name="Supprimer">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -58,16 +58,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSection">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>289</y>
-     <width>271</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBoxEtudiantSection">
    <property name="geometry">
     <rect>
@@ -88,16 +78,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditNiveau">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>390</y>
-     <width>271</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBoxEtudiantSectionNiveau">
    <property name="geometry">
     <rect>
@@ -108,27 +88,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSectionNiveau1">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>480</y>
-     <width>131</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditSectionNiveau2">
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>480</y>
-     <width>131</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -167,6 +127,116 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSection1">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>290</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBoxNiveau1">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>390</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBoxNiveau2">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>480</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSection2">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>480</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

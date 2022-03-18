@@ -12,8 +12,8 @@ class Ui_Dialog(object):
         adresse=self.lineEditAdresse.text()
         mail=self.lineEditMail.text()
         telephone=self.lineEditTelephone.text()
-        section=self.lineEditSection.text()
-        niveau=self.lineEditNiveauEtude.text()
+        section=self.comboBox.currentText()
+        niveau=self.comboBox_2.currentText()
         
         if(not (numInsc.isnumeric() and len(numInsc)>=4)):
             self.showDialog("Invalid Input","Numero d'inscription doit etre numerique de taille minimum 4",True)
@@ -39,17 +39,17 @@ class Ui_Dialog(object):
         if(not (telephone.isnumeric() and len(telephone)==8 and (int(telephone[0]) in {9,5,2}))):
             self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
             return
-        if(not (section.isalpha())): 
-            '''check if section exists in intitute'''
-            self.showDialog("Invalid Input","Section doit etre alphabetique",True)
+        found=False
+        for i in self.ISIMM.Etudiants:
+            if(i.nInscription==numInsc):
+                found=True
+                break
+        if(found):
+            self.showDialog("Invalid Input","Numero d'inscription existe deja",True)
+            self.lineEditNumeroInscription.setText("")
             return
-        if(not (niveau.isdigit() and int(niveau)<=3)):
-            self.showDialog("Invalid Input","niveau doit etre numerique (entre 1 et 3)",True)
-            return
-        
         self.showDialog("Success","Ajout Effectué avec succée",False)
         self.ISIMM.ajouterEtudiant(Etudiant(numInsc,nom,prenom,date,adresse,mail,telephone,section,niveau))
-        self.ISIMM.afficherEtudiants()
         self.resetLineEdit()
     
     def resetLineEdit(self):
@@ -59,8 +59,6 @@ class Ui_Dialog(object):
         self.lineEditAdresse.setText("")
         self.lineEditMail.setText("")
         self.lineEditTelephone.setText("")
-        self.lineEditSection.setText("")
-        self.lineEditNiveauEtude.setText("")
 
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
@@ -111,19 +109,25 @@ class Ui_Dialog(object):
         self.label_4.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_4.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_4.setObjectName("label_4")
+        self.DateNaissance = QtWidgets.QCalendarWidget(Dialog)
+        self.DateNaissance.setGeometry(QtCore.QRect(430, 240, 421, 211))
+        self.DateNaissance.setGridVisible(True)
+        self.DateNaissance.setObjectName("DateNaissance")
         self.label_5 = QtWidgets.QLabel(Dialog)
         self.label_5.setGeometry(QtCore.QRect(260, 480, 161, 21))
         self.label_5.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_5.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_5.setObjectName("label_5")
+        self.lineEditAdresse = QtWidgets.QLineEdit(Dialog)
+        self.lineEditAdresse.setGeometry(QtCore.QRect(430, 480, 421, 30))
+        self.lineEditAdresse.setObjectName("lineEditAdresse")
+
         self.label_6 = QtWidgets.QLabel(Dialog)
         self.label_6.setGeometry(QtCore.QRect(260, 530, 161, 21))
         self.label_6.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_6.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_6.setObjectName("label_6")
-        self.lineEditAdresse = QtWidgets.QLineEdit(Dialog)
-        self.lineEditAdresse.setGeometry(QtCore.QRect(430, 480, 421, 30))
-        self.lineEditAdresse.setObjectName("lineEditAdresse")
+        
         self.lineEditMail = QtWidgets.QLineEdit(Dialog)
         self.lineEditMail.setGeometry(QtCore.QRect(430, 530, 421, 30))
         self.lineEditMail.setObjectName("lineEditMail")
@@ -132,38 +136,44 @@ class Ui_Dialog(object):
         self.label_7.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_7.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_7.setObjectName("label_7")
+        self.lineEditTelephone = QtWidgets.QLineEdit(Dialog)
+        self.lineEditTelephone.setGeometry(QtCore.QRect(430, 580, 421, 30))
+        self.lineEditTelephone.setObjectName("lineEditTelephone")
         self.label_8 = QtWidgets.QLabel(Dialog)
         self.label_8.setGeometry(QtCore.QRect(260, 630, 161, 21))
         self.label_8.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_8.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_8.setObjectName("label_8")
+        self.comboBox = QtWidgets.QComboBox(Dialog)
+        self.comboBox.setGeometry(QtCore.QRect(430, 631, 421, 31))
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.label_9 = QtWidgets.QLabel(Dialog)
         self.label_9.setGeometry(QtCore.QRect(260, 680, 161, 21))
         self.label_9.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_9.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_9.setObjectName("label_9")
-        self.lineEditSection = QtWidgets.QLineEdit(Dialog)
-        self.lineEditSection.setGeometry(QtCore.QRect(430, 630, 421, 30))
-        self.lineEditSection.setObjectName("lineEditSection")
-        self.lineEditNiveauEtude = QtWidgets.QLineEdit(Dialog)
-        self.lineEditNiveauEtude.setGeometry(QtCore.QRect(430, 680, 421, 30))
-        self.lineEditNiveauEtude.setObjectName("lineEditNiveauEtude")
-        self.lineEditTelephone = QtWidgets.QLineEdit(Dialog)
-        self.lineEditTelephone.setGeometry(QtCore.QRect(430, 580, 421, 30))
-        self.lineEditTelephone.setObjectName("lineEditTelephone")
+        self.comboBox_2 = QtWidgets.QComboBox(Dialog)
+        self.comboBox_2.setGeometry(QtCore.QRect(430, 680, 421, 31))
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+
         self.Ajouter = QtWidgets.QPushButton(Dialog)
         self.Ajouter.setGeometry(QtCore.QRect(380, 740, 351, 31))
         self.Ajouter.setObjectName("Ajouter")
-        self.DateNaissance = QtWidgets.QCalendarWidget(Dialog)
-        self.DateNaissance.setGeometry(QtCore.QRect(430, 240, 421, 211))
-        self.DateNaissance.setGridVisible(True)
-        self.DateNaissance.setObjectName("DateNaissance")
+        
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(380, 30, 251, 41))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
-
+        
+        
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -184,3 +194,10 @@ class Ui_Dialog(object):
         self.label_9.setText(_translate("Dialog", "Niveau d\'étude"))
         self.Ajouter.setText(_translate("Dialog", "Ajouter"))
         self.label_10.setText(_translate("Dialog", "Ajouter un étudiant"))
+        self.comboBox.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
+        self.comboBox.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
+        self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBox.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
+        self.comboBox_2.setItemText(0, _translate("Dialog", "1"))
+        self.comboBox_2.setItemText(1, _translate("Dialog", "2"))
+        self.comboBox_2.setItemText(2, _translate("Dialog", "3"))
