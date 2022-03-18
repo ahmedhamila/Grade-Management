@@ -12,4 +12,4 @@ class Etudiant:
         self.niveauEtude=niveauEtude
     
     def __str__(self):
-        return "["+self.nInscription+", "+self.nom+", "+self.prenom+", "+self.dateN+", "+self.adresse+", "+self.mail+", "+self.telephone+", "+self.section+", "+self.niveauEtude+"]"
+        return "["+self.nInscription+", "+self.nom+", "+self.prenom+", "+self.dateN.toString()+", "+self.adresse+", "+self.mail+", "+self.telephone+", "+self.section+", "+self.niveauEtude+"]"

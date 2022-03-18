@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1120</width>
-    <height>787</height>
+    <height>850</height>
    </rect>
   </property>
   <property name="font">
@@ -25,7 +25,23 @@
   <property name="styleSheet">
    <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1121</width>
+      <height>821</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -58,35 +74,11 @@
      <property name="title">
       <string>Mise à jour des étudiants</string>
      </property>
-     <widget class="QMenu" name="menuModifier_etudiant">
-      <property name="title">
-       <string>Modifier étudiant</string>
-      </property>
-      <addaction name="actionT_l_phone"/>
-      <addaction name="separator"/>
-      <addaction name="actionMail"/>
-      <addaction name="separator"/>
-      <addaction name="actionAdresse"/>
-      <addaction name="separator"/>
-     </widget>
-     <widget class="QMenu" name="menuSupprimer_etudiant">
-      <property name="title">
-       <string>Supprimer étudiant</string>
-      </property>
-      <addaction name="actionSuppression_etudiant_donn"/>
-      <addaction name="separator"/>
-      <addaction name="actionSuppression_des_etudiants_d_une_section_donn_e"/>
-      <addaction name="separator"/>
-      <addaction name="actionSuppression_des_etudiants_d_un_niveau_donn"/>
-      <addaction name="separator"/>
-      <addaction name="actionSuppression_des_etudiants_d_une_section_et_un_niveau"/>
-      <addaction name="separator"/>
-     </widget>
      <addaction name="actionAjouter_etudiant"/>
      <addaction name="separator"/>
-     <addaction name="menuSupprimer_etudiant"/>
+     <addaction name="actionSupprimer_un_etudiant"/>
      <addaction name="separator"/>
-     <addaction name="menuModifier_etudiant"/>
+     <addaction name="actionModifier_un_tudiant"/>
      <addaction name="separator"/>
     </widget>
     <widget class="QMenu" name="menuRecherche_Affichage">
@@ -95,13 +87,7 @@
      </property>
      <addaction name="actionAfficher_les_etudiants"/>
      <addaction name="separator"/>
-     <addaction name="actionRecherche_par_numero_d_inscription"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_section_etudiant"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_niveau"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_section_et_niveau"/>
+     <addaction name="actionRecherche_etudiant"/>
      <addaction name="separator"/>
     </widget>
     <addaction name="menuMise_jour_des_etudiants"/>
@@ -120,20 +106,11 @@
      <property name="title">
       <string>Mise à jour</string>
      </property>
-     <widget class="QMenu" name="menuModifier_les_donnees_dune_matiere">
-      <property name="title">
-       <string>Modifier une matière</string>
-      </property>
-      <addaction name="actionNom"/>
-      <addaction name="separator"/>
-      <addaction name="actionCoefficient"/>
-      <addaction name="separator"/>
-     </widget>
      <addaction name="actionAjouter_une_matiere"/>
      <addaction name="separator"/>
      <addaction name="actionSupprimer_une_matiere"/>
      <addaction name="separator"/>
-     <addaction name="menuModifier_les_donnees_dune_matiere"/>
+     <addaction name="actionModifier_une_matiere"/>
      <addaction name="separator"/>
     </widget>
     <widget class="QMenu" name="menuRecherche_Affiche">
@@ -142,11 +119,7 @@
      </property>
      <addaction name="actionAfficher_les_matieres"/>
      <addaction name="separator"/>
-     <addaction name="actionRecherche_par_code"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_section_matiere"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_section_et_semestre"/>
+     <addaction name="actionRecherche_matiere"/>
      <addaction name="separator"/>
     </widget>
     <addaction name="menuMise_jour"/>
@@ -178,11 +151,7 @@
      </property>
      <addaction name="actionAffiche_les_notes"/>
      <addaction name="separator"/>
-     <addaction name="actionRecherche_par_num_ro_d_inscription_2"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_section_et_niveau_2"/>
-     <addaction name="separator"/>
-     <addaction name="actionRecherche_par_num_ro_d_inscription_et_semestre"/>
+     <addaction name="actionRecherche_note"/>
      <addaction name="separator"/>
     </widget>
     <addaction name="menuMise_jour_2"/>
@@ -283,9 +252,9 @@
     <string>Afficher les étudiants</string>
    </property>
   </action>
-  <action name="actionRecherche_par_numero_d_inscription">
+  <action name="actionRecherche_etudiant">
    <property name="text">
-    <string>Recherche par numéro d'inscription</string>
+    <string>Recherche d'étudiant</string>
    </property>
   </action>
   <action name="actionRecherche_par_section_etudiant">
@@ -328,9 +297,9 @@
     <string>Afficher les matières</string>
    </property>
   </action>
-  <action name="actionRecherche_par_code">
+  <action name="actionRecherche_matiere">
    <property name="text">
-    <string>Recherche par code</string>
+    <string>Recherche de matières</string>
    </property>
   </action>
   <action name="actionRecherche_par_section_matiere">
@@ -363,9 +332,9 @@
     <string>Affiche les notes</string>
    </property>
   </action>
-  <action name="actionRecherche_par_num_ro_d_inscription_2">
+  <action name="actionRecherche_note">
    <property name="text">
-    <string>Recherche par numéro d'inscription</string>
+    <string>Recherche d'un note</string>
    </property>
   </action>
   <action name="actionRecherche_par_section_et_niveau_2">
@@ -441,6 +410,21 @@
   <action name="actionRecuperation_fichier_Notes">
    <property name="text">
     <string>Récupération fichier Notes</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_un_etudiant">
+   <property name="text">
+    <string>Supprimer un étudiant</string>
+   </property>
+  </action>
+  <action name="actionModifier_un_tudiant">
+   <property name="text">
+    <string>Modifier un étudiant</string>
+   </property>
+  </action>
+  <action name="actionModifier_une_matiere">
+   <property name="text">
+    <string>Modifier une matiére</string>
    </property>
   </action>
  </widget>

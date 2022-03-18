@@ -1,0 +1,101 @@
+#mainwindow
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+from AddStudent import Ui_Dialog
+
+
+class Ui_MainWindow(object):
+    def ajouterEtudiant(self):
+        self.windowAjouter=QDialog()
+        self.ui=Ui_Dialog(self.ISIMM)
+        self.ui.setupUi(self.windowAjouter)
+        self.stackedWidget.addWidget(self.windowAjouter)
+        self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex()+1)
+
+
+    def __init__(self,ISIMM):
+        self.ISIMM=ISIMM
+    def setupUi(self, MainWindow):
+ 
+
+self.actionAjouter_etudiant.triggered.connect(self.ajouterEtudiant)
+
+#addstudent
+def ajouter(self):
+        numInsc=self.lineEditNumeroInscription.text()
+        nom=self.lineEditNom.text()
+        prenom=self.lineEditPrenom.text()
+        date=self.DateNaissance.selectedDate()
+        adresse=self.lineEditAdresse.text()
+        mail=self.lineEditMail.text()
+        telephone=self.lineEditTelephone.text()
+        section=self.lineEditSection.text()
+        niveau=self.lineEditNiveauEtude.text()
+        
+        if(not (numInsc.isnumeric() and len(numInsc)>=4)):
+            self.showDialog("Invalid Input","Numero d'inscription doit etre numerique de taille minimum 4",True)
+            self.lineEditNumeroInscription.setText("")
+            return
+        if(not (nom.replace(" ","").isalpha())):
+            self.showDialog("Invalid Input","Nom doit etre alphabetique",True)
+            self.lineEditNom.setText("")
+            return
+        if(not (prenom.replace(" ","").isalpha())):
+            self.showDialog("Invalid Input","Prenom doit etre alphabetique",True)
+            self.lineEditPrenom.setText("")
+            return
+        if(not (date.year()>=2001)):
+            self.showDialog("Invalid Input","Année de naissance doit etre au moins 2003",True)
+            return
+        if(not (adresse.replace(" ","").isalnum() and len(adresse)>=4)):
+            self.showDialog("Invalid Input","Adresse doit etre alphanumerique de taille minimimum 4",True)
+            return
+        if(not (mail.find("@")!=-1 and mail.find(".com")!=-1)):
+            self.showDialog("Invalid Input","Mail doit etre de la forme exemple@gmail.com",True)
+            return
+        if(not (telephone.isnumeric() and len(telephone)==8 and (int(telephone[0]) in {9,5,2}))):
+            self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
+            return
+        if(not (section.isalpha())): 
+            '''check if section exists in intitute'''
+            self.showDialog("Invalid Input","Section doit etre alphabetique",True)
+            return
+        if(not (niveau.isdigit() and int(niveau)<=3)):
+            self.showDialog("Invalid Input","niveau doit etre numerique (entre 1 et 3)",True)
+            return
+        
+        self.showDialog("Success","Ajout Effectué avec succée",False)
+        self.ISIMM.ajouterEtudiant(Etudiant(numInsc,nom,prenom,date,adresse,mail,telephone,section,niveau))
+        self.ISIMM.afficherEtudiants()
+        self.resetLineEdit()
+    
+    def resetLineEdit(self):
+        self.lineEditNumeroInscription.setText("")
+        self.lineEditNom.setText("")
+        self.lineEditPrenom.setText("")
+        self.lineEditAdresse.setText("")
+        self.lineEditMail.setText("")
+        self.lineEditTelephone.setText("")
+        self.lineEditSection.setText("")
+        self.lineEditNiveauEtude.setText("")
+
+    def __init__(self,ISIMM):
+        self.ISIMM=ISIMM
+    def showDialog(self,str,detailed,type):
+        msgBox = QMessageBox()
+        if(type):
+            msgBox.setIcon(QMessageBox.Warning)
+        else:
+            msgBox.setIcon(QMessageBox.Information)
+        msgBox.setStyleSheet("width: 100px; font-size:15px;")
+        msgBox.setText(str)
+        msgBox.setDetailedText(detailed)
+        msgBox.setWindowTitle("Error Message")
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        msgBox.exec()
+    def setupUi(self, Dialog):
+
+
+
+    self.DateNaissance.setSelectedDate(QDate(2001,12,26))
+    self.Ajouter.clicked.connect(self.ajouter)
