@@ -4,28 +4,51 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from AddStudent import Ui_Dialog as add
 from DeleteStudent import Ui_Dialog as remove
+from EditStudent import Ui_Dialog as edit
+from Display import Ui_Dialog as afficher
 from Student import Etudiant
 
 class Ui_MainWindow(object):
     def ajouterEtudiant(self):
-        
-        self.stackedWidget.setCurrentIndex(2)
+        self.setupStacked(2)
+        self.stackedWidget.setCurrentWidget(self.windowAjouter)
 
     def supprimerEtudiant(self):
-        
-        self.stackedWidget.setCurrentIndex(3)
+        self.setupStacked(3)
+        self.stackedWidget.setCurrentWidget(self.windowSupprimer)
+    
+    def modifierEtudiant(self):
+        self.setupStacked(4)
+        self.stackedWidget.setCurrentWidget(self.windowModifier)
+    def afficherEtudiant(self):
+        self.setupStacked(5)
+        self.stackedWidget.setCurrentWidget(self.windowAfficher)
 
-    def setupStacked(self):
+    def setupStacked(self,index):
         #index 2
-        self.windowAjouter=QDialog()
-        self.ui1=add(self.ISIMM)
-        self.ui1.setupUi(self.windowAjouter)
-        self.stackedWidget.addWidget(self.windowAjouter)
+        if(index==2):
+            self.windowAjouter=QDialog()
+            self.ui1=add(self.ISIMM)
+            self.ui1.setupUi(self.windowAjouter)
+            self.stackedWidget.addWidget(self.windowAjouter)
         #index 3
-        self.windowSupprimer=QDialog()
-        self.ui2=remove(self.ISIMM)
-        self.ui2.setupUi(self.windowSupprimer)
-        self.stackedWidget.addWidget(self.windowSupprimer)
+        elif(index==3):
+            self.windowSupprimer=QDialog()
+            self.ui2=remove(self.ISIMM)
+            self.ui2.setupUi(self.windowSupprimer)
+            self.stackedWidget.addWidget(self.windowSupprimer)
+        #index 4
+        elif(index==4):
+            self.windowModifier=QDialog()
+            self.ui3=edit(self.ISIMM)
+            self.ui3.setupUi(self.windowModifier)
+            self.stackedWidget.addWidget(self.windowModifier)
+        #index 5
+        elif(index==5):
+            self.windowAfficher=QDialog()
+            self.ui4=afficher(self.ISIMM)
+            self.ui4.setupUi(self.windowAfficher)
+            self.stackedWidget.addWidget(self.windowAfficher)
 
 
     def __init__(self,ISIMM):
@@ -62,6 +85,7 @@ class Ui_MainWindow(object):
             self.ISIMM.Etudiants.append(self.parseStudent(line))
             
         F.close()
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1120, 850)
@@ -252,11 +276,13 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.setupStacked()
+        
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
         self.actionEnregistrement_des_etudiants.triggered.connect(self.enregistrerEtudiant)
         self.actionRecuperation_des_etudiants.triggered.connect(self.recupererEtudiant)
+        self.actionModifier_un_etudiant.triggered.connect(self.modifierEtudiant)
+        self.actionAfficher_les_etudiants.triggered.connect(self.afficherEtudiant)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
