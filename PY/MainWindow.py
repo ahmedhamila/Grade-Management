@@ -9,6 +9,9 @@ from SearchStudentNInscr import Ui_Dialog as rechercherNumeroInscription
 from SearchStudentSection import Ui_Dialog as rechercherSection
 from SearchStudentNiveau import Ui_Dialog as rechercherNiveau
 from SearchStudentSectionNiveau import Ui_Dialog as rechercherSectionNiveau
+from AddSubject import Ui_Dialog as ajouterMatiere
+from DeleteSubject import Ui_Dialog as supprimerMatiere
+from EditSubject import Ui_Dialog as modifierMatiere
 from Student import Etudiant
 
 class Ui_MainWindow(object):
@@ -38,6 +41,17 @@ class Ui_MainWindow(object):
     def rechercherSectionNiveau(self):
         self.setupStacked(9)
         self.stackedWidget.setCurrentWidget(self.windowRechercherSectionNiveau)
+    
+    def ajouterMatiere(self):
+        self.setupStacked(10)
+        self.stackedWidget.setCurrentWidget(self.windowAjouterMatiere)
+    def supprimerMatiere(self):
+        self.setupStacked(11)
+        self.stackedWidget.setCurrentWidget(self.windowSupprimerMatiere)
+    def modifierMatiere(self):
+        self.setupStacked(12)
+        self.stackedWidget.setCurrentWidget(self.windowModifierMatiere)
+
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -80,9 +94,24 @@ class Ui_MainWindow(object):
             self.stackedWidget.addWidget(self.windowRechercherNiveau)
         elif(index==9):
             self.windowRechercherSectionNiveau=QDialog()
-            self.ui7=rechercherSectionNiveau(self.ISIMM)
-            self.ui7.setupUi(self.windowRechercherSectionNiveau)
+            self.ui8=rechercherSectionNiveau(self.ISIMM)
+            self.ui8.setupUi(self.windowRechercherSectionNiveau)
             self.stackedWidget.addWidget(self.windowRechercherSectionNiveau)
+        elif(index==10):
+            self.windowAjouterMatiere=QDialog()
+            self.ui9=ajouterMatiere(self.ISIMM)
+            self.ui9.setupUi(self.windowAjouterMatiere)
+            self.stackedWidget.addWidget(self.windowAjouterMatiere)
+        elif(index==11):
+            self.windowSupprimerMatiere=QDialog()
+            self.ui10=supprimerMatiere(self.ISIMM)
+            self.ui10.setupUi(self.windowSupprimerMatiere)
+            self.stackedWidget.addWidget(self.windowSupprimerMatiere)
+        elif(index==12):
+            self.windowModifierMatiere=QDialog()
+            self.ui11=modifierMatiere(self.ISIMM)
+            self.ui11.setupUi(self.windowModifierMatiere)
+            self.stackedWidget.addWidget(self.windowModifierMatiere)
 
 
     def __init__(self,ISIMM):
@@ -359,6 +388,10 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_Section.triggered.connect(self.rechercherSection)
         self.actionRecherche_par_Niveau.triggered.connect(self.rechercherNiveau)
         self.actionRecherche_par_Section_et_Niveau.triggered.connect(self.rechercherSectionNiveau)
+
+        self.actionAjouter_une_matiere.triggered.connect(self.ajouterMatiere)
+        self.actionSupprimer_une_matiere.triggered.connect(self.supprimerMatiere)
+        self.actionModifier_une_matiere.triggered.connect(self.modifierMatiere)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

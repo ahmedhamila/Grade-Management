@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import *
 class Ui_Dialog(object):
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
-        print(self.ISIMM.Etudiants)
         
 
     def comboChanged(self):

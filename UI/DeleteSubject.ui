@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1102</width>
+    <height>781</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+  </property>
+  <widget class="QComboBox" name="comboBoxMatiereSection">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>341</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSection1">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>340</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_1">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>30</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 22pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Supprimer une matiére</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxMatiereSectionSemestre">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>462</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>140</y>
+     <width>381</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QRadioButton" name="SupprimerMatiere">
+      <property name="text">
+       <string>Supprimer une matiére</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="SupprimerMatiereSection">
+      <property name="text">
+       <string>Supprimer une matiére par Section</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="SupprimerMatiereSectionSemestre">
+      <property name="text">
+       <string>Supprimer une matiére par Section et Semestre</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QComboBox" name="comboBoxMatiere">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>230</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSection2">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>460</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="Supprimer">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>700</y>
+     <width>351</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Supprimer</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSemestre">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>460</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>S1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>S2</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

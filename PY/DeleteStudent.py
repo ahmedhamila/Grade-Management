@@ -91,7 +91,10 @@ class Ui_Dialog(object):
             self.comboBoxNiveau1.setVisible(True)
             self.comboBoxNiveau2.setVisible(False)
             self.comboBoxSection2.setVisible(False)
-
+            self.comboBoxEtudiantNiveau.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.niveauEtude=="1"):
+                    self.comboBoxEtudiantNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
         elif(radio==self.SupprimerEtudiantSectionNiveau):
             self.comboBoxEtudiant.setVisible(False)
             self.comboBoxEtudiantSection.setVisible(False)
@@ -102,7 +105,10 @@ class Ui_Dialog(object):
             self.comboBoxNiveau1.setVisible(False)
             self.comboBoxNiveau2.setVisible(True)
             self.comboBoxSection2.setVisible(True)
-
+            self.comboBoxEtudiantSectionNiveau.clear()
+            for i in self.ISIMM.Etudiants:
+                if(i.section=="Cycle preparatoire integre (CPI)" and i.niveauEtude=="1"):
+                    self.comboBoxEtudiantSectionNiveau.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
     def showDialog(self,str,detailed,type):
