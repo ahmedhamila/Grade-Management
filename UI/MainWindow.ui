@@ -63,8 +63,8 @@
    <widget class="QMenu" name="menuGestion_des_etudiants">
     <property name="geometry">
      <rect>
-      <x>269</x>
-      <y>140</y>
+      <x>379</x>
+      <y>133</y>
       <width>245</width>
       <height>112</height>
      </rect>
@@ -87,9 +87,22 @@
      <property name="title">
       <string>Recherche,Affichage</string>
      </property>
+     <widget class="QMenu" name="menuRechercher_tudiants">
+      <property name="title">
+       <string>Rechercher étudiants</string>
+      </property>
+      <addaction name="actionRecherche_par_numero_d_inscription"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Section"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Niveau"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Section_et_Niveau"/>
+      <addaction name="separator"/>
+     </widget>
      <addaction name="actionAfficher_les_etudiants"/>
      <addaction name="separator"/>
-     <addaction name="actionRechercher_etudiants"/>
+     <addaction name="menuRechercher_tudiants"/>
      <addaction name="separator"/>
     </widget>
     <addaction name="menuMise_jour_des_tudiants"/>
@@ -116,9 +129,20 @@
      <property name="title">
       <string>Recherche,Affichage</string>
      </property>
+     <widget class="QMenu" name="menuRechercher_matier_s">
+      <property name="title">
+       <string>Rechercher matierès</string>
+      </property>
+      <addaction name="actionRecherche_par_Code"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Section_2"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Section_et_Semestre"/>
+      <addaction name="separator"/>
+     </widget>
      <addaction name="actionAfficher_les_matieres"/>
      <addaction name="separator"/>
-     <addaction name="actionRechercher_matieres"/>
+     <addaction name="menuRechercher_matier_s"/>
      <addaction name="separator"/>
     </widget>
     <addaction name="menuMise_jour_des_mati_res"/>
@@ -134,9 +158,20 @@
      <property name="title">
       <string>Recherche, Affichage</string>
      </property>
+     <widget class="QMenu" name="menuRechercher_notes">
+      <property name="title">
+       <string>Rechercher notes</string>
+      </property>
+      <addaction name="actionRecherche_par_numero_d_inscription_2"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_Section_et_Niveau_2"/>
+      <addaction name="separator"/>
+      <addaction name="actionRecherche_par_numero_d_inscription_et_Semestre"/>
+      <addaction name="separator"/>
+     </widget>
      <addaction name="actionAfficher_les_notes"/>
      <addaction name="separator"/>
-     <addaction name="actionRechercher_notes"/>
+     <addaction name="menuRechercher_notes"/>
      <addaction name="separator"/>
     </widget>
     <widget class="QMenu" name="menuMise_jour_des_notes">
@@ -218,11 +253,6 @@
     <string>Afficher les étudiants</string>
    </property>
   </action>
-  <action name="actionRechercher_etudiants">
-   <property name="text">
-    <string>Rechercher étudiants</string>
-   </property>
-  </action>
   <action name="actionAjouter_une_matiere">
    <property name="text">
     <string>Ajouter une mètiere</string>
@@ -243,11 +273,6 @@
     <string>Afficher les matières</string>
    </property>
   </action>
-  <action name="actionRechercher_matieres">
-   <property name="text">
-    <string>Rechercher matierès</string>
-   </property>
-  </action>
   <action name="actionAjouter_une_note">
    <property name="text">
     <string>Ajouter une note</string>
@@ -266,11 +291,6 @@
   <action name="actionAfficher_les_notes">
    <property name="text">
     <string>Afficher les notes</string>
-   </property>
-  </action>
-  <action name="actionRechercher_notes">
-   <property name="text">
-    <string>Rechercher notes</string>
    </property>
   </action>
   <action name="actionBulletin_de_note_d_un_etudiant">
@@ -336,6 +356,56 @@
   <action name="actionRecuperation_des_matieres_2">
    <property name="text">
     <string>Récupération des étudiants</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_numero_d_inscription">
+   <property name="text">
+    <string>Recherche par numero d'inscription</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Section">
+   <property name="text">
+    <string>Recherche par Section</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Niveau">
+   <property name="text">
+    <string>Recherche par Niveau</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Section_et_Niveau">
+   <property name="text">
+    <string>Recherche par Section et Niveau</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Code">
+   <property name="text">
+    <string>Recherche par Code</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Section_2">
+   <property name="text">
+    <string>Recherche par Section</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Section_et_Semestre">
+   <property name="text">
+    <string>Recherche par Section et Semestre</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_numero_d_inscription_2">
+   <property name="text">
+    <string>Recherche par numero d'inscription</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_Section_et_Niveau_2">
+   <property name="text">
+    <string>Recherche par Section et Niveau</string>
+   </property>
+  </action>
+  <action name="actionRecherche_par_numero_d_inscription_et_Semestre">
+   <property name="text">
+    <string>Recherche par numero d'inscription et Semestre</string>
    </property>
   </action>
  </widget>

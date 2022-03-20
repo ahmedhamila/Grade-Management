@@ -1,4 +1,3 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 
@@ -33,7 +32,6 @@ class TableModel(QtCore.QAbstractTableModel):
         # the length (only works if all rows are an equal length)
         return 9
 
-
 class Ui_Dialog(object):
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
@@ -43,14 +41,19 @@ class Ui_Dialog(object):
         Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
         self.tableView = QtWidgets.QTableView(Dialog)
         self.tableView.setGeometry(QtCore.QRect(0, 130, 1101, 651))
+        self.tableView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.tableView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableView.setObjectName("tableView")
+        self.label_10 = QtWidgets.QLabel(Dialog)
+        self.label_10.setGeometry(QtCore.QRect(400, 40, 301, 41))
+        self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
+        self.label_10.setObjectName("label_10")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-
         alternative=[]
-        
         for etudiant in self.ISIMM.Etudiants:
             etu=[]
             etu.append(etudiant.nInscription)
@@ -72,8 +75,8 @@ class Ui_Dialog(object):
         self.horizontal_header.setSectionResizeMode(3)
         self.tableView.horizontalHeader().setStretchLastSection(True)
 
-
-
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.label_10.setText(_translate("Dialog", "Affichage des étudiants"))
+
