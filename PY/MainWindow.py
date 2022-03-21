@@ -12,7 +12,16 @@ from SearchStudentSectionNiveau import Ui_Dialog as rechercherSectionNiveau
 from AddSubject import Ui_Dialog as ajouterMatiere
 from DeleteSubject import Ui_Dialog as supprimerMatiere
 from EditSubject import Ui_Dialog as modifierMatiere
+from DisplaySubject import Ui_Dialog as afficherMatiere
+from SearchSubjectCode import Ui_Dialog as rechercherMatiereCode
+from SearchSubjectSection import Ui_Dialog as rechercherMatiereSection
+from SearchSubjectSectionSemestre import Ui_Dialog as rechercherMatiereSectionSemestre
+from AddGrade import Ui_Dialog as ajouterNote
+from DeleteGrade import Ui_Dialog as supprimerNote
+from EditGrade import Ui_Dialog as modifierNote
 from Student import Etudiant
+from Subject import Matiere
+from Grade import Note
 
 class Ui_MainWindow(object):
     def ajouterEtudiant(self):
@@ -51,7 +60,27 @@ class Ui_MainWindow(object):
     def modifierMatiere(self):
         self.setupStacked(12)
         self.stackedWidget.setCurrentWidget(self.windowModifierMatiere)
-
+    def afficherMatiere(self):
+        self.setupStacked(13)
+        self.stackedWidget.setCurrentWidget(self.windowAfficherMatiere)
+    def rechercherMatiereCode(self):
+        self.setupStacked(14)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereCode)
+    def rechercherMatiereSection(self):
+        self.setupStacked(15)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSection)
+    def rechercherMatiereSectionSemestre(self):
+        self.setupStacked(16)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSectionSemestre)
+    def ajouterNote(self):
+        self.setupStacked(17)
+        self.stackedWidget.setCurrentWidget(self.windowAjouterNote)
+    def supprimerNote(self):
+        self.setupStacked(18)
+        self.stackedWidget.setCurrentWidget(self.windowSupprimerNote)
+    def modfierNote(self):
+        self.setupStacked(19)
+        self.stackedWidget.setCurrentWidget(self.windowModifierNote)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -112,6 +141,41 @@ class Ui_MainWindow(object):
             self.ui11=modifierMatiere(self.ISIMM)
             self.ui11.setupUi(self.windowModifierMatiere)
             self.stackedWidget.addWidget(self.windowModifierMatiere)
+        elif(index==13):
+            self.windowAfficherMatiere=QDialog()
+            self.ui12=afficherMatiere(self.ISIMM)
+            self.ui12.setupUi(self.windowAfficherMatiere)
+            self.stackedWidget.addWidget(self.windowAfficherMatiere)
+        elif(index==14):
+            self.windowRechercherMatiereCode=QDialog()
+            self.ui13=rechercherMatiereCode(self.ISIMM)
+            self.ui13.setupUi(self.windowRechercherMatiereCode)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereCode)
+        elif(index==15):
+            self.windowRechercherMatiereSection=QDialog()
+            self.ui14=rechercherMatiereSection(self.ISIMM)
+            self.ui14.setupUi(self.windowRechercherMatiereSection)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereSection)
+        elif(index==16):
+            self.windowRechercherMatiereSectionSemestre=QDialog()
+            self.ui15=rechercherMatiereSectionSemestre(self.ISIMM)
+            self.ui15.setupUi(self.windowRechercherMatiereSectionSemestre)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereSectionSemestre)
+        elif(index==17):
+            self.windowAjouterNote=QDialog()
+            self.ui16=ajouterNote(self.ISIMM)
+            self.ui16.setupUi(self.windowAjouterNote)
+            self.stackedWidget.addWidget(self.windowAjouterNote)
+        elif(index==18):
+            self.windowSupprimerNote=QDialog()
+            self.ui17=supprimerNote(self.ISIMM)
+            self.ui17.setupUi(self.windowSupprimerNote)
+            self.stackedWidget.addWidget(self.windowSupprimerNote)
+        elif(index==19):
+            self.windowModifierNote=QDialog()
+            self.ui18=modifierNote(self.ISIMM)
+            self.ui18.setupUi(self.windowModifierNote)
+            self.stackedWidget.addWidget(self.windowModifierNote)
 
 
     def __init__(self,ISIMM):
@@ -147,6 +211,68 @@ class Ui_MainWindow(object):
                 continue
             self.ISIMM.Etudiants.append(self.parseStudent(line))
             
+        F.close()
+    def parseMatiere(self,line):
+        lis=line.split(",")
+        lis[4]=lis[4].replace("\n","")
+        return Matiere(lis[0],lis[1],lis[2],lis[3],lis[4])
+    def enregistrerMatiere(self):
+        F=open("./Save/SaveMatiere.csv","w+")
+        F.seek(0)
+        F.write("Code Matiere,Designation,Section,Coefficient,Semestre\n")
+        for i in self.ISIMM.Matieres:
+            found=False
+            for j in F:
+                code=j.split(",")[0]
+                if(code==i.code):
+                    found=True
+                    break
+            if(not found):
+                F.write(i.code+","+i.designation+","+i.section+","+i.coefficient+","+i.semestre+"\n")
+                
+        F.close()
+    def recupererMatiere(self):
+        self.ISIMM.Matieres.clear()
+        F=open("./Save/SaveMatiere.csv","r")
+        count=-1
+        for line in F:
+            count+=1
+            if(count==0):
+                continue
+            self.ISIMM.Matieres.append(self.parseMatiere(line))
+            
+        F.close()
+    
+    def parseNote(self,line):
+        lis=line.split(",")
+        lis[3]=lis[3].replace("\n","")
+        return Note(lis[0],lis[1],lis[2],lis[3])
+    def enregistrerNote(self):
+        F=open("./Save/SaveNote.csv","w+")
+        F.seek(0)
+        F.write("Numero d'inscription,Code matiere,Note DS,Note EX\n")
+        for i in self.ISIMM.Notes:
+            found=False
+            for j in F:
+                code=j.split(",")[1]
+                nInscr=j.split(",")[0]
+                if(code==i.code and nInscr==i.nInscription):
+                    found=True
+                    break
+            if(not found):
+                F.write(i.nInscription+","+i.code+","+i.noteDS+","+i.noteEX+"\n")
+                
+        F.close()
+    def recupererNote(self):
+        self.ISIMM.Notes.clear()
+        F=open("./Save/SaveNote.csv","r")
+        count=-1
+        for line in F:
+            count+=1
+            if(count==0):
+                continue
+            self.ISIMM.Notes.append(self.parseNote(line))
+        self.ISIMM.afficherNotes()     
         F.close()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -392,6 +518,18 @@ class Ui_MainWindow(object):
         self.actionAjouter_une_matiere.triggered.connect(self.ajouterMatiere)
         self.actionSupprimer_une_matiere.triggered.connect(self.supprimerMatiere)
         self.actionModifier_une_matiere.triggered.connect(self.modifierMatiere)
+        self.actionAfficher_les_matieres.triggered.connect(self.afficherMatiere)
+        self.actionRecherche_par_Code.triggered.connect(self.rechercherMatiereCode)
+        self.actionRecherche_par_Section_2.triggered.connect(self.rechercherMatiereSection)
+        self.actionRecherche_par_Section_et_Semestre.triggered.connect(self.rechercherMatiereSectionSemestre)
+        self.actionEnregistrement_des_matieres.triggered.connect(self.enregistrerMatiere)
+        self.actionRecuperation_des_matieres.triggered.connect(self.recupererMatiere)
+
+        self.actionAjouter_une_note.triggered.connect(self.ajouterNote)
+        self.actionEnregistrement_des_notes.triggered.connect(self.enregistrerNote)
+        self.actionRecuperation_des_matieres_2.triggered.connect(self.recupererNote)
+        self.actionSupprimer_une_note.triggered.connect(self.supprimerNote)
+        self.actionModifier_une_note.triggered.connect(self.modfierNote)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QMessageBox
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
         self._data = data
-        self.columns=["N inscription","Nom","Prenom","Date de Naissance","Adresse","Mail","Telephone","Section","Niveau"]
+        self.columns=["Code","Designation","Semestre","Coefficient","Section"]
         
 
     def headerData(self, section, orientation, role):
@@ -30,25 +30,23 @@ class TableModel(QtCore.QAbstractTableModel):
     def columnCount(self, index):
         # The following takes the first sub-list, and returns
         # the length (only works if all rows are an equal length)
-        return 9
+        return 5
 
 class Ui_Dialog(object):
-    def __init__(self,ISIMM):
-        self.ISIMM=ISIMM
     def afficherRecherche(self):
 
-        nInscr=self.lineEditNumeroInscription.text()
-        if(not (nInscr.isnumeric() and len(nInscr)>=4)):
-            self.showDialog("Invalid Input","Numero d'inscription doit etre numerique de taille minimum 4",True)
+        code=self.lineEditNumeroInscription.text()
+        if(not (code.isnumeric() and len(code)>=4)):
+            self.showDialog("Invalid Input","Code doit etre numerique de taille minimum 4",True)
             self.lineEditNumeroInscription.setText("")
             if(not self.empty):
                 self.modal.deleteLater()
                 self.empty=True
             return
         alternative=[]
-        for etudiant in self.ISIMM.Etudiants:
-            if(etudiant.nInscription==nInscr):
-                alternative.append([etudiant.nInscription,etudiant.nom,etudiant.prenom,etudiant.dateN,etudiant.adresse,etudiant.mail,etudiant.telephone,etudiant.section,etudiant.niveauEtude])
+        for matiere in self.ISIMM.Matieres:
+            if(matiere.code==code):
+                alternative.append([matiere.code,matiere.designation,matiere.semestre,matiere.coefficient,matiere.section])
         self.modal=TableModel(alternative)
         
         self.tableView.setModel(self.modal)
@@ -71,41 +69,43 @@ class Ui_Dialog(object):
         msgBox.setWindowTitle("Error Message")
         msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()    
+    def __init__(self,ISIMM):
+        self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 781)
+        Dialog.resize(1101, 780)
         Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
-        self.label_10 = QtWidgets.QLabel(Dialog)
-        self.label_10.setGeometry(QtCore.QRect(320, 40, 461, 41))
-        self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
-        self.label_10.setObjectName("label_10")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(250, 220, 161, 21))
-        self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
-        self.label.setObjectName("label")
+        self.tableView = QtWidgets.QTableView(Dialog)
+        self.tableView.setGeometry(QtCore.QRect(0, 450, 1101, 192))
+        self.tableView.setObjectName("tableView")
         self.lineEditNumeroInscription = QtWidgets.QLineEdit(Dialog)
-        self.lineEditNumeroInscription.setGeometry(QtCore.QRect(420, 220, 421, 30))
+        self.lineEditNumeroInscription.setGeometry(QtCore.QRect(420, 230, 421, 30))
         self.lineEditNumeroInscription.setInputMask("")
         self.lineEditNumeroInscription.setMaxLength(32767)
         self.lineEditNumeroInscription.setObjectName("lineEditNumeroInscription")
+        self.label_10 = QtWidgets.QLabel(Dialog)
+        self.label_10.setGeometry(QtCore.QRect(420, 50, 261, 41))
+        self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
+        self.label_10.setObjectName("label_10")
         self.Search = QtWidgets.QPushButton(Dialog)
-        self.Search.setGeometry(QtCore.QRect(380, 330, 351, 31))
+        self.Search.setGeometry(QtCore.QRect(380, 340, 351, 31))
         self.Search.setObjectName("Search")
-        self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 440, 1101, 192))
-        self.tableView.setObjectName("tableView")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(250, 230, 161, 21))
+        self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
+        self.label.setObjectName("label")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.empty=True
         
-        self.empty=False
         self.Search.clicked.connect(self.afficherRecherche)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label_10.setText(_translate("Dialog", "Recherche par numéro d\'inscription"))
-        self.label.setText(_translate("Dialog", "Numéro d\'inscription"))
+        self.label_10.setText(_translate("Dialog", "Recherche par Code"))
         self.Search.setText(_translate("Dialog", "Rechercher"))
+        self.label.setText(_translate("Dialog", "Recherche par Code"))

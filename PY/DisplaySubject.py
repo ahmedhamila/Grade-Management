@@ -5,7 +5,7 @@ class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
         self._data = data
-        self.columns=["N inscription","Nom","Prenom","Date de Naissance","Adresse","Mail","Telephone","Section","Niveau"]
+        self.columns=["Code","Designation","Semestre","Coefficient","Section"]
         
 
     def headerData(self, section, orientation, role):
@@ -30,32 +30,32 @@ class TableModel(QtCore.QAbstractTableModel):
     def columnCount(self, index):
         # The following takes the first sub-list, and returns
         # the length (only works if all rows are an equal length)
-        return 9
+        return 5
 
 class Ui_Dialog(object):
+    
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 782)
+        Dialog.resize(1102, 780)
         Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        self.label_10 = QtWidgets.QLabel(Dialog)
+        self.label_10.setGeometry(QtCore.QRect(400, 40, 291, 41))
+        self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
+        self.label_10.setObjectName("label_10")
         self.tableView = QtWidgets.QTableView(Dialog)
         self.tableView.setGeometry(QtCore.QRect(0, 130, 1101, 651))
         self.tableView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.tableView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableView.setObjectName("tableView")
-        self.label_10 = QtWidgets.QLabel(Dialog)
-        self.label_10.setGeometry(QtCore.QRect(400, 40, 301, 41))
-        self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
-        self.label_10.setObjectName("label_10")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
         alternative=[]
-        for etudiant in self.ISIMM.Etudiants:
-            alternative.append([etudiant.nInscription,etudiant.nom,etudiant.prenom,etudiant.dateN,etudiant.adresse,etudiant.mail,etudiant.telephone,etudiant.section,etudiant.niveauEtude])
+        for matiere in self.ISIMM.Matieres:
+            alternative.append([matiere.code,matiere.designation,matiere.semestre,matiere.coefficient,matiere.section])
 
         self.modal=TableModel(alternative)
         
@@ -68,5 +68,4 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label_10.setText(_translate("Dialog", "Affichage des étudiants"))
-
+        self.label_10.setText(_translate("Dialog", "Affichage des matières"))
