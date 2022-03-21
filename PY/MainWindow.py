@@ -19,6 +19,10 @@ from SearchSubjectSectionSemestre import Ui_Dialog as rechercherMatiereSectionSe
 from AddGrade import Ui_Dialog as ajouterNote
 from DeleteGrade import Ui_Dialog as supprimerNote
 from EditGrade import Ui_Dialog as modifierNote
+from DisplayGrade import Ui_Dialog as afficherNote
+from SearchGradeNInscr import Ui_Dialog as rechercherNoteNumeroInscription
+from SearchGradeSectionNiveau import Ui_Dialog as rechercherNoteSectionNiveau
+from SearchGradeNumeroInscriptionSemestre import Ui_Dialog as rechercherNoteNumeroInscriptionSemestre
 from Student import Etudiant
 from Subject import Matiere
 from Grade import Note
@@ -81,6 +85,18 @@ class Ui_MainWindow(object):
     def modfierNote(self):
         self.setupStacked(19)
         self.stackedWidget.setCurrentWidget(self.windowModifierNote)
+    def afficherNote(self):
+        self.setupStacked(20)
+        self.stackedWidget.setCurrentWidget(self.windowAfficherNote)
+    def rechercherNoteNumeroInscription(self):
+        self.setupStacked(21)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscription)
+    def rechercherNoteSectionNiveau(self):
+        self.setupStacked(22)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteSectionNiveau)
+    def rechercherNoteNumeroInscriptionSemestre(self):
+        self.setupStacked(23)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -176,6 +192,26 @@ class Ui_MainWindow(object):
             self.ui18=modifierNote(self.ISIMM)
             self.ui18.setupUi(self.windowModifierNote)
             self.stackedWidget.addWidget(self.windowModifierNote)
+        elif(index==20):
+            self.windowAfficherNote=QDialog()
+            self.ui19=afficherNote(self.ISIMM)
+            self.ui19.setupUi(self.windowAfficherNote)
+            self.stackedWidget.addWidget(self.windowAfficherNote)
+        elif(index==21):
+            self.windowRechercherNoteNumeroInscription=QDialog()
+            self.ui20=rechercherNoteNumeroInscription(self.ISIMM)
+            self.ui20.setupUi(self.windowRechercherNoteNumeroInscription)
+            self.stackedWidget.addWidget(self.windowRechercherNoteNumeroInscription)
+        elif(index==22):
+            self.windowRechercherNoteSectionNiveau=QDialog()
+            self.ui21=rechercherNoteSectionNiveau(self.ISIMM)
+            self.ui21.setupUi(self.windowRechercherNoteSectionNiveau)
+            self.stackedWidget.addWidget(self.windowRechercherNoteSectionNiveau)
+        elif(index==23):
+            self.windowRechercherNoteNumeroInscriptionSemestre=QDialog()
+            self.ui22=rechercherNoteNumeroInscriptionSemestre(self.ISIMM)
+            self.ui22.setupUi(self.windowRechercherNoteNumeroInscriptionSemestre)
+            self.stackedWidget.addWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
 
 
     def __init__(self,ISIMM):
@@ -530,6 +566,10 @@ class Ui_MainWindow(object):
         self.actionRecuperation_des_matieres_2.triggered.connect(self.recupererNote)
         self.actionSupprimer_une_note.triggered.connect(self.supprimerNote)
         self.actionModifier_une_note.triggered.connect(self.modfierNote)
+        self.actionAfficher_les_notes.triggered.connect(self.afficherNote)
+        self.actionRecherche_par_numero_d_inscription_2.triggered.connect(self.rechercherNoteNumeroInscription)
+        self.actionRecherche_par_Section_et_Niveau_2.triggered.connect(self.rechercherNoteSectionNiveau)
+        self.actionRecherche_par_numero_d_inscription_et_Semestre.triggered.connect(self.rechercherNoteNumeroInscriptionSemestre)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
