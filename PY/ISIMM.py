@@ -37,4 +37,25 @@ class Institut:
             if(i.code==code and i.nInscription==nInscr):
                 return i
         return False
-    
+    def moyenne(self,noteDS,noteEX):
+        return (float(noteEX)*2+float(noteDS))/3
+    def rang(self,e,m):
+        es=[]
+        for note in self.Notes:
+            if note.code==m.code:
+                es.append(note)
+        print(es)
+        for i in range (len(es)):
+            max=i
+            for j in range(i+1,len(es)):
+                if(self.moyenne(j.noteDS,j.noteEX)>self.moyenne(max.noteDS,max.noteEX)):
+                    max=j
+            if(max!=i):
+                sw=max
+                max=i
+                i=sw
+        print(es) 
+        for i in es :
+            if(i.nInscription==e.nInscription):
+                return es.index(i)+1
+               

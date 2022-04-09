@@ -4,15 +4,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Dialog(object):
     def delete(self):
-        code=self.comboBoxMatiere.currentText().split(" ")[3]
-        nInscr=self.comboBoxMatiere.currentText().split(" ")[0]
-        if(self.ISIMM.getNote(code,nInscr)!=False):
-            print("here")
-            self.ISIMM.Notes.remove(self.ISIMM.getNote(code,nInscr))
-        self.comboBoxMatiere.clear()
-        for note in self.ISIMM.Notes:
-            self.comboBoxMatiere.addItem(note.nInscription+" "+self.ISIMM.getEtudiant(note.nInscription).nom+" "+self.ISIMM.getEtudiant(note.nInscription).prenom+" "+note.code+" "+self.ISIMM.getMatiere(note.code).designation)
-        
+        if len(self.ISIMM.Notes)>0:
+            code=self.comboBoxMatiere.currentText().split(" ")[3]
+            nInscr=self.comboBoxMatiere.currentText().split(" ")[0]
+            if(self.ISIMM.getNote(code,nInscr)!=False):
+                print("here")
+                self.ISIMM.Notes.remove(self.ISIMM.getNote(code,nInscr))
+            self.comboBoxMatiere.clear()
+            for note in self.ISIMM.Notes:
+                self.comboBoxMatiere.addItem(note.nInscription+" "+self.ISIMM.getEtudiant(note.nInscription).nom+" "+self.ISIMM.getEtudiant(note.nInscription).prenom+" "+note.code+" "+self.ISIMM.getMatiere(note.code).designation)
+            
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):

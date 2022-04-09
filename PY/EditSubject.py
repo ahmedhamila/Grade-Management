@@ -12,15 +12,20 @@ class Ui_Dialog(object):
             self.lineEditDesignation.setText(self.ISIMM.getMatiere(code).designation)
             self.comboBoxCoefficient.setCurrentText(self.ISIMM.getMatiere(code).coefficient)
     def modifier(self):
-        design=self.lineEditDesignation.text()
-        coeff=self.comboBoxCoefficient.currentText()
-        if(not (len(design)>=3)):
-            self.showDialog("Invalid Input","Designaion doit etre de taille minimimum 3",True)
-            return
-        self.showDialog("Success","Modification Effectué avec succée",False)
-        code=self.comboBoxMatiere.currentText().split(" ")[0]
-        self.ISIMM.getMatiere(code).designation=design
-        self.ISIMM.getMatiere(code).coefficient=coeff
+        if len(self.ISIMM.Matieres):    
+            design=self.lineEditDesignation.text()
+            coeff=self.comboBoxCoefficient.currentText()
+            if(not (len(design)>=3)):
+                self.showDialog("Invalid Input","Designaion doit etre de taille minimimum 3",True)
+                return
+            self.showDialog("Success","Modification Effectué avec succée",False)
+            code=self.comboBoxMatiere.currentText().split(" ")[0]
+            self.ISIMM.getMatiere(code).designation=design
+            self.ISIMM.getMatiere(code).coefficient=coeff
+        else :
+            self.lineEditDesignation.setDisabled(True)
+            self.comboBoxCoefficient.setDisabled(True)
+        
 
     def showDialog(self,str,detailed,type):
         msgBox = QMessageBox()
@@ -78,7 +83,12 @@ class Ui_Dialog(object):
 
         for matiere in self.ISIMM.Matieres:
             self.comboBoxMatiere.addItem(matiere.code+" "+matiere.designation)
-        self.comboChanged()    
+        if len(self.ISIMM.Matieres):
+            self.comboChanged() 
+        else :
+            self.lineEditDesignation.setDisabled(True)
+            self.comboBoxCoefficient.setDisabled(True)
+           
         self.comboBoxMatiere.currentTextChanged.connect(self.comboChanged)
         self.Modifier.clicked.connect(self.modifier)
 

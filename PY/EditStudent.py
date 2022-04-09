@@ -13,23 +13,28 @@ class Ui_Dialog(object):
             self.lineEditMail.setText(self.ISIMM.getEtudiant(nInscr).mail)
             self.lineEditTelephone.setText(self.ISIMM.getEtudiant(nInscr).telephone)
     def modifier(self):
-        adr=self.lineEditAdresse.text()
-        mai=self.lineEditMail.text()
-        tel=self.lineEditTelephone.text()
-        if(not (adr.replace(" ","").isalnum() and len(adr)>=4)):
-            self.showDialog("Invalid Input","Adresse doit etre alphanumerique de taille minimimum 4",True)
-            return
-        if(not (mai.find("@")!=-1 and mai.find(".com")!=-1)):
-            self.showDialog("Invalid Input","Mail doit etre de la forme exemple@gmail.com",True)
-            return
-        if(not (tel.isnumeric() and len(tel)==8 and (int(tel[0]) in {9,5,2}))):
-            self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
-            return
-        self.showDialog("Success","Modification Effectué avec succée",False)
-        nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
-        self.ISIMM.getEtudiant(nInscr).adresse=adr
-        self.ISIMM.getEtudiant(nInscr).mail=mai
-        self.ISIMM.getEtudiant(nInscr).telephone=tel
+        if len(self.ISIMM.Etudiants)>0 :
+            adr=self.lineEditAdresse.text()
+            mai=self.lineEditMail.text()
+            tel=self.lineEditTelephone.text()
+            if(not (adr.replace(" ","").isalnum() and len(adr)>=4)):
+                self.showDialog("Invalid Input","Adresse doit etre alphanumerique de taille minimimum 4",True)
+                return
+            if(not (mai.find("@")!=-1 and mai.find(".com")!=-1)):
+                self.showDialog("Invalid Input","Mail doit etre de la forme exemple@gmail.com",True)
+                return
+            if(not (tel.isnumeric() and len(tel)==8 and (int(tel[0]) in {9,5,2}))):
+                self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
+                return
+            self.showDialog("Success","Modification Effectué avec succée",False)
+            nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
+            self.ISIMM.getEtudiant(nInscr).adresse=adr
+            self.ISIMM.getEtudiant(nInscr).mail=mai
+            self.ISIMM.getEtudiant(nInscr).telephone=tel
+        else :
+            self.lineEditAdresse.setDisabled(True)
+            self.lineEditMail.setDisabled(True)
+            self.lineEditTelephone.setDisabled(True)
 
     def showDialog(self,str,detailed,type):
         msgBox = QMessageBox()
@@ -91,7 +96,12 @@ class Ui_Dialog(object):
         
         for etudiant in self.ISIMM.Etudiants:
             self.comboBoxEtudiant.addItem(etudiant.nInscription+" "+etudiant.nom+" "+etudiant.prenom)
-        self.comboChanged()    
+        if len(self.ISIMM.Etudiants)> 0:
+            self.comboChanged()   
+        else :
+            self.lineEditAdresse.setDisabled(True)
+            self.lineEditMail.setDisabled(True)
+            self.lineEditTelephone.setDisabled(True)
         self.comboBoxEtudiant.currentTextChanged.connect(self.comboChanged)
         self.Modifier.clicked.connect(self.modifier)
 

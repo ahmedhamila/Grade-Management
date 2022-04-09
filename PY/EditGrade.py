@@ -15,21 +15,26 @@ class Ui_Dialog(object):
             self.lineNoteDS.setText(self.ISIMM.getNote(code,nInscr).noteDS)
             self.lineNoteEX.setText(self.ISIMM.getNote(code,nInscr).noteEX)
     def modifier(self):
-        noteD=self.lineNoteDS.text()
-        noteE=self.lineNoteEX.text()
-        if(not (noteD.isnumeric() and 20>=float(noteD)>=0)):
-            self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
-            self.lineNoteDS.setText("")
-            return
-        if(not (noteE.isnumeric() and 20>=float(noteE)>=0)):
-            self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
-            self.lineNoteEX.setText("")
-            return
-        self.showDialog("Success","Modification Effectué avec succée",False)
-        code=self.comboBoxMatiere.currentText().split(" ")[3]
-        nInscr=self.comboBoxMatiere.currentText().split(" ")[0]
-        self.ISIMM.getNote(code,nInscr).noteDS=noteD
-        self.ISIMM.getNote(code,nInscr).noteEX=noteE
+        if len(self.ISIMM.Notes) >0 :
+            noteD=self.lineNoteDS.text()
+            noteE=self.lineNoteEX.text()
+            if(not (noteD.isnumeric() and 20>=float(noteD)>=0)):
+                self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
+                self.lineNoteDS.setText("")
+                return
+            if(not (noteE.isnumeric() and 20>=float(noteE)>=0)):
+                self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
+                self.lineNoteEX.setText("")
+                return
+            self.showDialog("Success","Modification Effectué avec succée",False)
+            code=self.comboBoxMatiere.currentText().split(" ")[3]
+            nInscr=self.comboBoxMatiere.currentText().split(" ")[0]
+            self.ISIMM.getNote(code,nInscr).noteDS=noteD
+            self.ISIMM.getNote(code,nInscr).noteEX=noteE
+        else :
+            self.lineNoteDS.setDisabled(True)
+            self.lineNoteEX.setDisabled(True)
+        
 
     def showDialog(self,str,detailed,type):
         msgBox = QMessageBox()
@@ -84,8 +89,12 @@ class Ui_Dialog(object):
         self.comboBoxMatiere.clear()
         for note in self.ISIMM.Notes:
             self.comboBoxMatiere.addItem(note.nInscription+" "+self.ISIMM.getEtudiant(note.nInscription).nom+" "+self.ISIMM.getEtudiant(note.nInscription).prenom+" "+note.code+" "+self.ISIMM.getMatiere(note.code).designation)
-    
-        self.comboChanged()    
+        if len(self.ISIMM.Notes) >0 :
+            self.comboChanged() 
+        else :
+            self.lineNoteDS.setDisabled(True)
+            self.lineNoteEX.setDisabled(True)
+           
         self.comboBoxMatiere.currentTextChanged.connect(self.comboChanged)
         self.Modifier.clicked.connect(self.modifier)
 

@@ -1,5 +1,4 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from AddStudent import Ui_Dialog as add
 from DeleteStudent import Ui_Dialog as remove
@@ -23,6 +22,7 @@ from DisplayGrade import Ui_Dialog as afficherNote
 from SearchGradeNInscr import Ui_Dialog as rechercherNoteNumeroInscription
 from SearchGradeSectionNiveau import Ui_Dialog as rechercherNoteSectionNiveau
 from SearchGradeNumeroInscriptionSemestre import Ui_Dialog as rechercherNoteNumeroInscriptionSemestre
+from ReportCard import Ui_Dialog as bulletinNoteEtudiant
 from Student import Etudiant
 from Subject import Matiere
 from Grade import Note
@@ -97,6 +97,9 @@ class Ui_MainWindow(object):
     def rechercherNoteNumeroInscriptionSemestre(self):
         self.setupStacked(23)
         self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+    def bulletinNoteEtudiant(self):
+        self.setupStacked(24)
+        self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiant)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -212,6 +215,12 @@ class Ui_MainWindow(object):
             self.ui22=rechercherNoteNumeroInscriptionSemestre(self.ISIMM)
             self.ui22.setupUi(self.windowRechercherNoteNumeroInscriptionSemestre)
             self.stackedWidget.addWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+        elif(index==24):
+            self.windowBulletinNoteEtudiant=QDialog()
+            self.ui23=bulletinNoteEtudiant(self.ISIMM)
+            self.ui23.setupUi(self.windowBulletinNoteEtudiant)
+            self.stackedWidget.addWidget(self.windowBulletinNoteEtudiant)
+        
 
 
     def __init__(self,ISIMM):
@@ -278,6 +287,10 @@ class Ui_MainWindow(object):
             self.ISIMM.Matieres.append(self.parseMatiere(line))
             
         F.close()
+    def recupererTout(self):
+        self.recupererEtudiant()
+        self.recupererMatiere()
+        self.recupererNote()
     
     def parseNote(self,line):
         lis=line.split(",")
@@ -312,7 +325,7 @@ class Ui_MainWindow(object):
         F.close()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1120, 850)
+        MainWindow.resize(1119, 832)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
@@ -334,13 +347,13 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1119, 24))
         self.menubar.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.menubar.setAutoFillBackground(False)
         self.menubar.setStyleSheet("background-color:#777477;")
         self.menubar.setObjectName("menubar")
         self.menuGestion_des_etudiants = QtWidgets.QMenu(self.menubar)
-        self.menuGestion_des_etudiants.setGeometry(QtCore.QRect(379, 133, 245, 112))
+        self.menuGestion_des_etudiants.setGeometry(QtCore.QRect(348, 145, 245, 112))
         self.menuGestion_des_etudiants.setObjectName("menuGestion_des_etudiants")
         self.menuMise_jour_des_tudiants = QtWidgets.QMenu(self.menuGestion_des_etudiants)
         self.menuMise_jour_des_tudiants.setObjectName("menuMise_jour_des_tudiants")
@@ -442,6 +455,8 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_Section_et_Niveau_2.setObjectName("actionRecherche_par_Section_et_Niveau_2")
         self.actionRecherche_par_numero_d_inscription_et_Semestre = QtWidgets.QAction(MainWindow)
         self.actionRecherche_par_numero_d_inscription_et_Semestre.setObjectName("actionRecherche_par_numero_d_inscription_et_Semestre")
+        self.actionRecuperation_de_tout = QtWidgets.QAction(MainWindow)
+        self.actionRecuperation_de_tout.setObjectName("actionRecuperation_de_tout")
         self.menuMise_jour_des_tudiants.addAction(self.actionAjouter_un_etudiant)
         self.menuMise_jour_des_tudiants.addSeparator()
         self.menuMise_jour_des_tudiants.addAction(self.actionSupprimer_un_etudiant)
@@ -530,6 +545,8 @@ class Ui_MainWindow(object):
         self.menuEnregistrement_et_Recuperation.addSeparator()
         self.menuEnregistrement_et_Recuperation.addAction(self.actionRecuperation_des_matieres_2)
         self.menuEnregistrement_et_Recuperation.addSeparator()
+        self.menuEnregistrement_et_Recuperation.addAction(self.actionRecuperation_de_tout)
+        self.menuEnregistrement_et_Recuperation.addSeparator()
         self.menubar.addAction(self.menuGestion_des_etudiants.menuAction())
         self.menubar.addAction(self.menuGestion_des_matieres.menuAction())
         self.menubar.addAction(self.menuGestion_des_notes.menuAction())
@@ -537,9 +554,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEnregistrement_et_Recuperation.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        
+        
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
         self.actionEnregistrement_des_etudiants.triggered.connect(self.enregistrerEtudiant)
@@ -570,6 +588,10 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_numero_d_inscription_2.triggered.connect(self.rechercherNoteNumeroInscription)
         self.actionRecherche_par_Section_et_Niveau_2.triggered.connect(self.rechercherNoteSectionNiveau)
         self.actionRecherche_par_numero_d_inscription_et_Semestre.triggered.connect(self.rechercherNoteNumeroInscriptionSemestre)
+
+        self.actionBulletin_de_note_d_un_etudiant.triggered.connect(self.bulletinNoteEtudiant)
+
+        self.actionRecuperation_de_tout.triggered.connect(self.recupererTout)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -612,7 +634,7 @@ class Ui_MainWindow(object):
         self.actionEnregistrement_des_matieres.setText(_translate("MainWindow", "Enregistrement des matières"))
         self.actionRecuperation_des_matieres.setText(_translate("MainWindow", "Récupération des matières"))
         self.actionEnregistrement_des_notes.setText(_translate("MainWindow", "Enregistrement des notes"))
-        self.actionRecuperation_des_matieres_2.setText(_translate("MainWindow", "Récupération des étudiants"))
+        self.actionRecuperation_des_matieres_2.setText(_translate("MainWindow", "Récupération des notes"))
         self.actionRecherche_par_numero_d_inscription.setText(_translate("MainWindow", "Recherche par numero d\'inscription"))
         self.actionRecherche_par_Section.setText(_translate("MainWindow", "Recherche par Section"))
         self.actionRecherche_par_Niveau.setText(_translate("MainWindow", "Recherche par Niveau"))
@@ -623,3 +645,4 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_numero_d_inscription_2.setText(_translate("MainWindow", "Recherche par numero d\'inscription"))
         self.actionRecherche_par_Section_et_Niveau_2.setText(_translate("MainWindow", "Recherche par Section et Niveau"))
         self.actionRecherche_par_numero_d_inscription_et_Semestre.setText(_translate("MainWindow", "Recherche par numero d\'inscription et Semestre"))
+        self.actionRecuperation_de_tout.setText(_translate("MainWindow", "Récupération de tout"))

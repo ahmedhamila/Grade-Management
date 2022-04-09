@@ -1,13 +1,31 @@
-#mainwindow
-
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from AddStudent import Ui_Dialog as add
 from DeleteStudent import Ui_Dialog as remove
 from EditStudent import Ui_Dialog as edit
 from Display import Ui_Dialog as afficher
+from SearchStudentNInscr import Ui_Dialog as rechercherNumeroInscription
+from SearchStudentSection import Ui_Dialog as rechercherSection
+from SearchStudentNiveau import Ui_Dialog as rechercherNiveau
+from SearchStudentSectionNiveau import Ui_Dialog as rechercherSectionNiveau
+from AddSubject import Ui_Dialog as ajouterMatiere
+from DeleteSubject import Ui_Dialog as supprimerMatiere
+from EditSubject import Ui_Dialog as modifierMatiere
+from DisplaySubject import Ui_Dialog as afficherMatiere
+from SearchSubjectCode import Ui_Dialog as rechercherMatiereCode
+from SearchSubjectSection import Ui_Dialog as rechercherMatiereSection
+from SearchSubjectSectionSemestre import Ui_Dialog as rechercherMatiereSectionSemestre
+from AddGrade import Ui_Dialog as ajouterNote
+from DeleteGrade import Ui_Dialog as supprimerNote
+from EditGrade import Ui_Dialog as modifierNote
+from DisplayGrade import Ui_Dialog as afficherNote
+from SearchGradeNInscr import Ui_Dialog as rechercherNoteNumeroInscription
+from SearchGradeSectionNiveau import Ui_Dialog as rechercherNoteSectionNiveau
+from SearchGradeNumeroInscriptionSemestre import Ui_Dialog as rechercherNoteNumeroInscriptionSemestre
+from ReportCard import Ui_Dialog as bulletinNoteEtudiant
 from Student import Etudiant
+from Subject import Matiere
+from Grade import Note
 
 class Ui_MainWindow(object):
     def ajouterEtudiant(self):
@@ -24,7 +42,64 @@ class Ui_MainWindow(object):
     def afficherEtudiant(self):
         self.setupStacked(5)
         self.stackedWidget.setCurrentWidget(self.windowAfficher)
-
+    def rechercherNumeroInscription(self):
+        self.setupStacked(6)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNumeroInscription)
+    def rechercherSection(self):
+        self.setupStacked(7)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherSection)
+    def rechercherNiveau(self):
+        self.setupStacked(8)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNiveau)
+    def rechercherSectionNiveau(self):
+        self.setupStacked(9)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherSectionNiveau)
+    
+    def ajouterMatiere(self):
+        self.setupStacked(10)
+        self.stackedWidget.setCurrentWidget(self.windowAjouterMatiere)
+    def supprimerMatiere(self):
+        self.setupStacked(11)
+        self.stackedWidget.setCurrentWidget(self.windowSupprimerMatiere)
+    def modifierMatiere(self):
+        self.setupStacked(12)
+        self.stackedWidget.setCurrentWidget(self.windowModifierMatiere)
+    def afficherMatiere(self):
+        self.setupStacked(13)
+        self.stackedWidget.setCurrentWidget(self.windowAfficherMatiere)
+    def rechercherMatiereCode(self):
+        self.setupStacked(14)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereCode)
+    def rechercherMatiereSection(self):
+        self.setupStacked(15)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSection)
+    def rechercherMatiereSectionSemestre(self):
+        self.setupStacked(16)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSectionSemestre)
+    def ajouterNote(self):
+        self.setupStacked(17)
+        self.stackedWidget.setCurrentWidget(self.windowAjouterNote)
+    def supprimerNote(self):
+        self.setupStacked(18)
+        self.stackedWidget.setCurrentWidget(self.windowSupprimerNote)
+    def modfierNote(self):
+        self.setupStacked(19)
+        self.stackedWidget.setCurrentWidget(self.windowModifierNote)
+    def afficherNote(self):
+        self.setupStacked(20)
+        self.stackedWidget.setCurrentWidget(self.windowAfficherNote)
+    def rechercherNoteNumeroInscription(self):
+        self.setupStacked(21)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscription)
+    def rechercherNoteSectionNiveau(self):
+        self.setupStacked(22)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteSectionNiveau)
+    def rechercherNoteNumeroInscriptionSemestre(self):
+        self.setupStacked(23)
+        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+    def bulletinNoteEtudiant(self):
+        self.setupStacked(24)
+        self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiant)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -50,6 +125,102 @@ class Ui_MainWindow(object):
             self.ui4=afficher(self.ISIMM)
             self.ui4.setupUi(self.windowAfficher)
             self.stackedWidget.addWidget(self.windowAfficher)
+        elif(index==6):
+            self.windowRechercherNumeroInscription=QDialog()
+            self.ui5=rechercherNumeroInscription(self.ISIMM)
+            self.ui5.setupUi(self.windowRechercherNumeroInscription)
+            self.stackedWidget.addWidget(self.windowRechercherNumeroInscription)
+        elif(index==7):
+            self.windowRechercherSection=QDialog()
+            self.ui6=rechercherSection(self.ISIMM)
+            self.ui6.setupUi(self.windowRechercherSection)
+            self.stackedWidget.addWidget(self.windowRechercherSection)
+        elif(index==8):
+            self.windowRechercherNiveau=QDialog()
+            self.ui7=rechercherNiveau(self.ISIMM)
+            self.ui7.setupUi(self.windowRechercherNiveau)
+            self.stackedWidget.addWidget(self.windowRechercherNiveau)
+        elif(index==9):
+            self.windowRechercherSectionNiveau=QDialog()
+            self.ui8=rechercherSectionNiveau(self.ISIMM)
+            self.ui8.setupUi(self.windowRechercherSectionNiveau)
+            self.stackedWidget.addWidget(self.windowRechercherSectionNiveau)
+        elif(index==10):
+            self.windowAjouterMatiere=QDialog()
+            self.ui9=ajouterMatiere(self.ISIMM)
+            self.ui9.setupUi(self.windowAjouterMatiere)
+            self.stackedWidget.addWidget(self.windowAjouterMatiere)
+        elif(index==11):
+            self.windowSupprimerMatiere=QDialog()
+            self.ui10=supprimerMatiere(self.ISIMM)
+            self.ui10.setupUi(self.windowSupprimerMatiere)
+            self.stackedWidget.addWidget(self.windowSupprimerMatiere)
+        elif(index==12):
+            self.windowModifierMatiere=QDialog()
+            self.ui11=modifierMatiere(self.ISIMM)
+            self.ui11.setupUi(self.windowModifierMatiere)
+            self.stackedWidget.addWidget(self.windowModifierMatiere)
+        elif(index==13):
+            self.windowAfficherMatiere=QDialog()
+            self.ui12=afficherMatiere(self.ISIMM)
+            self.ui12.setupUi(self.windowAfficherMatiere)
+            self.stackedWidget.addWidget(self.windowAfficherMatiere)
+        elif(index==14):
+            self.windowRechercherMatiereCode=QDialog()
+            self.ui13=rechercherMatiereCode(self.ISIMM)
+            self.ui13.setupUi(self.windowRechercherMatiereCode)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereCode)
+        elif(index==15):
+            self.windowRechercherMatiereSection=QDialog()
+            self.ui14=rechercherMatiereSection(self.ISIMM)
+            self.ui14.setupUi(self.windowRechercherMatiereSection)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereSection)
+        elif(index==16):
+            self.windowRechercherMatiereSectionSemestre=QDialog()
+            self.ui15=rechercherMatiereSectionSemestre(self.ISIMM)
+            self.ui15.setupUi(self.windowRechercherMatiereSectionSemestre)
+            self.stackedWidget.addWidget(self.windowRechercherMatiereSectionSemestre)
+        elif(index==17):
+            self.windowAjouterNote=QDialog()
+            self.ui16=ajouterNote(self.ISIMM)
+            self.ui16.setupUi(self.windowAjouterNote)
+            self.stackedWidget.addWidget(self.windowAjouterNote)
+        elif(index==18):
+            self.windowSupprimerNote=QDialog()
+            self.ui17=supprimerNote(self.ISIMM)
+            self.ui17.setupUi(self.windowSupprimerNote)
+            self.stackedWidget.addWidget(self.windowSupprimerNote)
+        elif(index==19):
+            self.windowModifierNote=QDialog()
+            self.ui18=modifierNote(self.ISIMM)
+            self.ui18.setupUi(self.windowModifierNote)
+            self.stackedWidget.addWidget(self.windowModifierNote)
+        elif(index==20):
+            self.windowAfficherNote=QDialog()
+            self.ui19=afficherNote(self.ISIMM)
+            self.ui19.setupUi(self.windowAfficherNote)
+            self.stackedWidget.addWidget(self.windowAfficherNote)
+        elif(index==21):
+            self.windowRechercherNoteNumeroInscription=QDialog()
+            self.ui20=rechercherNoteNumeroInscription(self.ISIMM)
+            self.ui20.setupUi(self.windowRechercherNoteNumeroInscription)
+            self.stackedWidget.addWidget(self.windowRechercherNoteNumeroInscription)
+        elif(index==22):
+            self.windowRechercherNoteSectionNiveau=QDialog()
+            self.ui21=rechercherNoteSectionNiveau(self.ISIMM)
+            self.ui21.setupUi(self.windowRechercherNoteSectionNiveau)
+            self.stackedWidget.addWidget(self.windowRechercherNoteSectionNiveau)
+        elif(index==23):
+            self.windowRechercherNoteNumeroInscriptionSemestre=QDialog()
+            self.ui22=rechercherNoteNumeroInscriptionSemestre(self.ISIMM)
+            self.ui22.setupUi(self.windowRechercherNoteNumeroInscriptionSemestre)
+            self.stackedWidget.addWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+        elif(index==24):
+            self.windowBulletinNoteEtudiant=QDialog()
+            self.ui23=bulletinNoteEtudiant(self.ISIMM)
+            self.ui23.setupUi(self.windowBulletinNoteEtudiant)
+            self.stackedWidget.addWidget(self.windowBulletinNoteEtudiant)
+        
 
 
     def __init__(self,ISIMM):
@@ -86,269 +257,102 @@ class Ui_MainWindow(object):
             self.ISIMM.Etudiants.append(self.parseStudent(line))
             
         F.close()
+    def parseMatiere(self,line):
+        lis=line.split(",")
+        lis[4]=lis[4].replace("\n","")
+        return Matiere(lis[0],lis[1],lis[2],lis[3],lis[4])
+    def enregistrerMatiere(self):
+        F=open("./Save/SaveMatiere.csv","w+")
+        F.seek(0)
+        F.write("Code Matiere,Designation,Section,Coefficient,Semestre\n")
+        for i in self.ISIMM.Matieres:
+            found=False
+            for j in F:
+                code=j.split(",")[0]
+                if(code==i.code):
+                    found=True
+                    break
+            if(not found):
+                F.write(i.code+","+i.designation+","+i.section+","+i.coefficient+","+i.semestre+"\n")
+                
+        F.close()
+    def recupererMatiere(self):
+        self.ISIMM.Matieres.clear()
+        F=open("./Save/SaveMatiere.csv","r")
+        count=-1
+        for line in F:
+            count+=1
+            if(count==0):
+                continue
+            self.ISIMM.Matieres.append(self.parseMatiere(line))
+            
+        F.close()
+    
+    def parseNote(self,line):
+        lis=line.split(",")
+        lis[3]=lis[3].replace("\n","")
+        return Note(lis[0],lis[1],lis[2],lis[3])
+    def enregistrerNote(self):
+        F=open("./Save/SaveNote.csv","w+")
+        F.seek(0)
+        F.write("Numero d'inscription,Code matiere,Note DS,Note EX\n")
+        for i in self.ISIMM.Notes:
+            found=False
+            for j in F:
+                code=j.split(",")[1]
+                nInscr=j.split(",")[0]
+                if(code==i.code and nInscr==i.nInscription):
+                    found=True
+                    break
+            if(not found):
+                F.write(i.nInscription+","+i.code+","+i.noteDS+","+i.noteEX+"\n")
+                
+        F.close()
+    def recupererNote(self):
+        self.ISIMM.Notes.clear()
+        F=open("./Save/SaveNote.csv","r")
+        count=-1
+        for line in F:
+            count+=1
+            if(count==0):
+                continue
+            self.ISIMM.Notes.append(self.parseNote(line))
+        self.ISIMM.afficherNotes()     
+        F.close()
 
 
+
+
+        
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
         self.actionEnregistrement_des_etudiants.triggered.connect(self.enregistrerEtudiant)
         self.actionRecuperation_des_etudiants.triggered.connect(self.recupererEtudiant)
         self.actionModifier_un_etudiant.triggered.connect(self.modifierEtudiant)
         self.actionAfficher_les_etudiants.triggered.connect(self.afficherEtudiant)
+        self.actionRecherche_par_numero_d_inscription.triggered.connect(self.rechercherNumeroInscription)
+        self.actionRecherche_par_Section.triggered.connect(self.rechercherSection)
+        self.actionRecherche_par_Niveau.triggered.connect(self.rechercherNiveau)
+        self.actionRecherche_par_Section_et_Niveau.triggered.connect(self.rechercherSectionNiveau)
 
-#addstudent
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from Student import Etudiant
-from PyQt5.QtCore import QDate
-class Ui_Dialog(object):
-    
-    def ajouter(self):
-        numInsc=self.lineEditNumeroInscription.text()
-        nom=self.lineEditNom.text()
-        prenom=self.lineEditPrenom.text()
-        date=self.DateNaissance.selectedDate()
-        adresse=self.lineEditAdresse.text()
-        mail=self.lineEditMail.text()
-        telephone=self.lineEditTelephone.text()
-        section=self.comboBox.currentText()
-        niveau=self.lineEditNiveauEtude.text()
-        
-        if(not (numInsc.isnumeric() and len(numInsc)>=4)):
-            self.showDialog("Invalid Input","Numero d'inscription doit etre numerique de taille minimum 4",True)
-            self.lineEditNumeroInscription.setText("")
-            return
-        if(not (nom.replace(" ","").isalpha())):
-            self.showDialog("Invalid Input","Nom doit etre alphabetique",True)
-            self.lineEditNom.setText("")
-            return
-        if(not (prenom.replace(" ","").isalpha())):
-            self.showDialog("Invalid Input","Prenom doit etre alphabetique",True)
-            self.lineEditPrenom.setText("")
-            return
-        if(not (date.year()>=2001)):
-            self.showDialog("Invalid Input","Année de naissance doit etre au moins 2003",True)
-            return
-        if(not (adresse.replace(" ","").isalnum() and len(adresse)>=4)):
-            self.showDialog("Invalid Input","Adresse doit etre alphanumerique de taille minimimum 4",True)
-            return
-        if(not (mail.find("@")!=-1 and mail.find(".com")!=-1)):
-            self.showDialog("Invalid Input","Mail doit etre de la forme exemple@gmail.com",True)
-            return
-        if(not (telephone.isnumeric() and len(telephone)==8 and (int(telephone[0]) in {9,5,2}))):
-            self.showDialog("Invalid Input","Numero de telephone doit etre de la forme 55436333",True)
-            return
-        if(not (niveau.isdigit() and int(niveau)<=3)):
-            self.showDialog("Invalid Input","niveau doit etre numerique (entre 1 et 3)",True)
-            return
-        found=False
-        for i in self.ISIMM.Etudiants:
-            if(i.nInscription==numInsc):
-                found=True
-                break
-        if(found):
-            self.showDialog("Invalid Input","Numero d'inscription existe deja",True)
-            self.lineEditNumeroInscription.setText("")
-            return
-        self.showDialog("Success","Ajout Effectué avec succée",False)
-        self.ISIMM.ajouterEtudiant(Etudiant(numInsc,nom,prenom,date,adresse,mail,telephone,section,niveau))
-        self.resetLineEdit()
-    
-    def resetLineEdit(self):
-        self.lineEditNumeroInscription.setText("")
-        self.lineEditNom.setText("")
-        self.lineEditPrenom.setText("")
-        self.lineEditAdresse.setText("")
-        self.lineEditMail.setText("")
-        self.lineEditTelephone.setText("")
-        self.lineEditNiveauEtude.setText("")
+        self.actionAjouter_une_matiere.triggered.connect(self.ajouterMatiere)
+        self.actionSupprimer_une_matiere.triggered.connect(self.supprimerMatiere)
+        self.actionModifier_une_matiere.triggered.connect(self.modifierMatiere)
+        self.actionAfficher_les_matieres.triggered.connect(self.afficherMatiere)
+        self.actionRecherche_par_Code.triggered.connect(self.rechercherMatiereCode)
+        self.actionRecherche_par_Section_2.triggered.connect(self.rechercherMatiereSection)
+        self.actionRecherche_par_Section_et_Semestre.triggered.connect(self.rechercherMatiereSectionSemestre)
+        self.actionEnregistrement_des_matieres.triggered.connect(self.enregistrerMatiere)
+        self.actionRecuperation_des_matieres.triggered.connect(self.recupererMatiere)
 
-    def __init__(self,ISIMM):
-        self.ISIMM=ISIMM
-    def showDialog(self,str,detailed,type):
-        msgBox = QMessageBox()
-        if(type):
-            msgBox.setIcon(QMessageBox.Warning)
-        else:
-            msgBox.setIcon(QMessageBox.Information)
-        msgBox.setStyleSheet("width: 100px; font-size:15px;")
-        msgBox.setText(str)
-        msgBox.setDetailedText(detailed)
-        msgBox.setWindowTitle("Error Message")
-        msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()
-    def setupUi(self, Dialog):
+        self.actionAjouter_une_note.triggered.connect(self.ajouterNote)
+        self.actionEnregistrement_des_notes.triggered.connect(self.enregistrerNote)
+        self.actionRecuperation_des_matieres_2.triggered.connect(self.recupererNote)
+        self.actionSupprimer_une_note.triggered.connect(self.supprimerNote)
+        self.actionModifier_une_note.triggered.connect(self.modfierNote)
+        self.actionAfficher_les_notes.triggered.connect(self.afficherNote)
+        self.actionRecherche_par_numero_d_inscription_2.triggered.connect(self.rechercherNoteNumeroInscription)
+        self.actionRecherche_par_Section_et_Niveau_2.triggered.connect(self.rechercherNoteSectionNiveau)
+        self.actionRecherche_par_numero_d_inscription_et_Semestre.triggered.connect(self.rechercherNoteNumeroInscriptionSemestre)
 
-
-    self.DateNaissance.setSelectedDate(QDate(2001,12,26))
-    self.Ajouter.clicked.connect(self.ajouter)
-
-
-#DeleteStudent
-
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-
-class Ui_Dialog(object):
-    def deleteEtudiant(self):
-        if(self.SupprimerEtudiant.isChecked):
-            nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
-            self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
-        elif(self.SupprimerEtudiantSection.isChecked):
-            nInscr=self.comboBoxEtudiantSection2.currentText().split(" ")[0]
-            self.ISIMM.Etudiants.remove(self.ISIMM.getEtudiant(nInscr))
-
-            
-    def comboChanged(self):
-        self.comboBoxEtudiantSection2.clear()
-        for i in self.ISIMM.Etudiants:
-            if(i.section==self.comboBox.currentText()):
-                self.comboBoxEtudiantSection2.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
-    def radioToggle(self,radio):
-        if(radio==self.SupprimerEtudiant):
-            self.comboBoxEtudiant.setVisible(True)
-            self.comboBoxEtudiantSection2.setVisible(False)
-            self.comboBoxEtudiantNiveau.setVisible(False)
-            self.comboBoxEtudiantSectionNiveau.setVisible(False)
-
-            self.comboBox.setVisible(False)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
-
-            self.comboBoxEtudiant.clear()
-            for i in self.ISIMM.Etudiants:
-                self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
-        elif(radio==self.SupprimerEtudiantSection):
-            self.comboBoxEtudiant.setVisible(False)
-            self.comboBoxEtudiantSection2.setVisible(True)
-            self.comboBoxEtudiantNiveau.setVisible(False)
-            self.comboBoxEtudiantSectionNiveau.setVisible(False)
-
-            self.comboBox.setVisible(True)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
-
-            for i in self.ISIMM.Etudiants:
-                if(i.section=="Cycle preparatoire integre (CPI)"):
-                    self.comboBoxEtudiantSection2.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
-        elif(radio==self.SupprimerEtudiantNiveau):
-            self.comboBoxEtudiant.setVisible(False)
-            self.comboBoxEtudiantSection2.setVisible(False)
-            self.comboBoxEtudiantNiveau.setVisible(True)
-            self.comboBoxEtudiantSectionNiveau.setVisible(False)
-
-            self.comboBox.setVisible(False)
-            self.lineEditNiveau.setVisible(True)
-            self.lineEditSectionNiveau1.setVisible(False)
-            self.lineEditSectionNiveau2.setVisible(False)
-
-        elif(radio==self.SupprimerEtudiantSectionNiveau):
-            self.comboBoxEtudiant.setVisible(False)
-            self.comboBoxEtudiantSection2.setVisible(False)
-            self.comboBoxEtudiantNiveau.setVisible(False)
-            self.comboBoxEtudiantSectionNiveau.setVisible(True)
-
-            self.comboBox.setVisible(False)
-            self.lineEditNiveau.setVisible(False)
-            self.lineEditSectionNiveau1.setVisible(True)
-            self.lineEditSectionNiveau2.setVisible(True)
-
-    def __init__(self,ISIMM):
-        self.ISIMM=ISIMM
-    def showDialog(self,str,detailed,type):
-        msgBox = QMessageBox()
-        if(type):
-            msgBox.setIcon(QMessageBox.Warning)
-        else:
-            msgBox.setIcon(QMessageBox.Information)
-        msgBox.setStyleSheet("width: 100px; font-size:15px;")
-        msgBox.setText(str)
-        msgBox.setDetailedText(detailed)
-        msgBox.setWindowTitle("Error Message")
-        msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()
-    def setupUi(self, Dialog):
-
-
-        self.comboBoxEtudiant.setVisible(False)
-        self.comboBoxEtudiantSection2.setVisible(False)
-        self.comboBoxEtudiantNiveau.setVisible(False)
-        self.comboBoxEtudiantSectionNiveau.setVisible(False)
-
-        self.comboBox.setVisible(False)
-        self.lineEditNiveau.setVisible(False)
-        self.lineEditSectionNiveau1.setVisible(False)
-        self.lineEditSectionNiveau2.setVisible(False)
-
-        self.SupprimerEtudiant.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiant))
-        self.SupprimerEtudiantSection.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSection))
-        self.SupprimerEtudiantNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantNiveau))
-        self.SupprimerEtudiantSectionNiveau.toggled.connect(lambda : self.radioToggle(self.SupprimerEtudiantSectionNiveau))
-
-        self.comboBox.currentIndexChanged.connect(self.comboChanged)
-
-        self.Supprimer.clicked.connect(self.deleteEtudiant)
-
-
-#display
-
-
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import Qt
-
-class TableModel(QtCore.QAbstractTableModel):
-    def __init__(self, data):
-        super(TableModel, self).__init__()
-        self._data = data
-        self.columns=["N inscription","Nom","Prenom","Date de Naissance","Adresse","Mail","Telephone","Section","Niveau"]
-        
-
-    def headerData(self, section, orientation, role):
-        # section is the index of the column/row.
-        if role == Qt.DisplayRole:
-            if orientation == Qt.Horizontal:
-                return str(self.columns[section])
-
-        
-
-    def data(self, index, role):
-        if role == Qt.DisplayRole:
-            # See below for the nested-list data structure.
-            # .row() indexes into the outer list,
-            # .column() indexes into the sub-list
-            return self._data[index.row()][index.column()]
-
-    def rowCount(self, index):
-        # The length of the outer list.
-        return len(self._data)
-
-    def columnCount(self, index):
-        # The following takes the first sub-list, and returns
-        # the length (only works if all rows are an equal length)
-        return 9
-
-alternative=[]
-        
-        for etudiant in self.ISIMM.Etudiants:
-            etu=[]
-            etu.append(etudiant.nInscription)
-            etu.append(etudiant.nom)
-            etu.append(etudiant.prenom)
-            etu.append(etudiant.dateN)
-            etu.append(etudiant.adresse)
-            etu.append(etudiant.mail)
-            etu.append(etudiant.telephone)
-            etu.append(etudiant.section)
-            etu.append(etudiant.niveauEtude)
-            alternative.append(etu)
-
-        self.modal=TableModel(alternative)
-        
-        self.tableView.setModel(self.modal)
-        self.horizontal_header = self.tableView.horizontalHeader()
-        self.vertical_header = self.tableView.verticalHeader()
-        self.horizontal_header.setSectionResizeMode(3)
-        self.tableView.horizontalHeader().setStretchLastSection(True)
-
-
+        self.actionBulletin_de_note_d_un_etudiant.triggered.connect(self.bulletinNoteEtudiant)

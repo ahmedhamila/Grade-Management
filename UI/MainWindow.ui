@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>850</height>
+    <width>1119</width>
+    <height>832</height>
    </rect>
   </property>
   <property name="font">
@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_2"/>
@@ -47,7 +47,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1120</width>
+     <width>1119</width>
      <height>24</height>
     </rect>
    </property>
@@ -63,8 +63,8 @@
    <widget class="QMenu" name="menuGestion_des_etudiants">
     <property name="geometry">
      <rect>
-      <x>379</x>
-      <y>133</y>
+      <x>348</x>
+      <y>145</y>
       <width>245</width>
       <height>112</height>
      </rect>
@@ -225,6 +225,8 @@
     <addaction name="separator"/>
     <addaction name="actionRecuperation_des_matieres_2"/>
     <addaction name="separator"/>
+    <addaction name="actionRecuperation_de_tout"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuGestion_des_etudiants"/>
    <addaction name="menuGestion_des_matieres"/>
@@ -355,7 +357,7 @@
   </action>
   <action name="actionRecuperation_des_matieres_2">
    <property name="text">
-    <string>Récupération des étudiants</string>
+    <string>Récupération des notes</string>
    </property>
   </action>
   <action name="actionRecherche_par_numero_d_inscription">
@@ -406,6 +408,11 @@
   <action name="actionRecherche_par_numero_d_inscription_et_Semestre">
    <property name="text">
     <string>Recherche par numero d'inscription et Semestre</string>
+   </property>
+  </action>
+  <action name="actionRecuperation_de_tout">
+   <property name="text">
+    <string>Récupération de tout</string>
    </property>
   </action>
  </widget>
