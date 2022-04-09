@@ -8,7 +8,6 @@ class Ui_Dialog(object):
             code=self.comboBoxMatiere.currentText().split(" ")[3]
             nInscr=self.comboBoxMatiere.currentText().split(" ")[0]
             if(self.ISIMM.getNote(code,nInscr)!=False):
-                print("here")
                 self.ISIMM.Notes.remove(self.ISIMM.getNote(code,nInscr))
             self.comboBoxMatiere.clear()
             for note in self.ISIMM.Notes:

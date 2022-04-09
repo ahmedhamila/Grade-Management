@@ -206,8 +206,6 @@
     <addaction name="separator"/>
     <addaction name="actionEtudiants_redoublants_de_l_ISIMM"/>
     <addaction name="separator"/>
-    <addaction name="actionMoyennes_des_etudiants_d_une_section"/>
-    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuEnregistrement_et_Recuperation">
     <property name="title">

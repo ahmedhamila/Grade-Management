@@ -23,6 +23,11 @@ from SearchGradeNInscr import Ui_Dialog as rechercherNoteNumeroInscription
 from SearchGradeSectionNiveau import Ui_Dialog as rechercherNoteSectionNiveau
 from SearchGradeNumeroInscriptionSemestre import Ui_Dialog as rechercherNoteNumeroInscriptionSemestre
 from ReportCard import Ui_Dialog as bulletinNoteEtudiant
+from ReportCardSemestre import Ui_Dialog as bulletinNoteEtudiantSemestre
+from AdmittedStudents import Ui_Dialog as admittedStudents
+from FailedStudents import Ui_Dialog as failedStudents
+from AdmittedStudentsISIMM import Ui_Dialog as admittedStudentsISIMM
+from FailedStudentsISIMM import Ui_Dialog as failedStudentsISIMM
 from Student import Etudiant
 from Subject import Matiere
 from Grade import Note
@@ -100,6 +105,21 @@ class Ui_MainWindow(object):
     def bulletinNoteEtudiant(self):
         self.setupStacked(24)
         self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiant)
+    def bulletinNoteEtudiantSemestre(self):
+        self.setupStacked(25)
+        self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiantSemestre)
+    def admittedStudentsSection(self):
+        self.setupStacked(26)
+        self.stackedWidget.setCurrentWidget(self.windowAdmittedStudents)
+    def failedStudentsSection(self):
+        self.setupStacked(27)
+        self.stackedWidget.setCurrentWidget(self.windowFailedStudents)
+    def admittedStudentsISIMM(self):
+        self.setupStacked(28)
+        self.stackedWidget.setCurrentWidget(self.windowAdmittedStudentsISIMM)
+    def failedStudentsISIMM(self):
+        self.setupStacked(29)
+        self.stackedWidget.setCurrentWidget(self.windowFailedStudentsISIMM)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -220,6 +240,31 @@ class Ui_MainWindow(object):
             self.ui23=bulletinNoteEtudiant(self.ISIMM)
             self.ui23.setupUi(self.windowBulletinNoteEtudiant)
             self.stackedWidget.addWidget(self.windowBulletinNoteEtudiant)
+        elif(index==25):
+            self.windowBulletinNoteEtudiantSemestre=QDialog()
+            self.ui24=bulletinNoteEtudiantSemestre(self.ISIMM)
+            self.ui24.setupUi(self.windowBulletinNoteEtudiantSemestre)
+            self.stackedWidget.addWidget(self.windowBulletinNoteEtudiantSemestre)
+        elif(index==26):
+            self.windowAdmittedStudents=QDialog()
+            self.ui25=admittedStudents(self.ISIMM)
+            self.ui25.setupUi(self.windowAdmittedStudents)
+            self.stackedWidget.addWidget(self.windowAdmittedStudents)
+        elif(index==27):
+            self.windowFailedStudents=QDialog()
+            self.ui26=failedStudents(self.ISIMM)
+            self.ui26.setupUi(self.windowFailedStudents)
+            self.stackedWidget.addWidget(self.windowFailedStudents)
+        elif(index==28):
+            self.windowAdmittedStudentsISIMM=QDialog()
+            self.ui27=admittedStudentsISIMM(self.ISIMM)
+            self.ui27.setupUi(self.windowAdmittedStudentsISIMM)
+            self.stackedWidget.addWidget(self.windowAdmittedStudentsISIMM)
+        elif(index==29):
+            self.windowFailedStudentsISIMM=QDialog()
+            self.ui28=failedStudentsISIMM(self.ISIMM)
+            self.ui28.setupUi(self.windowFailedStudentsISIMM)
+            self.stackedWidget.addWidget(self.windowFailedStudentsISIMM)
         
 
 
@@ -321,7 +366,6 @@ class Ui_MainWindow(object):
             if(count==0):
                 continue
             self.ISIMM.Notes.append(self.parseNote(line))
-        self.ISIMM.afficherNotes()     
         F.close()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -531,8 +575,6 @@ class Ui_MainWindow(object):
         self.menuCalcul_et_affichage.addSeparator()
         self.menuCalcul_et_affichage.addAction(self.actionEtudiants_redoublants_de_l_ISIMM)
         self.menuCalcul_et_affichage.addSeparator()
-        self.menuCalcul_et_affichage.addAction(self.actionMoyennes_des_etudiants_d_une_section)
-        self.menuCalcul_et_affichage.addSeparator()
         self.menuEnregistrement_et_Recuperation.addAction(self.actionEnregistrement_des_etudiants)
         self.menuEnregistrement_et_Recuperation.addSeparator()
         self.menuEnregistrement_et_Recuperation.addAction(self.actionRecuperation_des_etudiants)
@@ -556,7 +598,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
         
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
@@ -590,6 +631,11 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_numero_d_inscription_et_Semestre.triggered.connect(self.rechercherNoteNumeroInscriptionSemestre)
 
         self.actionBulletin_de_note_d_un_etudiant.triggered.connect(self.bulletinNoteEtudiant)
+        self.actionBulletin_de_note_d_un_etudiant_par_semestre.triggered.connect(self.bulletinNoteEtudiantSemestre)
+        self.actionEtudiants_admis_d_une_section.triggered.connect(self.admittedStudentsSection)
+        self.actionEtudiants_redoublants_d_une_section.triggered.connect(self.failedStudentsSection)
+        self.actionEtudiants_admis_de_l_ISIMM.triggered.connect(self.admittedStudentsISIMM)
+        self.actionEtudiants_redoublants_de_l_ISIMM.triggered.connect(self.failedStudentsISIMM)
 
         self.actionRecuperation_de_tout.triggered.connect(self.recupererTout)
 

@@ -44,7 +44,6 @@ class Institut:
         for note in self.Notes:
             if note.code==m.code:
                 es.append(note)
-        print(es)
         for i in range (len(es)):
             max=i
             for j in range(i+1,len(es)):
@@ -54,7 +53,6 @@ class Institut:
                 sw=max
                 max=i
                 i=sw
-        print(es) 
         for i in es :
             if(i.nInscription==e.nInscription):
                 return es.index(i)+1

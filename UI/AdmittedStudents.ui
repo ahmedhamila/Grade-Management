@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1103</width>
+    <height>779</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+  </property>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Section</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>90</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Année scolaire 2021/2022</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSection">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>90</y>
+     <width>301</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Cycle preparatoire integre (CPI)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Diplome national d'ingenieur(ING)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en sciences de l’informatique(L-I)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Licence en mathematiques appliquee (L-M)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>451</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 22pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Les Etudiants Admis d'une Section</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>1101</width>
+     <height>631</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
