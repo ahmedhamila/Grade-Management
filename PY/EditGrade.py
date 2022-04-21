@@ -1,4 +1,3 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -47,11 +46,11 @@ class Ui_Dialog(object):
         msgBox.setDetailedText(detailed)
         msgBox.setWindowTitle("Error Message")
         msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()        
+        msgBox.exec()
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 778)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1157, 815)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_1 = QtWidgets.QLabel(Dialog)
         self.label_1.setGeometry(QtCore.QRect(440, 30, 261, 41))
         self.label_1.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -82,10 +81,25 @@ class Ui_Dialog(object):
         self.label_11.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_11.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_11.setObjectName("label_11")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1331, 871))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_2.raise_()
+        self.label_1.raise_()
+        self.label.raise_()
+        self.comboBoxMatiere.raise_()
+        self.label_8.raise_()
+        self.lineNoteDS.raise_()
+        self.Modifier.raise_()
+        self.lineNoteEX.raise_()
+        self.label_11.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         self.comboBoxMatiere.clear()
         for note in self.ISIMM.Notes:
             self.comboBoxMatiere.addItem(note.nInscription+" "+self.ISIMM.getEtudiant(note.nInscription).nom+" "+self.ISIMM.getEtudiant(note.nInscription).prenom+" "+note.code+" "+self.ISIMM.getMatiere(note.code).designation)
@@ -106,3 +120,4 @@ class Ui_Dialog(object):
         self.label_8.setText(_translate("Dialog", "Note DS"))
         self.Modifier.setText(_translate("Dialog", "Modifier"))
         self.label_11.setText(_translate("Dialog", "Note EX"))
+import Backgrounds

@@ -48,8 +48,8 @@ class Ui_Dialog(object):
         msgBox.exec()
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1104, 779)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1156, 808)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(450, 40, 221, 35))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -90,10 +90,27 @@ class Ui_Dialog(object):
         self.Ajouter = QtWidgets.QPushButton(Dialog)
         self.Ajouter.setGeometry(QtCore.QRect(360, 650, 351, 31))
         self.Ajouter.setObjectName("Ajouter")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(0, 0, 1301, 861))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_3.setScaledContents(True)
+        self.label_3.setObjectName("label_3")
+        self.label_3.raise_()
+        self.label_10.raise_()
+        self.label_2.raise_()
+        self.label_8.raise_()
+        self.label.raise_()
+        self.label_11.raise_()
+        self.comboBoxNumeroInscription.raise_()
+        self.comboBoxCode.raise_()
+        self.lineNoteDS.raise_()
+        self.lineNoteEX.raise_()
+        self.Ajouter.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         self.comboBoxCode.clear()
         for matiere in self.ISIMM.Matieres:
             self.comboBoxCode.addItem(matiere.code+" "+matiere.designation)
@@ -113,3 +130,4 @@ class Ui_Dialog(object):
         self.label.setText(_translate("Dialog", "Numéro d\'inscription"))
         self.label_11.setText(_translate("Dialog", "Note EX"))
         self.Ajouter.setText(_translate("Dialog", "Ajouter"))
+import Backgrounds

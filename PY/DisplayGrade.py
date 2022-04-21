@@ -38,10 +38,10 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1101, 779)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1156, 808)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 150, 1101, 651))
+        self.tableView.setGeometry(QtCore.QRect(0, 150, 1161, 661))
         self.tableView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.tableView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableView.setObjectName("tableView")
@@ -50,10 +50,19 @@ class Ui_Dialog(object):
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1311, 871))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.tableView.raise_()
+        self.label_10.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         alternative=[]
         for note in self.ISIMM.Notes:
             alternative.append([note.nInscription,self.ISIMM.getEtudiant(note.nInscription).nom,self.ISIMM.getEtudiant(note.nInscription).prenom,note.code,self.ISIMM.getMatiere(note.code).designation,note.noteDS,note.noteEX])
@@ -70,3 +79,4 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_10.setText(_translate("Dialog", "Affichage des notes"))
+import Backgrounds

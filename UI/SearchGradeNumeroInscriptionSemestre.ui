@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
-    <height>780</height>
+    <width>1155</width>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
   </property>
   <widget class="QLineEdit" name="lineEditNumeroInscription">
    <property name="geometry">
@@ -114,7 +114,7 @@
     <rect>
      <x>0</x>
      <y>340</y>
-     <width>1101</width>
+     <width>1161</width>
      <height>441</height>
     </rect>
    </property>
@@ -132,7 +132,36 @@
     <string>Rechercher</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1381</width>
+     <height>881</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_3</zorder>
+  <zorder>lineEditNumeroInscription</zorder>
+  <zorder>label</zorder>
+  <zorder>comboBoxSemestre</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_10</zorder>
+  <zorder>tableView</zorder>
+  <zorder>Rechercher</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../PY/Backgrounds.qrc"/>
+ </resources>
  <connections/>
 </ui>

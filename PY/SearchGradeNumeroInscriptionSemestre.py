@@ -1,4 +1,3 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
@@ -91,8 +90,8 @@ class Ui_Dialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1100, 780)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1155, 808)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.lineEditNumeroInscription = QtWidgets.QLineEdit(Dialog)
         self.lineEditNumeroInscription.setGeometry(QtCore.QRect(420, 130, 421, 30))
         self.lineEditNumeroInscription.setInputMask("")
@@ -119,15 +118,29 @@ class Ui_Dialog(object):
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 340, 1101, 441))
+        self.tableView.setGeometry(QtCore.QRect(0, 340, 1161, 441))
         self.tableView.setObjectName("tableView")
         self.Rechercher = QtWidgets.QPushButton(Dialog)
         self.Rechercher.setGeometry(QtCore.QRect(400, 280, 351, 41))
         self.Rechercher.setObjectName("Rechercher")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(0, 0, 1381, 881))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_3.setScaledContents(True)
+        self.label_3.setObjectName("label_3")
+        self.label_3.raise_()
+        self.lineEditNumeroInscription.raise_()
+        self.label.raise_()
+        self.comboBoxSemestre.raise_()
+        self.label_2.raise_()
+        self.label_10.raise_()
+        self.tableView.raise_()
+        self.Rechercher.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         self.empty=True
         self.Rechercher.clicked.connect(self.afficherRecherche)
         self.comboBoxSemestre.currentTextChanged.connect(self.comboChanged)
@@ -141,3 +154,4 @@ class Ui_Dialog(object):
         self.label_2.setText(_translate("Dialog", "Semestre"))
         self.label_10.setText(_translate("Dialog", "Recherche par numero d\'inscription et semestre"))
         self.Rechercher.setText(_translate("Dialog", "Rechercher"))
+import Backgrounds

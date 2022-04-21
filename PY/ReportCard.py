@@ -61,8 +61,8 @@ class Ui_Dialog(object):
         self.tableView.horizontalHeader().setStretchLastSection(True)
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 780)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1156, 810)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(440, 30, 211, 41))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -154,13 +154,33 @@ class Ui_Dialog(object):
         self.comboBoxEtudiant.setGeometry(QtCore.QRect(220, 90, 311, 31))
         self.comboBoxEtudiant.setObjectName("comboBoxEtudiant")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 260, 1101, 521))
+        self.tableView.setGeometry(QtCore.QRect(0, 260, 1161, 521))
         self.tableView.setObjectName("tableView")
+        self.label_7 = QtWidgets.QLabel(Dialog)
+        self.label_7.setGeometry(QtCore.QRect(0, 0, 1271, 841))
+        self.label_7.setText("")
+        self.label_7.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_7.setScaledContents(True)
+        self.label_7.setObjectName("label_7")
+        self.label_7.raise_()
+        self.label_10.raise_()
+        self.label.raise_()
+        self.label_2.raise_()
+        self.labelAdresse.raise_()
+        self.labelNomPrenom.raise_()
+        self.label_3.raise_()
+        self.labelNomSection.raise_()
+        self.label_4.raise_()
+        self.label_5.raise_()
+        self.labelNomDateN.raise_()
+        self.label_6.raise_()
+        self.comboBoxEtudiant.raise_()
+        self.tableView.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        self.comboBoxEtudiant.clear()
-
+        
+        
         for i in self.ISIMM.Etudiants:
             self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
 
@@ -198,3 +218,4 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Section :"))
         self.label_5.setText(_translate("Dialog", "Date de naissance :"))
         self.label_6.setText(_translate("Dialog", "Numero d\'inscription"))
+import Backgrounds

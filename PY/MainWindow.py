@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()        
     def acceuil(self):
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
     def exit(self):
         self.wind.close()
     def ajouterEtudiant(self):
@@ -480,7 +480,8 @@ class Ui_MainWindow(object):
         self.GradeRecovered=True
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1157, 860)
+        MainWindow.setFixedSize(1157, 860)
+        self.wind=MainWindow
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
@@ -496,6 +497,12 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
+        self.label_2 = QtWidgets.QLabel(self.page)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1161, 841))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Back/MainBackground.jpg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -718,10 +725,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEnregistrement_et_Recuperation.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
-        
         
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
@@ -821,3 +826,4 @@ class Ui_MainWindow(object):
         self.actionRecuperation_de_tout.setText(_translate("MainWindow", "Récupération de tout"))
         self.actionAcceuil.setText(_translate("MainWindow", "Acceuil"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
+import Back

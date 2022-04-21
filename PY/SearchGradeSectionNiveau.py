@@ -61,8 +61,8 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 780)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1156, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.comboBoxNiveau = QtWidgets.QComboBox(Dialog)
         self.comboBoxNiveau.setGeometry(QtCore.QRect(600, 170, 271, 31))
         self.comboBoxNiveau.setObjectName("comboBoxNiveau")
@@ -82,12 +82,23 @@ class Ui_Dialog(object):
         self.comboBoxSection.addItem("")
         self.comboBoxSection.addItem("")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 230, 1101, 551))
+        self.tableView.setGeometry(QtCore.QRect(0, 230, 1161, 551))
         self.tableView.setObjectName("tableView")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1331, 891))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.comboBoxNiveau.raise_()
+        self.label_10.raise_()
+        self.comboBoxSection.raise_()
+        self.tableView.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         alternative=[]
         for etudiant in self.ISIMM.Etudiants:
             if(etudiant.section==self.comboBoxSection.currentText() and etudiant.niveauEtude==self.comboBoxNiveau.currentText()):
@@ -119,3 +130,4 @@ class Ui_Dialog(object):
         self.comboBoxSection.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
         self.comboBoxSection.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
         self.comboBoxSection.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
+import Backgrounds

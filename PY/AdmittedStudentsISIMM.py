@@ -37,10 +37,10 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 778)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1158, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 150, 1101, 631))
+        self.tableView.setGeometry(QtCore.QRect(0, 150, 1161, 631))
         self.tableView.setObjectName("tableView")
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(340, 30, 451, 41))
@@ -58,9 +58,20 @@ class Ui_Dialog(object):
         self.label.setFont(font)
         self.label.setStyleSheet("font: 14pt \"MS Shell Dlg 2\";")
         self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1411, 891))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_2.raise_()
+        self.tableView.raise_()
+        self.label_10.raise_()
+        self.label.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
         alternative=[]
         for etudiant in self.ISIMM.Etudiants: 
             somme_coeff=0
@@ -85,3 +96,4 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_10.setText(_translate("Dialog", "Les Etudiants Admis de l\'ISIMM"))
         self.label.setText(_translate("Dialog", "Année scolaire 2021/2022"))
+import Backgrounds
