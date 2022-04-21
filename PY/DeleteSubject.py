@@ -95,8 +95,8 @@ class Ui_Dialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 781)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1156, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.comboBoxMatiereSection = QtWidgets.QComboBox(Dialog)
         self.comboBoxMatiereSection.setGeometry(QtCore.QRect(810, 341, 271, 31))
         self.comboBoxMatiereSection.setObjectName("comboBoxMatiereSection")
@@ -148,10 +148,27 @@ class Ui_Dialog(object):
         self.comboBoxSemestre.setObjectName("comboBoxSemestre")
         self.comboBoxSemestre.addItem("")
         self.comboBoxSemestre.addItem("")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1261, 861))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.comboBoxMatiereSection.raise_()
+        self.comboBoxSection1.raise_()
+        self.label_1.raise_()
+        self.comboBoxMatiereSectionSemestre.raise_()
+        self.layoutWidget.raise_()
+        self.comboBoxMatiere.raise_()
+        self.comboBoxSection2.raise_()
+        self.Supprimer.raise_()
+        self.comboBoxSemestre.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
+        
         self.comboBoxMatiere.setVisible(False)
         self.comboBoxMatiereSection.setVisible(False)
         self.comboBoxMatiereSectionSemestre.setVisible(False)
@@ -188,3 +205,4 @@ class Ui_Dialog(object):
         self.Supprimer.setText(_translate("Dialog", "Supprimer"))
         self.comboBoxSemestre.setItemText(0, _translate("Dialog", "S1"))
         self.comboBoxSemestre.setItemText(1, _translate("Dialog", "S2"))
+import Backgrounds

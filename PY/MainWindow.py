@@ -33,93 +33,194 @@ from Subject import Matiere
 from Grade import Note
 
 class Ui_MainWindow(object):
+    def showDialog(self,str,detailed,type):
+        msgBox = QMessageBox()
+        if(type):
+            msgBox.setIcon(QMessageBox.Warning)
+        else:
+            msgBox.setIcon(QMessageBox.Information)
+        msgBox.setStyleSheet("width: 100px; font-size:15px;")
+        msgBox.setText(str)
+        msgBox.setDetailedText(detailed)
+        msgBox.setWindowTitle("Error Message")
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        msgBox.exec()        
+    def acceuil(self):
+        self.stackedWidget.setCurrentIndex(1)
+    def exit(self):
+        self.wind.close()
     def ajouterEtudiant(self):
-        self.setupStacked(2)
-        self.stackedWidget.setCurrentWidget(self.windowAjouter)
+        if self.StudentRecovered==True:
+            self.setupStacked(2)
+            self.stackedWidget.setCurrentWidget(self.windowAjouter)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
 
     def supprimerEtudiant(self):
-        self.setupStacked(3)
-        self.stackedWidget.setCurrentWidget(self.windowSupprimer)
-    
+        if self.StudentRecovered==True:
+            self.setupStacked(3)
+            self.stackedWidget.setCurrentWidget(self.windowSupprimer)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
+
     def modifierEtudiant(self):
-        self.setupStacked(4)
-        self.stackedWidget.setCurrentWidget(self.windowModifier)
+        if self.StudentRecovered==True:
+            self.setupStacked(4)
+            self.stackedWidget.setCurrentWidget(self.windowModifier)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
     def afficherEtudiant(self):
-        self.setupStacked(5)
-        self.stackedWidget.setCurrentWidget(self.windowAfficher)
+        if self.StudentRecovered==True:
+            self.setupStacked(5)
+            self.stackedWidget.setCurrentWidget(self.windowAfficher)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
     def rechercherNumeroInscription(self):
-        self.setupStacked(6)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherNumeroInscription)
+        if self.StudentRecovered==True:
+            self.setupStacked(6)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherNumeroInscription)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
     def rechercherSection(self):
-        self.setupStacked(7)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherSection)
+        if self.StudentRecovered==True:
+            self.setupStacked(7)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherSection)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
     def rechercherNiveau(self):
-        self.setupStacked(8)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherNiveau)
+        if self.StudentRecovered==True:
+            self.setupStacked(8)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherNiveau)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
     def rechercherSectionNiveau(self):
-        self.setupStacked(9)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherSectionNiveau)
-    
+        if self.StudentRecovered==True:
+            self.setupStacked(9)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherSectionNiveau)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les etudiants !",True)
+
     def ajouterMatiere(self):
-        self.setupStacked(10)
-        self.stackedWidget.setCurrentWidget(self.windowAjouterMatiere)
+        if(self.SubjectRecovered):
+            self.setupStacked(10)
+            self.stackedWidget.setCurrentWidget(self.windowAjouterMatiere)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def supprimerMatiere(self):
-        self.setupStacked(11)
-        self.stackedWidget.setCurrentWidget(self.windowSupprimerMatiere)
+        if(self.SubjectRecovered):
+            self.setupStacked(11)
+            self.stackedWidget.setCurrentWidget(self.windowSupprimerMatiere)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def modifierMatiere(self):
-        self.setupStacked(12)
-        self.stackedWidget.setCurrentWidget(self.windowModifierMatiere)
+        if(self.SubjectRecovered):
+            self.setupStacked(12)
+            self.stackedWidget.setCurrentWidget(self.windowModifierMatiere)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def afficherMatiere(self):
-        self.setupStacked(13)
-        self.stackedWidget.setCurrentWidget(self.windowAfficherMatiere)
+        if(self.SubjectRecovered):
+            self.setupStacked(13)
+            self.stackedWidget.setCurrentWidget(self.windowAfficherMatiere)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def rechercherMatiereCode(self):
-        self.setupStacked(14)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereCode)
+        if(self.SubjectRecovered):
+            self.setupStacked(14)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereCode)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def rechercherMatiereSection(self):
-        self.setupStacked(15)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSection)
+        if(self.SubjectRecovered):
+            self.setupStacked(15)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSection)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
     def rechercherMatiereSectionSemestre(self):
-        self.setupStacked(16)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSectionSemestre)
+        if(self.SubjectRecovered):
+            self.setupStacked(16)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherMatiereSectionSemestre)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer les matieres !",True)    
+
     def ajouterNote(self):
-        self.setupStacked(17)
-        self.stackedWidget.setCurrentWidget(self.windowAjouterNote)
+        if(self.GradeRecovered):
+            self.setupStacked(17)
+            self.stackedWidget.setCurrentWidget(self.windowAjouterNote)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def supprimerNote(self):
-        self.setupStacked(18)
-        self.stackedWidget.setCurrentWidget(self.windowSupprimerNote)
+        if(self.GradeRecovered):
+            self.setupStacked(18)
+            self.stackedWidget.setCurrentWidget(self.windowSupprimerNote)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def modfierNote(self):
-        self.setupStacked(19)
-        self.stackedWidget.setCurrentWidget(self.windowModifierNote)
+        if(self.GradeRecovered):
+            self.setupStacked(19)
+            self.stackedWidget.setCurrentWidget(self.windowModifierNote)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def afficherNote(self):
-        self.setupStacked(20)
-        self.stackedWidget.setCurrentWidget(self.windowAfficherNote)
+        if(self.GradeRecovered):
+            self.setupStacked(20)
+            self.stackedWidget.setCurrentWidget(self.windowAfficherNote)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def rechercherNoteNumeroInscription(self):
-        self.setupStacked(21)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscription)
+        if(self.GradeRecovered):
+            self.setupStacked(21)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscription)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def rechercherNoteSectionNiveau(self):
-        self.setupStacked(22)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteSectionNiveau)
+        if(self.GradeRecovered):
+            self.setupStacked(22)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherNoteSectionNiveau)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def rechercherNoteNumeroInscriptionSemestre(self):
-        self.setupStacked(23)
-        self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+        if(self.GradeRecovered):
+            self.setupStacked(23)
+            self.stackedWidget.setCurrentWidget(self.windowRechercherNoteNumeroInscriptionSemestre)
+        else :
+            self.showDialog("Invalid Action","Vous devez recuperer les notes",True)
     def bulletinNoteEtudiant(self):
-        self.setupStacked(24)
-        self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiant)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(24)
+            self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiant)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def bulletinNoteEtudiantSemestre(self):
-        self.setupStacked(25)
-        self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiantSemestre)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(25)
+            self.stackedWidget.setCurrentWidget(self.windowBulletinNoteEtudiantSemestre)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def admittedStudentsSection(self):
-        self.setupStacked(26)
-        self.stackedWidget.setCurrentWidget(self.windowAdmittedStudents)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(26)
+            self.stackedWidget.setCurrentWidget(self.windowAdmittedStudents)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def failedStudentsSection(self):
-        self.setupStacked(27)
-        self.stackedWidget.setCurrentWidget(self.windowFailedStudents)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(27)
+            self.stackedWidget.setCurrentWidget(self.windowFailedStudents)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def admittedStudentsISIMM(self):
-        self.setupStacked(28)
-        self.stackedWidget.setCurrentWidget(self.windowAdmittedStudentsISIMM)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(28)
+            self.stackedWidget.setCurrentWidget(self.windowAdmittedStudentsISIMM)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def failedStudentsISIMM(self):
-        self.setupStacked(29)
-        self.stackedWidget.setCurrentWidget(self.windowFailedStudentsISIMM)
+        if(self.StudentRecovered and self.GradeRecovered and self.SubjectRecovered):
+            self.setupStacked(29)
+            self.stackedWidget.setCurrentWidget(self.windowFailedStudentsISIMM)
+        else:
+            self.showDialog("Invalid Action","Vous devez recuperer tout",True)
     def setupStacked(self,index):
         #index 2
         if(index==2):
@@ -270,6 +371,9 @@ class Ui_MainWindow(object):
 
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
+        self.StudentRecovered=False
+        self.SubjectRecovered=False
+        self.GradeRecovered=False
 
     def parseStudent(self,line):
         lis=line.split(",")
@@ -302,6 +406,7 @@ class Ui_MainWindow(object):
             self.ISIMM.Etudiants.append(self.parseStudent(line))
             
         F.close()
+        self.StudentRecovered=True
     def parseMatiere(self,line):
         lis=line.split(",")
         lis[4]=lis[4].replace("\n","")
@@ -332,10 +437,15 @@ class Ui_MainWindow(object):
             self.ISIMM.Matieres.append(self.parseMatiere(line))
             
         F.close()
+        self.SubjectRecovered=True
     def recupererTout(self):
         self.recupererEtudiant()
         self.recupererMatiere()
         self.recupererNote()
+
+        self.StudentRecovered=True
+        self.SubjectRecovered=True
+        self.GradeRecovered=True
     
     def parseNote(self,line):
         lis=line.split(",")
@@ -367,9 +477,10 @@ class Ui_MainWindow(object):
                 continue
             self.ISIMM.Notes.append(self.parseNote(line))
         F.close()
+        self.GradeRecovered=True
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1119, 832)
+        MainWindow.resize(1157, 860)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
@@ -377,11 +488,11 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(9)
         MainWindow.setFont(font)
-        MainWindow.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        MainWindow.setStyleSheet("font: 75 12pt \"Arial\";")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1121, 821))
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1161, 841))
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
@@ -391,7 +502,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1119, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1157, 24))
         self.menubar.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.menubar.setAutoFillBackground(False)
         self.menubar.setStyleSheet("background-color:#777477;")
@@ -425,6 +536,8 @@ class Ui_MainWindow(object):
         self.menuCalcul_et_affichage.setObjectName("menuCalcul_et_affichage")
         self.menuEnregistrement_et_Recuperation = QtWidgets.QMenu(self.menubar)
         self.menuEnregistrement_et_Recuperation.setObjectName("menuEnregistrement_et_Recuperation")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -501,6 +614,10 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_numero_d_inscription_et_Semestre.setObjectName("actionRecherche_par_numero_d_inscription_et_Semestre")
         self.actionRecuperation_de_tout = QtWidgets.QAction(MainWindow)
         self.actionRecuperation_de_tout.setObjectName("actionRecuperation_de_tout")
+        self.actionAcceuil = QtWidgets.QAction(MainWindow)
+        self.actionAcceuil.setObjectName("actionAcceuil")
+        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit.setObjectName("actionExit")
         self.menuMise_jour_des_tudiants.addAction(self.actionAjouter_un_etudiant)
         self.menuMise_jour_des_tudiants.addSeparator()
         self.menuMise_jour_des_tudiants.addAction(self.actionSupprimer_un_etudiant)
@@ -589,6 +706,11 @@ class Ui_MainWindow(object):
         self.menuEnregistrement_et_Recuperation.addSeparator()
         self.menuEnregistrement_et_Recuperation.addAction(self.actionRecuperation_de_tout)
         self.menuEnregistrement_et_Recuperation.addSeparator()
+        self.menuFile.addAction(self.actionAcceuil)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionExit)
+        self.menuFile.addSeparator()
+        self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuGestion_des_etudiants.menuAction())
         self.menubar.addAction(self.menuGestion_des_matieres.menuAction())
         self.menubar.addAction(self.menuGestion_des_notes.menuAction())
@@ -598,6 +720,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        
         
         self.actionAjouter_un_etudiant.triggered.connect(self.ajouterEtudiant)
         self.actionSupprimer_un_etudiant.triggered.connect(self.supprimerEtudiant)
@@ -638,6 +762,8 @@ class Ui_MainWindow(object):
         self.actionEtudiants_redoublants_de_l_ISIMM.triggered.connect(self.failedStudentsISIMM)
 
         self.actionRecuperation_de_tout.triggered.connect(self.recupererTout)
+        self.actionAcceuil.triggered.connect(self.acceuil)
+        self.actionExit.triggered.connect(self.exit)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -656,11 +782,12 @@ class Ui_MainWindow(object):
         self.menuMise_jour_des_notes.setTitle(_translate("MainWindow", "Mise à jour des notes"))
         self.menuCalcul_et_affichage.setTitle(_translate("MainWindow", "Calcul et affichage"))
         self.menuEnregistrement_et_Recuperation.setTitle(_translate("MainWindow", "Enregistrement et Récupération"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionAjouter_un_etudiant.setText(_translate("MainWindow", "Ajouter un étudiant"))
         self.actionSupprimer_un_etudiant.setText(_translate("MainWindow", "Supprimer un étudiant"))
         self.actionModifier_un_etudiant.setText(_translate("MainWindow", "Modifier un étudiant"))
         self.actionAfficher_les_etudiants.setText(_translate("MainWindow", "Afficher les étudiants"))
-        self.actionAjouter_une_matiere.setText(_translate("MainWindow", "Ajouter une mètiere"))
+        self.actionAjouter_une_matiere.setText(_translate("MainWindow", "Ajouter une matière"))
         self.actionSupprimer_une_matiere.setText(_translate("MainWindow", "Supprimer une matière"))
         self.actionModifier_une_matiere.setText(_translate("MainWindow", "Modifier une matière"))
         self.actionAfficher_les_matieres.setText(_translate("MainWindow", "Afficher les matières"))
@@ -692,3 +819,5 @@ class Ui_MainWindow(object):
         self.actionRecherche_par_Section_et_Niveau_2.setText(_translate("MainWindow", "Recherche par Section et Niveau"))
         self.actionRecherche_par_numero_d_inscription_et_Semestre.setText(_translate("MainWindow", "Recherche par numero d\'inscription et Semestre"))
         self.actionRecuperation_de_tout.setText(_translate("MainWindow", "Récupération de tout"))
+        self.actionAcceuil.setText(_translate("MainWindow", "Acceuil"))
+        self.actionExit.setText(_translate("MainWindow", "Exit"))

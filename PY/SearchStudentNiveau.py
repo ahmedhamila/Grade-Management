@@ -50,8 +50,8 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1099, 779)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1149, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(410, 30, 291, 41))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -69,11 +69,23 @@ class Ui_Dialog(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 290, 1101, 491))
+        self.tableView.setGeometry(QtCore.QRect(0, 290, 1151, 491))
         self.tableView.setObjectName("tableView")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1291, 871))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.label_10.raise_()
+        self.label_9.raise_()
+        self.comboBox_2.raise_()
+        self.tableView.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
         alternative=[]
         for etudiant in self.ISIMM.Etudiants:
             if(etudiant.niveauEtude==self.comboBox_2.currentText()):
@@ -88,6 +100,7 @@ class Ui_Dialog(object):
         self.tableView.horizontalHeader().setStretchLastSection(True)
 
         self.comboBox_2.currentTextChanged.connect(self.comboChanged)
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
@@ -96,3 +109,4 @@ class Ui_Dialog(object):
         self.comboBox_2.setItemText(0, _translate("Dialog", "1"))
         self.comboBox_2.setItemText(1, _translate("Dialog", "2"))
         self.comboBox_2.setItemText(2, _translate("Dialog", "3"))
+import Backgrounds

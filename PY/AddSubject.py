@@ -50,8 +50,8 @@ class Ui_Dialog(object):
         msgBox.exec()
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 780)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1157, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.Ajouter = QtWidgets.QPushButton(Dialog)
         self.Ajouter.setGeometry(QtCore.QRect(360, 660, 351, 31))
         self.Ajouter.setObjectName("Ajouter")
@@ -60,11 +60,6 @@ class Ui_Dialog(object):
         self.lineEditCode.setInputMask("")
         self.lineEditCode.setMaxLength(32767)
         self.lineEditCode.setObjectName("lineEditCode")
-
-        self.lineDesignation = QtWidgets.QLineEdit(Dialog)
-        self.lineDesignation.setGeometry(QtCore.QRect(410, 270, 421, 30))
-        self.lineDesignation.setObjectName("lineDesignation")
-
         self.comboBoxSection = QtWidgets.QComboBox(Dialog)
         self.comboBoxSection.setGeometry(QtCore.QRect(410, 341, 421, 31))
         self.comboBoxSection.setObjectName("comboBoxSection")
@@ -82,7 +77,9 @@ class Ui_Dialog(object):
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
-        
+        self.lineDesignation = QtWidgets.QLineEdit(Dialog)
+        self.lineDesignation.setGeometry(QtCore.QRect(410, 270, 421, 30))
+        self.lineDesignation.setObjectName("lineDesignation")
         self.label_8 = QtWidgets.QLabel(Dialog)
         self.label_8.setGeometry(QtCore.QRect(240, 340, 161, 21))
         self.label_8.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -115,6 +112,13 @@ class Ui_Dialog(object):
         self.label_12.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_12.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_12.setObjectName("label_12")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(0, 0, 1261, 861))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_3.setScaledContents(True)
+        self.label_3.setObjectName("label_3")
+        self.label_3.raise_()
         self.Ajouter.raise_()
         self.lineEditCode.raise_()
         self.comboBoxSection.raise_()
@@ -130,7 +134,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         self.Ajouter.clicked.connect(self.ajouter)
 
     def retranslateUi(self, Dialog):
@@ -153,3 +157,4 @@ class Ui_Dialog(object):
         self.comboBoxSemestre.setItemText(0, _translate("Dialog", "S1"))
         self.comboBoxSemestre.setItemText(1, _translate("Dialog", "S2"))
         self.label_12.setText(_translate("Dialog", "Semestre"))
+import Backgrounds

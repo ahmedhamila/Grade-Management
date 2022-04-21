@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>779</height>
+    <width>1158</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
   </property>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
@@ -89,12 +89,38 @@
     <rect>
      <x>0</x>
      <y>340</y>
-     <width>1101</width>
+     <width>1161</width>
      <height>451</height>
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1281</width>
+     <height>841</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_8</zorder>
+  <zorder>comboBox</zorder>
+  <zorder>tableView</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../PY/Backgrounds.qrc"/>
+ </resources>
  <connections/>
 </ui>

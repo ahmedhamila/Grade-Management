@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1119</width>
-    <height>832</height>
+    <width>1157</width>
+    <height>860</height>
    </rect>
   </property>
   <property name="font">
@@ -23,7 +23,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -31,8 +31,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1121</width>
-      <height>821</height>
+      <width>1161</width>
+      <height>841</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -47,7 +47,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1119</width>
+     <width>1157</width>
      <height>24</height>
     </rect>
    </property>
@@ -226,6 +226,16 @@
     <addaction name="actionRecuperation_de_tout"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAcceuil"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuGestion_des_etudiants"/>
    <addaction name="menuGestion_des_matieres"/>
    <addaction name="menuGestion_des_notes"/>
@@ -255,7 +265,7 @@
   </action>
   <action name="actionAjouter_une_matiere">
    <property name="text">
-    <string>Ajouter une mètiere</string>
+    <string>Ajouter une matière</string>
    </property>
   </action>
   <action name="actionSupprimer_une_matiere">
@@ -411,6 +421,16 @@
   <action name="actionRecuperation_de_tout">
    <property name="text">
     <string>Récupération de tout</string>
+   </property>
+  </action>
+  <action name="actionAcceuil">
+   <property name="text">
+    <string>Acceuil</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

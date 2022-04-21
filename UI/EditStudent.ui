@@ -14,7 +14,8 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;
+</string>
   </property>
   <widget class="QLabel" name="label_1">
    <property name="geometry">
@@ -158,7 +159,39 @@
     <string>Modifier</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1191</width>
+     <height>811</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>label_1</zorder>
+  <zorder>comboBoxEtudiant</zorder>
+  <zorder>label</zorder>
+  <zorder>label_7</zorder>
+  <zorder>lineEditMail</zorder>
+  <zorder>lineEditAdresse</zorder>
+  <zorder>lineEditTelephone</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_5</zorder>
+  <zorder>Modifier</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../PY/Backgrounds.qrc"/>
+ </resources>
  <connections/>
 </ui>

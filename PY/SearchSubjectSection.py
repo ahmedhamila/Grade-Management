@@ -50,8 +50,8 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 779)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1158, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_10 = QtWidgets.QLabel(Dialog)
         self.label_10.setGeometry(QtCore.QRect(410, 50, 291, 41))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -70,11 +70,23 @@ class Ui_Dialog(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 340, 1101, 451))
+        self.tableView.setGeometry(QtCore.QRect(0, 340, 1161, 451))
         self.tableView.setObjectName("tableView")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1281, 841))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.label_10.raise_()
+        self.label_8.raise_()
+        self.comboBox.raise_()
+        self.tableView.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
         alternative=[]
         for matiere in self.ISIMM.Matieres:
             if(matiere.section==self.comboBox.currentText()):
@@ -99,3 +111,4 @@ class Ui_Dialog(object):
         self.comboBox.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
         self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
         self.comboBox.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
+import Backgrounds

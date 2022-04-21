@@ -73,10 +73,10 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1101, 780)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1157, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 450, 1101, 192))
+        self.tableView.setGeometry(QtCore.QRect(0, 450, 1161, 192))
         self.tableView.setObjectName("tableView")
         self.lineEditNumeroInscription = QtWidgets.QLineEdit(Dialog)
         self.lineEditNumeroInscription.setGeometry(QtCore.QRect(420, 230, 421, 30))
@@ -96,9 +96,22 @@ class Ui_Dialog(object):
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1291, 871))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_2.raise_()
+        self.tableView.raise_()
+        self.lineEditNumeroInscription.raise_()
+        self.label_10.raise_()
+        self.Search.raise_()
+        self.label.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
         self.empty=True
         
         self.Search.clicked.connect(self.afficherRecherche)
@@ -109,3 +122,4 @@ class Ui_Dialog(object):
         self.label_10.setText(_translate("Dialog", "Recherche par Code"))
         self.Search.setText(_translate("Dialog", "Rechercher"))
         self.label.setText(_translate("Dialog", "Recherche par Code"))
+import Backgrounds

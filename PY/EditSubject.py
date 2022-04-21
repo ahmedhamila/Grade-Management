@@ -41,8 +41,8 @@ class Ui_Dialog(object):
         msgBox.exec()        
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 782)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1155, 808)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_1 = QtWidgets.QLabel(Dialog)
         self.label_1.setGeometry(QtCore.QRect(390, 30, 291, 41))
         self.label_1.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -77,10 +77,26 @@ class Ui_Dialog(object):
         self.label_11.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_11.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
         self.label_11.setObjectName("label_11")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1341, 881))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_2.raise_()
+        self.label_1.raise_()
+        self.Modifier.raise_()
+        self.lineEditDesignation.raise_()
+        self.comboBoxMatiere.raise_()
+        self.label.raise_()
+        self.label_5.raise_()
+        self.comboBoxCoefficient.raise_()
+        self.label_11.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
+        
         for matiere in self.ISIMM.Matieres:
             self.comboBoxMatiere.addItem(matiere.code+" "+matiere.designation)
         if len(self.ISIMM.Matieres):
@@ -104,3 +120,4 @@ class Ui_Dialog(object):
         self.comboBoxCoefficient.setItemText(2, _translate("Dialog", "1.5"))
         self.comboBoxCoefficient.setItemText(3, _translate("Dialog", "2"))
         self.label_11.setText(_translate("Dialog", "Coefficient"))
+import Backgrounds

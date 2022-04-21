@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>780</height>
+    <width>1157</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
   </property>
   <widget class="QPushButton" name="Ajouter">
    <property name="geometry">
@@ -249,6 +249,26 @@
     <string>Semestre</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1261</width>
+     <height>861</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_3</zorder>
   <zorder>Ajouter</zorder>
   <zorder>lineEditCode</zorder>
   <zorder>comboBoxSection</zorder>
@@ -262,6 +282,8 @@
   <zorder>label_12</zorder>
   <zorder>label_10</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../PY/Backgrounds.qrc"/>
+ </resources>
  <connections/>
 </ui>

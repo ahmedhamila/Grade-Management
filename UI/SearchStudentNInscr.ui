@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>781</height>
+    <width>1149</width>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;background-color:#A09FA0;</string>
+   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
   </property>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
@@ -88,12 +88,39 @@
     <rect>
      <x>0</x>
      <y>440</y>
-     <width>1101</width>
+     <width>1151</width>
      <height>192</height>
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1271</width>
+     <height>871</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label</zorder>
+  <zorder>lineEditNumeroInscription</zorder>
+  <zorder>Search</zorder>
+  <zorder>tableView</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../PY/Backgrounds.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -37,10 +37,10 @@ class Ui_Dialog(object):
         self.ISIMM=ISIMM
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1102, 782)
-        Dialog.setStyleSheet("font: 75 12pt \"Arial\";background-color:#A09FA0;")
+        Dialog.resize(1150, 809)
+        Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 130, 1101, 651))
+        self.tableView.setGeometry(QtCore.QRect(0, 130, 1151, 651))
         self.tableView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.tableView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableView.setObjectName("tableView")
@@ -49,10 +49,19 @@ class Ui_Dialog(object):
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1211, 831))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.tableView.raise_()
+        self.label_10.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
         alternative=[]
         for etudiant in self.ISIMM.Etudiants:
             alternative.append([etudiant.nInscription,etudiant.nom,etudiant.prenom,etudiant.dateN,etudiant.adresse,etudiant.mail,etudiant.telephone,etudiant.section,etudiant.niveauEtude])
@@ -69,4 +78,4 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_10.setText(_translate("Dialog", "Affichage des étudiants"))
-
+import Backgrounds
