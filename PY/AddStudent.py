@@ -27,8 +27,8 @@ class Ui_Dialog(object):
             self.showDialog("Invalid Input","Prenom doit etre alphabetique",True)
             self.lineEditPrenom.setText("")
             return
-        if(not (date.year()>=2001)):
-            self.showDialog("Invalid Input","Année de naissance doit etre au moins 2003",True)
+        if(not (date.year()>=1995)):
+            self.showDialog("Invalid Input","Année de naissance doit etre au moins 1995",True)
             return
         if(not (adresse.replace(" ","").isalnum() and len(adresse)>=4)):
             self.showDialog("Invalid Input","Adresse doit etre alphanumerique de taille minimimum 4",True)
@@ -221,7 +221,7 @@ class Ui_Dialog(object):
         self.label_10.setText(_translate("Dialog", "Ajouter un étudiant"))
         self.comboBox.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
         self.comboBox.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
-        self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de linformatique(L-I)"))
         self.comboBox.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
         self.comboBox_2.setItemText(0, _translate("Dialog", "1"))
         self.comboBox_2.setItemText(1, _translate("Dialog", "2"))

@@ -6,154 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1156</width>
-    <height>810</height>
+    <width>1179</width>
+    <height>988</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Arial&quot;;</string>
-  </property>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>30</y>
-     <width>311</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 22pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Bulletin de note</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>80</y>
-     <width>221</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>14</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Année scolaire 2021/2022</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>830</x>
-     <y>130</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>14</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Adresse:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelAdresse">
-   <property name="geometry">
-    <rect>
-     <x>910</x>
-     <y>130</y>
-     <width>191</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1181</width>
+     <height>1231</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
-  </widget>
-  <widget class="QLabel" name="labelNomPrenom">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>130</y>
-     <width>191</width>
-     <height>31</height>
-    </rect>
+   <property name="pixmap">
+    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>14</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Nom et Prénom :</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelNomSection">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>180</y>
-     <width>271</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>180</y>
+     <y>170</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -174,12 +57,12 @@
     <string>Section :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>171</width>
+     <x>830</x>
+     <y>120</y>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -196,27 +79,14 @@
     <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
    <property name="text">
-    <string>Date de naissance :</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelNomDateN">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>230</y>
-     <width>191</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
+    <string>Adresse:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>80</y>
      <width>191</width>
      <height>31</height>
     </rect>
@@ -237,88 +107,202 @@
     <string>Numero d'inscription :</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxEtudiant">
+  <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>90</y>
-     <width>311</width>
+     <x>10</x>
+     <y>220</y>
+     <width>171</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Date de naissance :</string>
+   </property>
   </widget>
-  <widget class="QTableView" name="tableView">
+  <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>260</y>
-     <width>1161</width>
-     <height>481</height>
+     <x>440</x>
+     <y>20</y>
+     <width>311</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 22pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Bulletin de note</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelNomDateN">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>220</y>
+     <width>191</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">text-align:center;</string>
+    <string notr="true">font: 75 19pt &quot;MS Sans Serif&quot;;</string>
    </property>
-   <property name="midLineWidth">
-    <number>2</number>
+   <property name="text">
+    <string/>
    </property>
-   <property name="sizeAdjustPolicy">
-    <enum>QAbstractScrollArea::AdjustToContents</enum>
+  </widget>
+  <widget class="QLabel" name="labelNomSection">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>170</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
    </property>
-   <property name="gridStyle">
-    <enum>Qt::SolidLine</enum>
+   <property name="styleSheet">
+    <string notr="true">font: 75 19pt &quot;MS Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelNomPrenom">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>120</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 19pt &quot;MS Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>70</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Année scolaire 2021/2022</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelAdresse">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>120</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 19pt &quot;MS Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1271</width>
-     <height>841</height>
+     <x>10</x>
+     <y>120</y>
+     <width>151</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="midLineWidth">
-    <number>2</number>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Nom et Prénom :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelNInscription">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 19pt &quot;MS Sans Serif&quot;;</string>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="pixmap">
-    <pixmap resource="../PY/Backgrounds.qrc">:/Back/Background.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
   </widget>
-  <widget class="QPushButton" name="PDF">
+  <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>760</y>
-     <width>201</width>
-     <height>31</height>
+     <x>30</x>
+     <y>330</y>
+     <width>1101</width>
+     <height>641</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Export AS PDF</string>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="midLineWidth">
+    <number>0</number>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustIgnored</enum>
    </property>
   </widget>
-  <zorder>label_7</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>labelAdresse</zorder>
-  <zorder>labelNomPrenom</zorder>
-  <zorder>label_3</zorder>
-  <zorder>labelNomSection</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>labelNomDateN</zorder>
-  <zorder>label_6</zorder>
-  <zorder>comboBoxEtudiant</zorder>
-  <zorder>tableView</zorder>
-  <zorder>PDF</zorder>
  </widget>
  <resources>
   <include location="../PY/Backgrounds.qrc"/>

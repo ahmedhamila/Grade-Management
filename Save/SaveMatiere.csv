@@ -1,5 +1,21 @@
 Code Matiere,Designation,Section,Coefficient,Semestre
-1111,Java,Cycle preparatoire integre (CPI),1,S1
-2222,C++,Cycle preparatoire integre (CPI),1,S1
-3333,Python,Cycle preparatoire integre (CPI),1,S2
-4444,Conception,Diplome national d'ingenieur(ING),1,S2
+1001,Java1,Cycle preparatoire integre (CPI),1.5,S1
+1002,C++,Cycle preparatoire integre (CPI),1.5,S1
+1003,Python,Cycle preparatoire integre (CPI),1,S2
+1004,Theorie des graphes,Cycle preparatoire integre (CPI),1,S2
+1005,TLA,Cycle preparatoire integre (CPI),1,S1
+1006,SE,Cycle preparatoire integre (CPI),1,S1
+1007,Java2,Cycle preparatoire integre (CPI),1,S2
+1008,Conception,Diplome national d'ingenieur(ING),1,S2
+1009,Francais,Cycle preparatoire integre (CPI),1,S1
+1010,Anglais,Cycle preparatoire integre (CPI),1,S1
+1011,Compilation,Cycle preparatoire integre (CPI),1,S2
+1012,probabilite,Diplome national d'ingenieur(ING),1,S2
+1013,Algebre,Cycle preparatoire integre (CPI),1.5,S1
+1014,Analyse,Cycle preparatoire integre (CPI),1.5,S1
+1015,WEB,Cycle preparatoire integre (CPI),1.5,S2
+1016,Intelligence Artificielle,Diplome national d'ingenieur(ING),2,S2
+1017,Java,Cycle preparatoire integre (CPI),1.5,S1
+1018,C++,Cycle preparatoire integre (CPI),1.5,S1
+1019,Base de Donnee,Cycle preparatoire integre (CPI),1.5,S2
+1020,Commerce,Diplome national d'ingenieur(ING),1,S2

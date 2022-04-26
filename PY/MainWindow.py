@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import *
 from AddStudent import Ui_Dialog as add
 from DeleteStudent import Ui_Dialog as remove
@@ -378,7 +379,9 @@ class Ui_MainWindow(object):
     def parseStudent(self,line):
         lis=line.split(",")
         lis[8]=lis[8].replace("\n","")
-        return Etudiant(lis[0],lis[1],lis[2],lis[3],lis[4],lis[5],lis[6],lis[7],lis[8])   
+        dt=str(lis[3]).split("/")
+        dat=QDate(int(dt[0]),int(dt[1]),int(dt[2]))
+        return Etudiant(lis[0],lis[1],lis[2],dat,lis[4],lis[5],lis[6],lis[7],lis[8])   
 
     def enregistrerEtudiant(self):
         F=open("./Save/SaveEtudiant.csv","w+")

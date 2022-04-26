@@ -108,7 +108,7 @@ class Ui_Dialog(object):
         self.label_10.setText(_translate("Dialog", "Recherche par Section"))
         self.comboBox.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
         self.comboBox.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
-        self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBox.setItemText(2, _translate("Dialog", "Licence en sciences de linformatique(L-I)"))
         self.comboBox.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
         self.label_8.setText(_translate("Dialog", "Section"))
 import Backgrounds

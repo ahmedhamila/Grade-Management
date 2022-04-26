@@ -8,11 +8,11 @@ class Ui_Dialog(object):
         code=self.comboBoxCode.currentText().split(" ")[0]
         noteD=self.lineNoteDS.text()
         noteE=self.lineNoteEX.text()
-        if(not (noteD.isnumeric() and 20>=float(noteD)>=0)):
+        if(not (noteD.replace('.',"",1).isnumeric() and 20>=float(noteD)>=0)):
             self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
             self.lineNoteDS.setText("")
             return
-        if(not (noteE.isnumeric() and 20>=float(noteE)>=0)):
+        if(not (noteE.replace('.',"",1).isnumeric() and 20>=float(noteE)>=0)):
             self.showDialog("Invalid Input","Note doit etre numerique entre 0 et 20",True)
             self.lineNoteEX.setText("")
             return
@@ -46,6 +46,11 @@ class Ui_Dialog(object):
         msgBox.setWindowTitle("Error Message")
         msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()
+    def changedCombo(self):
+        self.comboBoxCode.clear()
+        for matiere in self.ISIMM.Matieres:
+            if(matiere.section==self.ISIMM.getEtudiant(self.comboBoxNumeroInscription.currentText().split(" ")[0]).section):
+                self.comboBoxCode.addItem(matiere.code+" "+matiere.designation)
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1156, 808)
@@ -110,15 +115,18 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        
-        self.comboBoxCode.clear()
-        for matiere in self.ISIMM.Matieres:
-            self.comboBoxCode.addItem(matiere.code+" "+matiere.designation)
+
         self.comboBoxNumeroInscription.clear()
         for etudiant in self.ISIMM.Etudiants:
             self.comboBoxNumeroInscription.addItem(etudiant.nInscription+" "+etudiant.nom+" "+etudiant.prenom)
-        
 
+        self.comboBoxCode.clear()
+        for matiere in self.ISIMM.Matieres:
+            if(matiere.section==self.ISIMM.getEtudiant(self.comboBoxNumeroInscription.currentText().split(" ")[0]).section):
+                self.comboBoxCode.addItem(matiere.code+" "+matiere.designation)
+        
+        
+        self.comboBoxNumeroInscription.currentTextChanged.connect(self.changedCombo)
         self.Ajouter.clicked.connect(self.ajouter)
 
     def retranslateUi(self, Dialog):

@@ -247,7 +247,7 @@ class Ui_Dialog(object):
         self.SupprimerEtudiantSectionNiveau.setText(_translate("Dialog", "Supprimer un étudiant d\'une section et d\'un niveau "))
         self.comboBoxSection1.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
         self.comboBoxSection1.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
-        self.comboBoxSection1.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBoxSection1.setItemText(2, _translate("Dialog", "Licence en sciences de linformatique(L-I)"))
         self.comboBoxSection1.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
         self.comboBoxNiveau1.setItemText(0, _translate("Dialog", "1"))
         self.comboBoxNiveau1.setItemText(1, _translate("Dialog", "2"))
@@ -257,6 +257,6 @@ class Ui_Dialog(object):
         self.comboBoxNiveau2.setItemText(2, _translate("Dialog", "3"))
         self.comboBoxSection2.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
         self.comboBoxSection2.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
-        self.comboBoxSection2.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBoxSection2.setItemText(2, _translate("Dialog", "Licence en sciences de linformatique(L-I)"))
         self.comboBoxSection2.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
 import Backgrounds

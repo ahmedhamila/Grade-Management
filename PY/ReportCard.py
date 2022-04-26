@@ -1,6 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import PyQt5
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
+from PyQt5 import QtPrintSupport
+from PyQt5.Qt import QFileInfo
+from ReportCardPDF import Ui_Dialog as PDF
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
@@ -36,23 +41,44 @@ class TableModel(QtCore.QAbstractTableModel):
 class Ui_Dialog(object):
     def __init__(self,ISIMM):
         self.ISIMM=ISIMM
+    def displayPDF(self):
+        fn, _ = QFileDialog.getSaveFileName(self.dg, 'Export PDF', None, 'PDF files (.pdf);;All Files()')
+        if fn != '':
+            if QFileInfo(fn).suffix() == "" : fn += '.pdf'
+            printer = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
+            printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
+            printer.setOutputFileName(fn)
+            painter = QtGui.QPainter(printer)
+            dlg=QDialog()
+            self.ui=PDF(self.ISIMM,self.comboBoxEtudiant.currentText().split(" ")[0])
+            self.ui.setupUi(dlg)
+            xscale = printer.pageRect().width() * 1.0 / dlg.width()
+            yscale = printer.pageRect().height() * 1.0 / dlg.height()
+            scale = min(xscale, yscale)
+            painter.translate(printer.paperRect().center())
+            painter.scale(scale, scale*1.2)
+            painter.translate(-dlg.width() / 2, -dlg.height() / 2)
+
+
+            dlg.render(painter)
+            painter.end()
     def comboChanged(self):
         self.modal.deleteLater()
         nInscr=self.comboBoxEtudiant.currentText().split(" ")[0]
         self.labelAdresse.setText(self.ISIMM.getEtudiant(nInscr).adresse)
         self.labelNomPrenom.setText(self.ISIMM.getEtudiant(nInscr).nom+" "+self.ISIMM.getEtudiant(nInscr).prenom)
         self.labelNomSection.setText(self.ISIMM.getEtudiant(nInscr).section)
-        self.labelNomDateN.setText(self.ISIMM.getEtudiant(nInscr).dateN)
+        self.labelNomDateN.setText(str(self.ISIMM.getEtudiant(nInscr).dateN.year())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.month())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.day()))
         alternative=[]
         somme_coeff=0
         somme_moyenne=0
         for note in self.ISIMM.Notes:
             if(note.nInscription==self.comboBoxEtudiant.currentText().split(" ")[0]):
-                alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(self.ISIMM.moyenne(note.noteDS,note.noteEX)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
+                alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(round(self.ISIMM.moyenne(note.noteDS,note.noteEX),2)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
                 somme_coeff+=float(self.ISIMM.getMatiere(note.code).coefficient)
                 somme_moyenne+=self.ISIMM.moyenne(note.noteDS,note.noteEX)*float(self.ISIMM.getMatiere(note.code).coefficient)
         if(somme_coeff!=0 and somme_moyenne!=0):
-            alternative.append(["Total",str(somme_coeff),"----","----",str(somme_moyenne/somme_coeff),"---"])
+            alternative.append(["Total",str(somme_coeff),"----","----",str(round(somme_moyenne/somme_coeff,2)),"---"])
         self.modal=TableModel(alternative)
         self.tableView.setModel(self.modal)
         self.horizontal_header = self.tableView.horizontalHeader()
@@ -60,11 +86,12 @@ class Ui_Dialog(object):
         self.horizontal_header.setSectionResizeMode(3)
         self.tableView.horizontalHeader().setStretchLastSection(True)
     def setupUi(self, Dialog):
+        self.dg=Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(1156, 810)
         Dialog.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label_10 = QtWidgets.QLabel(Dialog)
-        self.label_10.setGeometry(QtCore.QRect(440, 30, 211, 41))
+        self.label_10.setGeometry(QtCore.QRect(440, 30, 311, 41))
         self.label_10.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_10.setStyleSheet("font: 75 22pt \"MS Shell Dlg 2\";")
         self.label_10.setObjectName("label_10")
@@ -140,7 +167,7 @@ class Ui_Dialog(object):
         self.labelNomDateN.setText("")
         self.labelNomDateN.setObjectName("labelNomDateN")
         self.label_6 = QtWidgets.QLabel(Dialog)
-        self.label_6.setGeometry(QtCore.QRect(10, 90, 181, 31))
+        self.label_6.setGeometry(QtCore.QRect(10, 90, 191, 31))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(14)
@@ -154,14 +181,22 @@ class Ui_Dialog(object):
         self.comboBoxEtudiant.setGeometry(QtCore.QRect(220, 90, 311, 31))
         self.comboBoxEtudiant.setObjectName("comboBoxEtudiant")
         self.tableView = QtWidgets.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(0, 260, 1161, 521))
+        self.tableView.setGeometry(QtCore.QRect(0, 260, 1161, 481))
+        self.tableView.setStyleSheet("text-align:center;")
+        self.tableView.setMidLineWidth(2)
+        self.tableView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.tableView.setGridStyle(QtCore.Qt.SolidLine)
         self.tableView.setObjectName("tableView")
         self.label_7 = QtWidgets.QLabel(Dialog)
         self.label_7.setGeometry(QtCore.QRect(0, 0, 1271, 841))
+        self.label_7.setMidLineWidth(2)
         self.label_7.setText("")
         self.label_7.setPixmap(QtGui.QPixmap(":/Back/Background.jpg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
+        self.PDF = QtWidgets.QPushButton(Dialog)
+        self.PDF.setGeometry(QtCore.QRect(940, 760, 201, 31))
+        self.PDF.setObjectName("PDF")
         self.label_7.raise_()
         self.label_10.raise_()
         self.label.raise_()
@@ -176,10 +211,10 @@ class Ui_Dialog(object):
         self.label_6.raise_()
         self.comboBoxEtudiant.raise_()
         self.tableView.raise_()
+        self.PDF.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        
         
         for i in self.ISIMM.Etudiants:
             self.comboBoxEtudiant.addItem(i.nInscription+" "+i.nom+" "+i.prenom)
@@ -189,17 +224,17 @@ class Ui_Dialog(object):
             self.labelAdresse.setText(self.ISIMM.getEtudiant(nInscr).adresse)
             self.labelNomPrenom.setText(self.ISIMM.getEtudiant(nInscr).nom+" "+self.ISIMM.getEtudiant(nInscr).prenom)
             self.labelNomSection.setText(self.ISIMM.getEtudiant(nInscr).section)
-            self.labelNomDateN.setText(self.ISIMM.getEtudiant(nInscr).dateN)
+            self.labelNomDateN.setText(str(self.ISIMM.getEtudiant(nInscr).dateN.year())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.month())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.day()))
             alternative=[]
             somme_coeff=0
             somme_moyenne=0
             for note in self.ISIMM.Notes:
                 if(note.nInscription==self.comboBoxEtudiant.currentText().split(" ")[0]):
-                    alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(self.ISIMM.moyenne(note.noteDS,note.noteEX)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
+                    alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(round(self.ISIMM.moyenne(note.noteDS,note.noteEX),2)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
                     somme_coeff+=float(self.ISIMM.getMatiere(note.code).coefficient)
                     somme_moyenne+=self.ISIMM.moyenne(note.noteDS,note.noteEX)*float(self.ISIMM.getMatiere(note.code).coefficient)
             if(somme_coeff!=0 and somme_moyenne!=0):
-                alternative.append(["Total",str(somme_coeff),"----","----",str(somme_moyenne/somme_coeff),"---"])
+                alternative.append(["Total",str(somme_coeff),"----","----",str(round(somme_moyenne/somme_coeff,2)),"---"])
             self.modal=TableModel(alternative)
             self.tableView.setModel(self.modal)
             self.horizontal_header = self.tableView.horizontalHeader()
@@ -207,6 +242,8 @@ class Ui_Dialog(object):
             self.horizontal_header.setSectionResizeMode(3)
             self.tableView.horizontalHeader().setStretchLastSection(True)
         self.comboBoxEtudiant.currentTextChanged.connect(self.comboChanged)
+
+        self.PDF.clicked.connect(self.displayPDF)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -217,5 +254,6 @@ class Ui_Dialog(object):
         self.label_3.setText(_translate("Dialog", "Nom et Prénom :"))
         self.label_4.setText(_translate("Dialog", "Section :"))
         self.label_5.setText(_translate("Dialog", "Date de naissance :"))
-        self.label_6.setText(_translate("Dialog", "Numero d\'inscription"))
+        self.label_6.setText(_translate("Dialog", "Numero d\'inscription :"))
+        self.PDF.setText(_translate("Dialog", "Export AS PDF"))
 import Backgrounds

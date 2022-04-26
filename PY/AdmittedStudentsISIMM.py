@@ -81,7 +81,7 @@ class Ui_Dialog(object):
                     somme_coeff+=float(self.ISIMM.getMatiere(note.code).coefficient)
                     somme_moyenne+=self.ISIMM.moyenne(note.noteDS,note.noteEX)*float(self.ISIMM.getMatiere(note.code).coefficient)
             if(somme_coeff!=0 and somme_moyenne/somme_coeff >=10 ):
-                alternative.append([etudiant.nInscription,etudiant.nom,etudiant.prenom,etudiant.dateN,etudiant.section,etudiant.niveauEtude,str(somme_moyenne/somme_coeff)])
+                alternative.append([etudiant.nInscription,etudiant.nom,etudiant.prenom,etudiant.dateN,etudiant.section,etudiant.niveauEtude,str(round(somme_moyenne/somme_coeff,2))])
 
         self.modal=TableModel(alternative)
         

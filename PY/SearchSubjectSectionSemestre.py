@@ -109,7 +109,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.comboBoxSection.setItemText(0, _translate("Dialog", "Cycle preparatoire integre (CPI)"))
         self.comboBoxSection.setItemText(1, _translate("Dialog", "Diplome national d\'ingenieur(ING)"))
-        self.comboBoxSection.setItemText(2, _translate("Dialog", "Licence en sciences de l’informatique(L-I)"))
+        self.comboBoxSection.setItemText(2, _translate("Dialog", "Licence en sciences de linformatique(L-I)"))
         self.comboBoxSection.setItemText(3, _translate("Dialog", "Licence en mathematiques appliquee (L-M)"))
         self.comboBoxSemestre.setItemText(0, _translate("Dialog", "S1"))
         self.comboBoxSemestre.setItemText(1, _translate("Dialog", "S2"))

@@ -42,17 +42,17 @@ class Ui_Dialog(object):
         self.labelAdresse.setText(self.ISIMM.getEtudiant(nInscr).adresse)
         self.labelNomPrenom.setText(self.ISIMM.getEtudiant(nInscr).nom+" "+self.ISIMM.getEtudiant(nInscr).prenom)
         self.labelNomSection.setText(self.ISIMM.getEtudiant(nInscr).section)
-        self.labelNomDateN.setText(self.ISIMM.getEtudiant(nInscr).dateN)
+        self.labelNomDateN.setText(str(self.ISIMM.getEtudiant(nInscr).dateN.year())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.month())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.day()))
         alternative=[]
         somme_coeff=0
         somme_moyenne=0
         for note in self.ISIMM.Notes:
             if(note.nInscription==self.comboBoxEtudiant.currentText().split(" ")[0] and self.ISIMM.getMatiere(note.code).semestre==self.comboBoxSemestre.currentText()):
-                alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(self.ISIMM.moyenne(note.noteDS,note.noteEX)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
+                alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(round(self.ISIMM.moyenne(note.noteDS,note.noteEX),2)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
                 somme_coeff+=float(self.ISIMM.getMatiere(note.code).coefficient)
                 somme_moyenne+=self.ISIMM.moyenne(note.noteDS,note.noteEX)*float(self.ISIMM.getMatiere(note.code).coefficient)
         if(somme_coeff!=0 and somme_moyenne!=0):
-            alternative.append(["Total",str(somme_coeff),"----","----",str(somme_moyenne/somme_coeff),"---"])
+            alternative.append(["Total",str(somme_coeff),"----","----",str(round(somme_moyenne/somme_coeff,2)),"---"])
         self.modal=TableModel(alternative)
         self.tableView.setModel(self.modal)
         self.horizontal_header = self.tableView.horizontalHeader()
@@ -208,17 +208,17 @@ class Ui_Dialog(object):
             self.labelAdresse.setText(self.ISIMM.getEtudiant(nInscr).adresse)
             self.labelNomPrenom.setText(self.ISIMM.getEtudiant(nInscr).nom+" "+self.ISIMM.getEtudiant(nInscr).prenom)
             self.labelNomSection.setText(self.ISIMM.getEtudiant(nInscr).section)
-            self.labelNomDateN.setText(self.ISIMM.getEtudiant(nInscr).dateN)
+            self.labelNomDateN.setText(str(self.ISIMM.getEtudiant(nInscr).dateN.year())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.month())+"/"+str(self.ISIMM.getEtudiant(nInscr).dateN.day()))
             alternative=[]
             somme_coeff=0
             somme_moyenne=0
             for note in self.ISIMM.Notes:
                 if(note.nInscription==self.comboBoxEtudiant.currentText().split(" ")[0] and self.ISIMM.getMatiere(note.code).semestre==self.comboBoxSemestre.currentText()):
-                    alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(self.ISIMM.moyenne(note.noteDS,note.noteEX)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
+                    alternative.append([note.code +" "+self.ISIMM.getMatiere(note.code).designation,self.ISIMM.getMatiere(note.code).coefficient,note.noteDS,note.noteEX,str(round(self.ISIMM.moyenne(note.noteDS,note.noteEX),2)),str(self.ISIMM.rang(self.ISIMM.getEtudiant(note.nInscription),self.ISIMM.getMatiere(note.code)))])
                     somme_coeff+=float(self.ISIMM.getMatiere(note.code).coefficient)
                     somme_moyenne+=self.ISIMM.moyenne(note.noteDS,note.noteEX)*float(self.ISIMM.getMatiere(note.code).coefficient)
             if(somme_coeff!=0 and somme_moyenne!=0):
-                alternative.append(["Total",str(somme_coeff),"----","----",str(somme_moyenne/somme_coeff),"---"])
+                alternative.append(["Total",str(somme_coeff),"----","----",str(round(somme_moyenne/somme_coeff,2)),"---"])
             self.modal=TableModel(alternative)
             self.tableView.setModel(self.modal)
             self.horizontal_header = self.tableView.horizontalHeader()

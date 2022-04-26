@@ -47,12 +47,12 @@ class Institut:
         for i in range (len(es)):
             max=i
             for j in range(i+1,len(es)):
-                if(self.moyenne(j.noteDS,j.noteEX)>self.moyenne(max.noteDS,max.noteEX)):
+                if(self.moyenne(es[j].noteDS,es[j].noteEX)>self.moyenne(es[max].noteDS,es[max].noteEX)):
                     max=j
             if(max!=i):
-                sw=max
-                max=i
-                i=sw
+                sw=es[max]
+                es[max]=es[i]
+                es[i]=sw
         for i in es :
             if(i.nInscription==e.nInscription):
                 return es.index(i)+1
