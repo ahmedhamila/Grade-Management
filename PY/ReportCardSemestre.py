@@ -103,6 +103,7 @@ class Ui_Dialog(object):
         self.tableView = QtWidgets.QTableView(Dialog)
         self.tableView.setGeometry(QtCore.QRect(0, 260, 1161, 521))
         self.tableView.setObjectName("tableView")
+        self.tableView.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0 y1:0, x2:1 y2:0, stop:0 rgba(1, 255, 255,255), stop:1 rgba(255, 255, 255, 255));")
         self.labelNomSection = QtWidgets.QLabel(Dialog)
         self.labelNomSection.setGeometry(QtCore.QRect(100, 180, 271, 31))
         self.labelNomSection.setText("")

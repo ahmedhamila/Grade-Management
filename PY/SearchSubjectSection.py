@@ -83,7 +83,7 @@ class Ui_Dialog(object):
         self.label_8.raise_()
         self.comboBox.raise_()
         self.tableView.raise_()
-
+        self.tableView.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0 y1:0, x2:1 y2:0, stop:0 rgba(1, 255, 255,255), stop:1 rgba(255, 255, 255, 255));")
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
         
